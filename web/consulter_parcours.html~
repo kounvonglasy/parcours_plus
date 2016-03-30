@@ -1,14 +1,21 @@
 <html>
 <head>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="style.css" rel="stylesheet">
 <title>Liste des parcours</title>
 </head>
-<body>
+<header>
+<IMG  src="Images/isep.jpg" WIDTH='100%' HEIGHT='20%'>
+</header>
 
+
+<body>
+</br>
+</br>
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#home">Consulter Parcours</a></li>
-  <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-  <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+  <li class="active"><a data-toggle="tab" href="consulter_parcours.html">Consulter Parcours</a></li>
+  <li><a data-toggle="tab" href="resp_parcours.html">Responsable des parcours</a></li>
+
 </ul>
 
 <div class="tab-content">
