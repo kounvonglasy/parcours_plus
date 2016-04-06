@@ -20,9 +20,10 @@
 
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
+		<div class="row">
     <h3 class="titre_parcours">Consulter le parcours</h3>
-   
-
+   		</div>
+	<div row>
 	<form class="navbar-form navbar-left inline-form">
 
             <div class="form-group">
@@ -50,6 +51,7 @@
   <li>Genie Logiciel</li>
   <li>Business Intelligent</li>
   <li>Telecom</li>
+  <li>test</li>
 </ul>
 
 </body>
