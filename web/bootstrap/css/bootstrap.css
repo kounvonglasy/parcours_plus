@@ -274,6 +274,7 @@ th {
   font-style: normal;
   font-weight: normal;
   line-height: 1;
+  color : #088A85;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1096,13 +1097,19 @@ textarea {
   font-size: inherit;
   line-height: inherit;
 }
+
+
 a {
-  color: #337ab7;
+  color: black;
+ 
+  background-color: #088A85;
+ <!-- background-color: #2E9AFE;-->
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #23527c;
+  color: black;
+  background-color: #fff;
   text-decoration: underline;
 }
 a:focus {
@@ -4020,6 +4027,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-tabs {
   border-bottom: 1px solid #ddd;
+  
 }
 .nav-tabs > li {
   float: left;
@@ -4046,6 +4054,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs.nav-justified {
   width: 100%;
   border-bottom: 0;
+  
 }
 .nav-tabs.nav-justified > li {
   float: none;
@@ -4183,6 +4192,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-collapse {
+background-color: #088A85;
   padding-right: 15px;
   padding-left: 15px;
   overflow-x: visible;
@@ -4358,6 +4368,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-nav {
     float: left;
     margin: 0;
+    background-color: #0000FF;
   }
   .navbar-nav > li {
     float: left;

@@ -7,8 +7,9 @@
 		<title>Reponsable parcours</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link href="style.css" rel="stylesheet">
+		
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="bootstrap/css/style.css" rel="stylesheet">
 <title>Liste des parcours</title>
 </head>
 <header>
@@ -17,33 +18,33 @@
 
 
 <body>
-</br>
-</br>
+
 <div class="row">
 
 
 <div class="navbar navbar-tabs">
- <div class="navbar-header"><a class="navbar-brand" href="#">Parcours +</a>
-      
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="consulter_parcours.html">Consulter parcours</a></li>
-        <li><a href="resp_parcours.html">Responsable des parcours</a></li>
-       <li>&nbsp;</li>
-      </ul>
-      <form class="navbar-form">
-        <div class="form-group" style="display:inline;">
-          <div class="input-group">
-           
-            <input type="text" class="form-control" placeholder="What are searching for?">
-            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
-          </div>
-        </div>
-      </form>
-    </div>
+ 	<div class="navbar-header"><a class="navbar-brand" href="#">Parcours +</a>
+	    </div>
+		    	<div class="navbar-collapse collapse">
+		      		<ul class="nav navbar-nav">
+					<li class="active"><a href="consulter_parcours.html">Consulter parcours</a></li>
+					<li><a href="resp_parcours.html">Responsable des parcours</a></li>
+		       			<li>&nbsp;</li>
+		      		</ul>
+		      		<form class="navbar-form">
+			
+				<div class="form-group" style="display:inline;">
+			  		<div class="input-group">
+			   
+			    			<input type="text" class="form-control" placeholder="What are searching for?">
+			    			<span class="input-group-addon"><span class="glyphicon glyphicon-search"></span> </span>
+			  		</div>
+				</div>
+		      		</form>
+		    	</div>
+		</div>
+	</div>
 </div>
-
  
 <div class="tab-content">
   <div id="home" class="tab-pane fade in active">
