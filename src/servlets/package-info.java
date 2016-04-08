@@ -5,4 +5,4 @@
  * @author Kevin
  *
  */
-package parcours_plus.servlets;
+package servlets;

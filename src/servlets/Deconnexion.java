@@ -1,4 +1,4 @@
-package parcours_plus.servlets;
+package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

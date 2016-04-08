@@ -1,4 +1,4 @@
-package parcours_plus.beans;
+package beans;
 
 public class Utilisateur {
 	

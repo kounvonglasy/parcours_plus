@@ -1,4 +1,4 @@
-package parcours_plus.servlets;
+package servlets;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import parcours_plus.beans.Utilisateur;
-import parcours_plus.forms.ConnexionForm;
+import beans.Utilisateur;
+import forms.ConnexionForm;
 
 /**
  * Servlet implementation class Connexion

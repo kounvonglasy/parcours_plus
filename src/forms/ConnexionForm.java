@@ -1,8 +1,8 @@
-package parcours_plus.forms;
-
-import parcours_plus.beans.Utilisateur;
+package forms;
 
 import javax.servlet.http.HttpServletRequest;
+
+import beans.Utilisateur;
 
 public class ConnexionForm {
 
