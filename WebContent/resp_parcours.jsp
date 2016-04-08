@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="parcours_plus.beans.Utilisateur"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
@@ -11,8 +14,7 @@
 <link href="bootstrap/css/style.css" rel="stylesheet">
 <title>Liste des parcours</title>
 </head>
-<header>
-	<IMG src="Images/isep2.png" WIDTH='100%' HEIGHT='20%'>
+<header> <IMG src="Images/isep2.png" WIDTH='100%' HEIGHT='20%'>
 </header>
 
 
@@ -86,14 +88,14 @@
 
 		<div class="col-sm-4">
 
-			<form action="/ConnexionResponsable" name="login" role="form"
+			<form action="Connexion" name="login" role="form"
 				class="form-horizontal" method="post" accept-charset="utf-8">
 				<label>Identifiant</label>
 				<div class="form-group">
 
 					<div class="col-md-8">
-						<input name="username" placeholder="Idenfiant"
-							class="form-control" type="text" id="UserUsername" />
+						<input name="login" placeholder="Idenfiant" class="form-control"
+							type="text" id="UserUsername" />
 					</div>
 				</div>
 				<label>Mot de passe</label>
@@ -113,6 +115,15 @@
 
 			</form>
 		</div>
+
+		<p>
+			<c:if test="${!empty sessionScope.session_utilisateur}">
+				<p class="succes">Vous êtes connecté(e) avec le login :
+					${sessionScope.session_utilisateur.login} et le mdp
+					${sessionScope.session_utilisateur.mdp}</p>
+			</c:if>
+
+		</p>
 </body>
 
 </html>
