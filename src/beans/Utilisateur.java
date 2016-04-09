@@ -8,7 +8,7 @@ public class Utilisateur {
 	
 	private String email;
 	
-	private String mdp;
+	private String role;
 	
     public void setNom( String nom ) {
         this.nom = nom;
@@ -22,8 +22,8 @@ public class Utilisateur {
         this.email = email;
     }
     
-    public void setMdp( String mdp ) {
-        this.mdp = mdp;
+    public void setRole( String role ) {
+        this.role = role;
     }
 	
 	public String getNom() {
@@ -38,8 +38,8 @@ public class Utilisateur {
 		return this.email;
 	}
 	
-	public String getMdp() {
-		return this.mdp;
+	public String getRole() {
+		return this.role;
 	}
 
 }

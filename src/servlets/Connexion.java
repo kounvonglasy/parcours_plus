@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.Utilisateur;
 import forms.ConnexionForm;
+//import ldap.LDAPConnection;
 
 /**
  * Servlet implementation class Connexion
@@ -17,8 +18,6 @@ import forms.ConnexionForm;
 @WebServlet("/Connexion")
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String ATT_USER = "utilisateur";
-	public static final String ATT_FORM = "form";
 	public static final String ATT_SESSION_USER = "session_utilisateur";
 	public static final String VUE = "/resp_parcours.jsp";
 
@@ -50,18 +49,20 @@ public class Connexion extends HttpServlet {
 
 		/* Préparation de l'objet formulaire */
 		ConnexionForm form = new ConnexionForm();
+		
+		//Utilisable qu'à l'ISEP (ligne 50 à remplacer par la ligne ci-dessous)
+		//LDAPConnection ldap = new LDAPConnection;
 
 		/* Traitement de la requête et récupération du bean en résultant */
 		Utilisateur utilisateur = form.connecterUtilisateur(request);
+		
+		//Utilisable qu'à l'ISEP (ligne 56 à remplacer par la ligne ci-dessous)
+		//Utilisateur utilisateur = ldap.connecterUtilisateur(request);
 
 		/* Récupération de la session depuis la requête */
 		HttpSession session = request.getSession(true);
 		
 		session.setAttribute(ATT_SESSION_USER, utilisateur);
-
-		/* Stockage du formulaire et du bean dans l'objet request */
-		//request.setAttribute(ATT_FORM, form);
-		request.setAttribute(ATT_USER, utilisateur);
 
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}

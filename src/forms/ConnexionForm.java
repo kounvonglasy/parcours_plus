@@ -7,7 +7,6 @@ import beans.Utilisateur;
 public class ConnexionForm {
 
 	private static final String CHAMP_LOGIN = "login";
-	private static final String CHAMP_PASS = "password";
 
 	public Utilisateur connecterUtilisateur(HttpServletRequest request) {
 
@@ -15,13 +14,9 @@ public class ConnexionForm {
 
 		String login = getValeurChamp(request, CHAMP_LOGIN);
 
-		String mdp = getValeurChamp(request, CHAMP_PASS);
-
 		Utilisateur utilisateur = new Utilisateur();
 
 		utilisateur.setLogin(login);
-
-		utilisateur.setMdp(mdp);
 
 		return utilisateur;
 
