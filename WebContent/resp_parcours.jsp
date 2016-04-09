@@ -52,7 +52,7 @@
 			<c:if test="${!empty sessionScope.session_utilisateur}">
 			<div class="col-sm-12">
 			<form action="Deconnexion" name="login" role="form" class="form-horizontal" method="post" accept-charset="utf-8">
-				<input class="nav navbar-nav btn btn-success btn btn-success" type="submit"
+				<input class="btn btn-success btn btn-success" type="submit"
 					   value="Deconnection" />
 			</form>
 			</div>
