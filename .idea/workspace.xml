@@ -26,8 +26,8 @@
       <file leaf-file-name="bootstrap.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/WebContent/bootstrap/css/bootstrap.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="276" column="17" selection-start-line="276" selection-start-column="17" selection-end-line="276" selection-end-column="17" />
+            <state relative-caret-position="356">
+              <caret line="6790" column="28" selection-start-line="6790" selection-start-column="28" selection-end-line="6790" selection-end-column="28" />
               <folding />
             </state>
           </provider>
@@ -36,8 +36,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/bootstrap/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="17" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="463">
+              <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -46,9 +46,11 @@
       <file leaf-file-name="resp_parcours.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/WebContent/resp_parcours.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="101" column="65" selection-start-line="101" selection-start-column="65" selection-end-line="101" selection-end-column="65" />
-              <folding />
+            <state relative-caret-position="436">
+              <caret line="157" column="7" selection-start-line="157" selection-start-column="7" selection-end-line="157" selection-end-column="7" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,9 +70,9 @@
       <list>
         <option value="$PROJECT_DIR$/web/consulter_parcours.html" />
         <option value="$PROJECT_DIR$/WebContent/css/styles.css" />
+        <option value="$PROJECT_DIR$/WebContent/bootstrap/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/WebContent/resp_parcours.html" />
         <option value="$PROJECT_DIR$/WebContent/bootstrap/css/style.css" />
-        <option value="$PROJECT_DIR$/WebContent/bootstrap/css/bootstrap.css" />
       </list>
     </option>
   </component>
@@ -196,6 +198,32 @@
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+  </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
@@ -211,12 +239,12 @@
       <updated>1459599432852</updated>
       <workItem from="1459599496459" duration="56000" />
       <workItem from="1460189977723" duration="70000" />
-      <workItem from="1460190506223" duration="8021000" />
+      <workItem from="1460190506223" duration="10630000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8147000" />
+    <option name="totallyTimeSpent" value="10756000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="1" width="1378" height="743" extended-state="0" />
@@ -276,7 +304,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -292,24 +322,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/resp_parcours.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="101" column="65" selection-start-line="101" selection-start-column="65" selection-end-line="101" selection-end-column="65" />
-          <folding />
+        <state relative-caret-position="436">
+          <caret line="157" column="7" selection-start-line="157" selection-start-column="7" selection-end-line="157" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/bootstrap/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="17" />
+        <state relative-caret-position="463">
+          <caret line="28" column="1" selection-start-line="28" selection-start-column="1" selection-end-line="28" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebContent/bootstrap/css/bootstrap.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="276" column="17" selection-start-line="276" selection-start-column="17" selection-end-line="276" selection-end-column="17" />
+        <state relative-caret-position="356">
+          <caret line="6790" column="28" selection-start-line="6790" selection-start-column="28" selection-end-line="6790" selection-end-column="28" />
           <folding />
         </state>
       </provider>

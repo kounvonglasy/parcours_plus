@@ -1,11 +1,6 @@
-
-
 .isep {
     width : 100%;
 }
-body {
-}
-
 
 .titre_parcours, .titre2{
 text-align: center;
@@ -32,8 +27,3 @@ text-align: center;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c6d1d1', endColorstr='#9ac9c7', GradientType=1 );
 
 }
-
-
-
-
-
