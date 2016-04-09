@@ -16,7 +16,10 @@ html,body{
 body{
   	padding-top:50px; /*padding for navbar*/
 }
+.input-group{
+	margin-left: 70%;
 
+}
 .navbar-custom .icon-bar {
 	background-color:#fff;
 }

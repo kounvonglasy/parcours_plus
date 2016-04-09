@@ -1,4 +1,5 @@
-<style>
+
+
 .isep {
     width : 100%;
 }
@@ -8,6 +9,7 @@ body {
 
 .titre_parcours, .titre2{
 text-align: center;
+  color:  #088A85;
 }
 
 .recherche{
@@ -19,4 +21,4 @@ text-align: center;
 
 
 
-</style>
+
