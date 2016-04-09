@@ -1,0 +1,147 @@
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Reponsable des parcours</title>
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/css/style.css" rel="stylesheet">
+    <title>Liste des parcours</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<header>
+    <!-- image de couverture -->
+    <IMG src="Images/isep2.png" WIDTH='100%' HEIGHT='20%'>
+</header>
+<body>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="navbar navbar-tabs">
+            <!-- Marque : Parcours + -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Parcours +</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <!-- Liste des choix -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="consulter_parcours.html">Consulter parcours</a></li>
+                    <li><a href="resp_parcours.html">Responsable des parcours</a></li>
+                    <li>&nbsp;</li>
+                </ul>
+                <!-- Barre de recherche -->
+                <form class="navbar-form">
+                    <div class="form-group" style="display: inline;">
+                        <div class="input-group" >
+                            <input type="text" class="form-control"
+                                   placeholder="What are searching for?"> <span
+                                class="input-group-addon"><span
+                                class="glyphicon glyphicon-search"></span> </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="tab-content">
+            <div id="home" class="tab-pane fade in active">
+                <!-- titre-->
+                <h3 class="titre_parcours">Responsables des parcours</h3>
+            </div>
+        </div>
+    </div>
+</div>
+</br>
+</br>
+</br>
+</br>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="col-sm-1">
+        </div>
+        <div class="col-sm-7">
+            <!-- Miste déroulant des responsable-->
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Liste des responsable de parcours
+                    <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-header">Responsable Systeme d'information</li>
+                    <li><a href="#">Monsieur Bill Gates</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Résponsable Systéme d'embarquement</li>
+                    <li><a href="#">Monsieur Victor Hugo</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Résponsable Réseau</li>
+                    <li><a href="#">Madame Marie bulo</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Résponsable Business Intelligent</li>
+                    <li><a href="#">Madame Anne-laure Intelligis</a></li>
+                    <li class="divider"></li>
+                    <li class="dropdown-header">Résponsable Numérique et Santé</li>
+                    <li><a href="#">Madame Greys Kate</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5" id="nom_respo">
+        <div class="container" >
+            <div class="row" >
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <!-- Cadre du profil repo parcours-->
+                    <div class="well well-sm" id="nom_respo2">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-4">
+                                <img src="Images/olive.PNG" alt="" class="img-rounded img-responsive" />
+                            </div>
+                            <div class="col-sm-6 col-md-8">
+                                <h4>Monsieur Bill Gates</h4>
+                                <br/>
+                                <small><cite title="Systéme d'information"><i class="glyphicon glyphicon-user">
+                                </i>&nbsp; Responsable de la filiére systeme d'information</cite></small>
+                                <p>
+
+                                    <br/>
+                                    <i class="glyphicon glyphicon-globe"></i><a href="http://www.isep.fr/parcours/">&nbsp; www.isep.fr/parcours/</a>
+                                    <br/>
+                                    <br/>
+                                    <i class="glyphicon glyphicon-folder-close"></i>Valide vos choix de parcours, Professeur de base de donnée, chercheur
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+    </div>
+    <div class="col-sm-3">
+        <!-- Module de connextion-->
+        <form action="/ConnexionResponsable" name="login" role="form" class="form-horizontal" method="post" accept-charset="utf-8">
+            <label>Identifiant</label>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="username" placeholder="Idenfiant" class="form-control" type="text" id="UserUsername" />
+                </div>
+            </div>
+            <label>Mot de passe</label>
+            <div class="form-group">
+                <div class="col-md-8">
+                    <input name="password" placeholder="Mot de passe"
+                           class="form-control" type="password" id="UserPassword" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-0 col-md-8">
+                    <input class="btn btn-success btn btn-success" type="submit"
+                           value="Connexion" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

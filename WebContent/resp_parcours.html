@@ -26,7 +26,7 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="consulter_parcours.html">Consulter parcours</a></li>
 						<li><a href="resp_parcours.html">Responsable des parcours</a></li>
-						<li>&nbsp;</li>
+						<li><a href="editer_profil.html">Editer profils</a></li>
 					</ul>
 					<!-- Barre de recherche -->
 					<form class="navbar-form">
@@ -85,14 +85,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-5" id="nom_respo">
+		<div class="col-sm-6" id="nom_respo">
 			<div class="container" >
 				<div class="row" >
-					<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="col-xs-6">
 						<!-- Cadre du profil repo parcours-->
 						<div class="well well-sm" id="nom_respo2">
 							<div class="row">
-								<div class="col-sm-6 col-md-4">
+								<div class="col-sm-1 col-md-2">
 									<img src="Images/olive.PNG" alt="" class="img-rounded img-responsive" />
 								</div>
 								<div class="col-sm-6 col-md-8">
@@ -127,32 +127,25 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-1">
+		<div class="col-sm-3">
+			<div class="alert alert-info fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Notification!</strong> Vous avez recu un mail
+			</div>
 		</div>
 		<div class="col-sm-3">
-			<!-- Module de connextion-->
-			<form action="/ConnexionResponsable" name="login" role="form" class="form-horizontal" method="post" accept-charset="utf-8">
-				<label>Identifiant</label>
-				<div class="form-group">
-					<div class="col-md-8">
-						<input name="username" placeholder="Idenfiant" class="form-control" type="text" id="UserUsername" />
-					</div>
-				</div>
-				<label>Mot de passe</label>
-				<div class="form-group">
-					<div class="col-md-8">
-						<input name="password" placeholder="Mot de passe"
-							   class="form-control" type="password" id="UserPassword" />
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="col-md-offset-0 col-md-8">
-						<input class="btn btn-success btn btn-success" type="submit"
-							   value="Connexion" />
-					</div>
-				</div>
-			</form>
+			<div class="alert alert-success fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Notification!</strong> Votre Lettre de recommandation est prés
+			</div>
 		</div>
+		<div class="col-sm-3">
+			<div class="alert alert-danger fade in">
+				<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+				<strong>Notification!</strong> Votre demande des choix à été refusé
+			</div>
+		</div>
+
 	</div>
 	</body>
 </html>
