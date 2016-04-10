@@ -55,7 +55,7 @@ table {
 
 header{
 	
-	height:35%;
+	height:25%;
 	width:100%;
 }
 
@@ -79,6 +79,15 @@ header{
 	margin-top:40px;
 	
 }
+/* ========= Partie titre sous le menu============*/
+
+.titre_parcours, .titre2{
+	
+	margin-bottom:50px;
+	text-align: center;
+	color:  #088A85;
+	
+}
 
 /* ========= Partie centrale ============*/
 
@@ -88,8 +97,15 @@ header{
 	
 }
 
-/* ========= Cadre du profil repo parcours ============*/
+/* ========= Cadre du profil ============*/
 
+#profil_pic{
+	
+	margin:0px auto;
+	height:150px;
+	width:100px;;
+	
+}
 #infos_content{
 	
 	margin:0px auto;
@@ -102,19 +118,6 @@ header{
 	line-height:25px;
 	
 }
-.isep {
-    width : 100%;
-}
-
-.titre_parcours, .titre2{
-text-align: center;
-  color:  #088A85;
-}
-
-.recherche{
- position: center;
-}
-
 #nom_respo{
      text-align: center;
  }
@@ -131,3 +134,12 @@ text-align: center;
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c6d1d1', endColorstr='#9ac9c7', GradientType=1 );
 
 }
+
+.isep {
+    width : 100%;
+}
+
+.recherche{
+ position: center;
+}
+
