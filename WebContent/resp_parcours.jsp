@@ -18,11 +18,11 @@
                 type: "GET",
                 url: "SelectionResponsableParcours?name=" + x,
                 datatype: "json",
-                success: function (data) {
-                	var res = $.parseJSON(data);
-                	$("#libelle").html(res.libelle);
-                	$("#type_responsable").html(res.type_responsable);
-                	$("#email").html(res.email);
+                success: function (data) {      	
+                	var result = JSON.parse(JSON.stringify(data));
+                	$("#libelle").html(result.libelle);
+                	$("#type_responsable").html(result.type_responsable);
+                	$("#email").html(result.email);            	
                 }
             });
         }

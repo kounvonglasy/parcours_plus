@@ -31,7 +31,7 @@ public class SelectionResponsableParcours extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html");
+		response.setContentType("application/json; charset=UTF-8");
 		JSONObject js = new JSONObject();
 		PrintWriter out = response.getWriter();
 		boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
@@ -86,7 +86,7 @@ public class SelectionResponsableParcours extends HttpServlet {
 				js.put("email", email);
 				js.put("type_responsable", type_responsable);
 				js.put("libelle", libelle);
-				out.print(js.toJSONString());
+				out.print(js);
 			}
 		} finally {
 			out.close();
