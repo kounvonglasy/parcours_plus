@@ -1,0 +1,29 @@
+.isep {
+    width : 100%;
+}
+
+.titre_parcours, .titre2{
+text-align: center;
+  color:  #088A85;
+}
+
+.recherche{
+ position: center;
+}
+
+#nom_respo{
+     text-align: center;
+ }
+
+#nom_respo2{
+
+    background: rgba(198,209,209,1);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(198,209,209,1) 0%, rgba(154,201,199,1) 77%, rgba(154,201,199,1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(198,209,209,1)), color-stop(77%, rgba(154,201,199,1)), color-stop(100%, rgba(154,201,199,1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(198,209,209,1) 0%, rgba(154,201,199,1) 77%, rgba(154,201,199,1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(198,209,209,1) 0%, rgba(154,201,199,1) 77%, rgba(154,201,199,1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(198,209,209,1) 0%, rgba(154,201,199,1) 77%, rgba(154,201,199,1) 100%);
+    background: radial-gradient(ellipse at center, rgba(198,209,209,1) 0%, rgba(154,201,199,1) 77%, rgba(154,201,199,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c6d1d1', endColorstr='#9ac9c7', GradientType=1 );
+
+}
