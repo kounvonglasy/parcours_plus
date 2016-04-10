@@ -30,7 +30,9 @@
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="consulter_parcours.html">Consulter parcours</a></li>
 						<li><a href="resp_parcours.html">Responsable des parcours</a></li>
+						<c:if test="${!empty sessionScope.session_utilisateur}">
 						<li><a href="editer_profil.html">Editer profils</a></li>
+						</c:if>
 					</ul>
 
 					<!-- Barre de recherche -->
