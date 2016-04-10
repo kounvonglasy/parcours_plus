@@ -5,13 +5,28 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
+		<script src="js/jquery-1.10.2.js"></script>
 		<title>Reponsable des parcours</title>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="bootstrap/css/style.css" rel="stylesheet">
 		<title>Liste des parcours</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+        function ajax_loader(x) {
+            req = $.ajax({
+                type: "GET",
+                url: "SelectionResponsableParcours?name=" + x,
+                datatype: "json",
+                success: function (data) {
+                	var res = $.parseJSON(data);
+                	$("#libelle").html(res.libelle);
+                	$("#type_responsable").html(res.type_responsable);
+                	$("#email").html(res.email);
+                }
+            });
+        }
+		</script>
 	</head>
 	<header>
 		<!-- image de couverture -->
@@ -90,19 +105,19 @@
 						<span class="caret"></span></button>
 					<ul class="dropdown-menu">
 						<li class="dropdown-header">Responsable Systeme d'information</li>
-						<li><a href="#">Monsieur Bill Gates</a></li>
+						<li><a href="#" onClick="ajax_loader('Gates')">Monsieur Bill Gates</a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Résponsable Systéme d'embarquement</li>
-						<li><a href="#">Monsieur Victor Hugo</a></li>
+						<li><a href="#" onClick="ajax_loader('Hugo')">Monsieur Victor Hugo</a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Résponsable Réseau</li>
-						<li><a href="#">Madame Marie bulo</a></li>
+						<li><a href="#" onClick="ajax_loader('Bulo')">Madame Marie bulo</a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Résponsable Business Intelligent</li>
-						<li><a href="#">Madame Anne-laure Intelligis</a></li>
+						<li><a href="#" onClick="ajax_loader('Intelligis')">Madame Anne-laure Intelligis</a></li>
 						<li class="divider"></li>
 						<li class="dropdown-header">Résponsable Numérique et Santé</li>
-						<li><a href="#">Madame Greys Kate</a></li>
+						<li><a href="#" onClick="ajax_loader('Kate')">Madame Greys Kate</a></li>
 					</ul>
 				</div>
 			</div>
@@ -118,14 +133,14 @@
 									<img src="Images/olive.PNG" alt="" class="img-rounded img-responsive" />
 								</div>
 								<div class="col-sm-6 col-md-8">
-									<h4>Monsieur Bill Gates</h4>
+									<h4><span id="libelle">Monsieur Bill Gates</span></h4>
 									<br/>
 									<small><cite title="Systéme d'information"><i class="glyphicon glyphicon-user">
-									</i>&nbsp; Responsable de la filiére systeme d'information</cite></small>
+									</i>&nbsp; Responsable de la filiére <span id="type_responsable">systeme d'information</span></cite></small>
 									<p>
 									<c:if test="${!empty sessionScope.session_utilisateur}">
 										<br/>
-										<i class="glyphicon glyphicon-envelope"></i>&nbsp; bill.gates@isep.fr
+										<i class="glyphicon glyphicon-envelope"></i>&nbsp; <span id="email">bill.gates@isep.fr </span>
 										<br/>
 									</c:if>
 										<br/>
