@@ -6,7 +6,7 @@ import beans.Utilisateur;
 
 public class ConnexionForm {
 
-	private static final String CHAMP_LOGIN = "login";
+	private static final String CHAMP_LOGIN = "username";
 
 	public Utilisateur connecterUtilisateur(HttpServletRequest request) {
 

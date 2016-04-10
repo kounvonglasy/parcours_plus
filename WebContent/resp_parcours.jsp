@@ -46,7 +46,10 @@
 						</div>
 
 					</form>
-
+				<c:if test="${!empty sessionScope.session_utilisateur}">
+					<p class="succes">Vous êtes connecté(e) avec le login :
+						${sessionScope.session_utilisateur.login}</p>
+				</c:if>
 				</div>
 			</div>
 			<c:if test="${!empty sessionScope.session_utilisateur}">
