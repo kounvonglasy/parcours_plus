@@ -1,53 +1,55 @@
 <html>
 
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>Mon profil</title>
-		<link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
-		<link href="../CSS/style.css" rel="stylesheet">
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	</head>
+
+			<?php include("head.php") ?>
+
 	
 	<header>
-		<!-- image de couverture -->
-		<IMG src="../../Modele/Images/isep2.png" WIDTH='100%' HEIGHT='20%'>
+	
+		<img id="bandeau" src="../../Modele/Images/isep2.png" >					<!------- image de couverture -------->
+		
 	</header>
 	
 <body>
-	<div class="row">
 
+				<!============ PARTIE DU MENU =============>
+
+	<div class="row">																					
+
+				<!--------- Bootstrap du menu --------->
+	
 		<div class="col-sm-12">
+		
 			<div class="navbar navbar-tabs">
 				<!-- Marque : Parcours + -->
 				<div class="navbar-header">
 					<a class="navbar-brand" href="#">Parcours +</a>
 				</div>
 				
-				<div class="navbar-collapse collapse">
-					<!-- Liste des choix -->
+				<!--------- Bootstrap du menu --------->
+				
+				<div class="navbar-collapse collapse">						
+
 					<ul class="nav navbar-nav">
 						<li class="active"><a href="consulter_parcours.html">Consulter parcours</a></li>
 						<li><a href="resp_parcours.html">Responsable des parcours</a></li>
-						<li><a href="editer_profil.html">Editer profils</a></li>
+						<li><a href="editer_profil.html">Editer profil</a></li>
 					</ul>
 					
-					<!-- Barre de recherche -->
+					<!------------- Barre de recherche ----------------->
+					
 					<form class="navbar-form">
 						<div class="form-group" style="display: inline;">
 							<div class="input-group" >
-								<input type="text" class="form-control"
-									   placeholder="Recherche"> 
-									  <span class="input-group-addon">
-									  <span class="glyphicon glyphicon-search"></span> </span>
+								<input type="text" class="form-control" placeholder="Recherche"> 
+									  <span class="input-group-addon"> <span class="glyphicon glyphicon-search"></span> </span>
 							</div>
 						</div>
 					</form>
 
 				</div>
 			</div>
+			
 		</div>
 		
 	</div>
@@ -56,8 +58,9 @@
 		<div class="col-sm-12">
 			<div class="tab-content">
 				<div id="home" class="tab-pane fade in active">
-					<!-- titre-->
-					<h3 class="titre_parcours">Editer profils</h3>
+				
+					<!---------------- titre-------------->
+					<h3 class="titre_parcours">Editer profil</h3>
 				</div>
 			</div>
 		</div>
@@ -74,24 +77,34 @@
 			<div class="container" >
 				<div class="row" >
 					<div class="col-xs-12">
-						<!-- Cadre du profil repo parcours-->
+					
+						<!--------------- Cadre du profil repo parcours-------------->
+						
 						<div class="well well-sm" id="nom_respo2">
+						
 							<div class="row">
+							
 								<div class="col-xs-2">
-									<img src="Images/olive.PNG" alt="" class="img-rounded img-responsive" />
+									<img src="../../Modele/Images/olive.PNG" alt="" class="img-rounded img-responsive" />
 								</div>
+								
 								<div class="col-sm-6 col-md-8">
-								  <h4>prenom </h4>
+								
+								<div id="infos_content">
+								
+								  <p>Prénom </p>
 
-									<small><cite title="Systéme d'information"><i class="glyphicon glyphicon-user">
-									</i>&nbsp;A2 Promotion 2017 (59) (Alternant)</cite></small>
-									<p>
-										<br/>
-										<i class="glyphicon glyphicon-envelope"></i>&nbsp; prenom@isep.fr
-										<br/>
-										<br/>
+									<p><small>
+									<cite title="Systéme d'information"><i class="glyphicon glyphicon-user">
+									
+									</i>&nbsp;A2 Promotion 2017 (59) (Alternant)</cite></p>
+									
+									</small>
+									
+									<p> <i class="glyphicon glyphicon-envelope"></i>&nbsp; prenom@isep.fr </p>
 
 
+									</div>
 								</div>
 							</div>
 						</div>
