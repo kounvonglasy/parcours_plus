@@ -25,6 +25,9 @@ public class Utilisateur {
  @Column(name = "role")
  private String role;
  
+ @Column(name = "mdp")
+ private String mdp;
+ 
  
     public void setNom( String nom ) {
         this.nom = nom;
@@ -39,6 +42,10 @@ public class Utilisateur {
     }
     public void setRole( String role ) {
         this.role = role;
+    }
+    
+    public void setMdp( String mdp ) {
+        this.mdp = mdp;
     }
     
  
@@ -57,5 +64,9 @@ public class Utilisateur {
  public String getRole() {
   return this.role;
  }
+ 
+ public String getMdp() {
+	  return this.mdp;
+}
  
 }

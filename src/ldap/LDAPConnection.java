@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import beans.Utilisateur;
 
-class ConnexionForm
+public class LDAPConnection
 {
 	private static final String CHAMP_LOGIN = "username";
 	private static final String CHAMP_PASS = "password";
@@ -21,16 +21,16 @@ class ConnexionForm
 		if (connexion == null)
 		{
 			System.out.println("login invalide");
-			System.exit(1);
+			return null;
 		}
-		System.exit(0);
 		} catch(Exception e) {
 			System.err.println(e.getMessage());
-			System.exit(1);
+			return null;
 		}
 	    //Si la connexion s'est bien passé,retourne le bean
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setLogin(login);
+		utilisateur.setLogin(mdp);
 		return utilisateur;
 		
 	}
@@ -44,7 +44,6 @@ class ConnexionForm
 	 */
 	private static String getValeurChamp(HttpServletRequest request, String nomChamp) {
 		String valeur = request.getParameter(nomChamp);
-		
 		if (valeur == null || valeur.trim().length() == 0) {
 			return null;
 		} else {
