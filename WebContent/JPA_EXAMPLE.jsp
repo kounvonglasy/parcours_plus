@@ -73,6 +73,7 @@
                       	<form action="AddUser" name="list" role="form" class="form-horizontal" method="post" accept-charset="utf-8">
 		  <input name="username" placeholder="Nom" class="form-control" type="text" id="UserUsername" />
 		  <input name="userlogin" placeholder="Login" class="form-control" type="text" id="UserLogin" />
+		    <input name="userpwd" placeholder="Mot de Passe" class="form-control" type="text" id="UserPwd" />
 		  <input name="useremail" placeholder="Email" class="form-control" type="text" id="UserUserEmail" />
 		  <input name="userrole" placeholder="Role" class="form-control" type="text" id="UserUserRole" />
                     <input class="btn btn-success btn btn-success" type="submit"
