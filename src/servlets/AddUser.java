@@ -28,11 +28,6 @@ public class AddUser extends HttpServlet {
    protected void doPost(
        HttpServletRequest request, HttpServletResponse response)
            throws ServletException, IOException {
-
-       // Obtain a database connection:
-   /*   EntityManagerFactory emf =
-          (EntityManagerFactory)getServletContext().getAttribute("emf");
-       EntityManager em = emf.createEntityManager();*/
 	   
 	   
 	     EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "parcours_plus" );
@@ -43,6 +38,7 @@ public class AddUser extends HttpServlet {
 	    	  user.setNom(request.getParameter("username"));
 	    	  user.setEmail(request.getParameter("useremail"));
 	    	  user.setRole(request.getParameter("userrole"));
+	    	  user.setMdp(request.getParameter("userpwd"));
 	    	  entitymanager.getTransaction().begin();
 	    	  entitymanager.persist(user);
 	    	  entitymanager.getTransaction().commit();
