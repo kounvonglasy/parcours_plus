@@ -78,6 +78,14 @@ table {
 	height:15%;
 }
 
+#recherche{
+	
+	margin:2px;
+	width:200px;
+	float:right;
+	
+}
+
 /* =========== Partie centrale ============*/
 
 #barre_h{
@@ -127,3 +135,5 @@ table {
 	height:200px;
 	
 }
+
+/* ========================== Page Mon_Profil ============================*/
