@@ -5,12 +5,11 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<script src="js/jquery-1.10.2.js"></script>
+		<script src="js/jquery-1.12.3.js"></script>
 		<title>Reponsable des parcours</title>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="bootstrap/css/style.css" rel="stylesheet">
 		<title>Liste des parcours</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<script type="text/javascript">
         function ajax_loader(x) {
