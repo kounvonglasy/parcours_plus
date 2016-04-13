@@ -51,13 +51,13 @@ public class Connexion extends HttpServlet {
 		ConnexionForm form = new ConnexionForm();
 		
 		//Utilisable qu'à l'ISEP (ligne 50 à remplacer par la ligne ci-dessous)
-		//LDAPConnection ldap = new LDAPConnection();
+		LDAPConnection ldap = new LDAPConnection();
 
 		/* Traitement de la requête et récupération du bean en résultant */
-		Utilisateur utilisateur = form.connecterUtilisateur(request);
+		//Utilisateur utilisateur = form.connecterUtilisateur(request);
 
 		//Utilisable qu'à l'ISEP (ligne 56 à remplacer par la ligne ci-dessous)
-		//Utilisateur utilisateur = ldap.connecterUtilisateur(request);
+		Utilisateur utilisateur = ldap.connecterUtilisateur(request);
 
 		//Si la connexion n'est pas valide, on ne cree pas de session
 		if(utilisateur != null){

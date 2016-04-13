@@ -30,7 +30,7 @@ public class LDAPConnection
 	    //Si la connexion s'est bien passé,retourne le bean
 		Utilisateur utilisateur = new Utilisateur();
 		utilisateur.setLogin(login);
-		utilisateur.setLogin(mdp);
+		utilisateur.setMdp(mdp);
 		return utilisateur;
 		
 	}
