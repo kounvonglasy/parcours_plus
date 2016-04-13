@@ -52,12 +52,19 @@ table {
 * p{
 	
 		font-family:Helvetica;
-	
 }
 
 /* ========================== Page Mon_Profil ============================*/
 
 /* =========== Header ============*/
+
+.container{
+	
+	height:100%;
+	width:100%;
+	margin:0 auto;
+}
+
 .navbar navbar-inverse{
 	
 	color:red;
@@ -69,4 +76,54 @@ table {
 	left:0px;
 	width:20%;
 	height:15%;
+}
+
+/* =========== Partie centrale ============*/
+
+#barre_h{
+	
+	border:solid 1px black;
+	
+}
+
+#titre{
+	
+	text-align:center;
+	font-size:1.4em;
+	
+}
+/* ========= Cadre du profil ============*/
+
+#profil_pic{
+	
+	margin:0px auto;
+	height:150px;
+	width:100px;;
+	
+}
+#infos_content{
+	
+	margin:0px auto;
+	height:150px;
+	width:300px;
+	
+}
+#infos_content	p{
+	
+	line-height:30px;
+	text-align:center;
+	
+}
+#nom_respo{
+     text-align: center;
+ }
+
+ 
+/* =========== Partie du bas ============*/
+
+#footer{
+	
+	border:solid 1px black;
+	height:200px;
+	
 }
