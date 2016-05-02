@@ -3,6 +3,8 @@
 	<persistence-unit name="parcours_plus">
 	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
      <class>beans.Utilisateur</class>
+     <class>beans.Parcours</class>
+     <class>beans.Module</class>
 	<properties>
 	     <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/parcours_plus"/>

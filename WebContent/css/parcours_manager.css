@@ -1,0 +1,38 @@
+@CHARSET "ISO-8859-1";
+
+#description_icones {
+	display:none;
+}
+h3:hover {
+		color : #005580;
+		cursor: pointer;
+}
+.black {
+    color: black;
+}
+
+table.table thead tr , table.table tfoot tr {
+    background-image: -webkit-linear-gradient(top, #f5f5f5 35%, #E9E9E9);
+    background-image:    -moz-linear-gradient(top, #f5f5f5 35%, #E9E9E9);
+    background-image:     -ms-linear-gradient(top, #f5f5f5 35%, #E9E9E9);
+    background-image:         linear-gradient(top, #f5f5f5 35%, #E9E9E9);
+}
+
+#creerParcours a {
+	color : #0088cc;
+	text-decoration: none;
+}
+
+#retour_liste_parcours a {
+	text-decoration: none;
+}
+
+#creerParcours a:hover {
+	color : #005580;
+}
+
+.rounded {
+    padding-left: 14px;
+    padding-right: 14px;
+	border-radius: 15px;
+}
