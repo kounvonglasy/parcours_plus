@@ -132,6 +132,46 @@ CREATE TABLE IF NOT EXISTS `utilisateur_parcours` (
 INSERT INTO `utilisateur_parcours` (`id`, `id_parcours`) VALUES
 (1, 1);
 
+
+--
+-- Structure de la table `profile`
+--
+
+CREATE TABLE IF NOT EXISTS `profile` (
+  `id_profile` int(20) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(20) NOT NULL,
+  `prenom` varchar(20) NOT NULL,
+  `promotion` varchar(50) NOT NULL,
+  `parcours` varchar(20) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+-- contenu de la table profile
+INSERT INTO `profile` (`id_profile`, `nom`, `prenom`, `promotion`, `parcours`, `image`) VALUES
+(1, 'raj', 'raj', 'A2', 'GL', '');
+
+--
+-- Structure de la table `utilisateur_profile`
+--
+
+CREATE TABLE IF NOT EXISTS `utilisateur_profile` (
+  `id` int(11) NOT NULL,
+  `id_profile` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`id_parcours`),
+  KEY `FK_utilisateur_parcours_id_profile` (`id_parcours`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- contenu utilisateur_profile
+INSERT INTO `utilisateur_profile` (`id`, `id_profile`) VALUES
+(1, '1');
+
+
+-- à tester si vous voulez comprendre 
+--SELECT nom FROM profile NATURAL JOIN utilisateur_profile WHERE utilisateur_profile.id ='1';
+
+
 --
 -- Contraintes pour les tables exportées
 --
@@ -149,6 +189,15 @@ ALTER TABLE `utilisateur_module`
 ALTER TABLE `utilisateur_parcours`
   ADD CONSTRAINT `FK_utilisateur_parcours_id_parcours` FOREIGN KEY (`id_parcours`) REFERENCES `parcours` (`id_parcours`),
   ADD CONSTRAINT `FK_utilisateur_parcours_id` FOREIGN KEY (`id`) REFERENCES `utilisateur` (`id`);
+
+
+--
+-- Contraintes pour la table `utilisateur_profile`
+--
+ALTER TABLE `utilisateur_profile`
+  ADD CONSTRAINT `FK_utilisateur_profile_id_profile` FOREIGN KEY (`id_profile`) REFERENCES `profile` (`id_profile`),
+  ADD CONSTRAINT `FK_utilisateur_profile_id` FOREIGN KEY (`id`) REFERENCES `utilisateur` (`id`);    
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
