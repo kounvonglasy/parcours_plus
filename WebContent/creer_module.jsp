@@ -71,7 +71,7 @@
 										class="img-rounded img-responsive" />
 								</div>
 								<div class="col-sm-6 col-md-8">
-									<form action="CreerModule?id_parcours=${id_parcours}"
+									<form action="CreerModule?id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"
 										class="form-horizontal" method="post" accept-charset="utf-8">
 										<input name="libelle_module" placeholder="Libelle du module"
 											class="form-control" type="text" id="libelle_module" /> <span

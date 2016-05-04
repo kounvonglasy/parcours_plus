@@ -96,7 +96,7 @@ public class ModuleManager extends ParcoursManager {
 					try {
 						module_existant = this.getModuleByParcours(module.getParcours().getId());
 						if (module_existant != null && module_existant.getParcours() == module.getParcours()) {
-							throw new Exception("Le module appartient déjà au parcours");
+							throw new Exception("Le module appartient déjà à un parcours");
 						}
 					} catch (Exception e) {
 						setErreur(CHAMP_MODULE, e.getMessage());

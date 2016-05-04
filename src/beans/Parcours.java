@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,6 +26,9 @@ public class Parcours {
 
 	@ManyToMany(mappedBy = "parcours", cascade = CascadeType.PERSIST)
 	private List<Utilisateur> utilisateurs;
+
+	@OneToMany(mappedBy = "parcours", cascade = CascadeType.REMOVE)
+	private List<Module> modules;
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;

@@ -76,11 +76,10 @@
 					<form id="listeModule" action="RechercherModule" method="POST">
 						<h3 onclick='afficher_description_icones();'>Liste des
 							modules</h3>
-					    <span class="erreur">${form.erreurs['suppression_module']}</span>	
+						<span class="erreur">${form.erreurs['suppression_module']}</span>
 						<div id="description_icones">
-							<i class="glyphicon glyphicon-edit black"></i> Editer le module
-							<br> <i
-								class="glyphicon glyphicon-remove black"></i>Supprimer le
+							<i class="glyphicon glyphicon-edit black"></i> Editer le module <br>
+							<i class="glyphicon glyphicon-remove black"></i>Supprimer le
 							module<br>
 						</div>
 						<br>
@@ -102,36 +101,41 @@
 										id="responsableFilter" name="responsableFilter" value="%"></th>
 								</tr>
 								<tr>
-								<th></th>
+									<th></th>
 									<th>Libelle du module</th>
 									<th>Nom de parcours</th>
-									<th> A la carte? </th>
-									<th> Nom du responsable </th>
+									<th>A la carte?</th>
+									<th>Nom du responsable</th>
 								</tr>
 							</thead>
 							<tbody>
 
-								
-				
+
+
 								<c:forEach items="${liste_module}" var="module">
-								<tr>
-									<td><a title="Editer module" href="EditerModule?id=<c:out value="${module[0]}" />&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"><i
-											class="glyphicon glyphicon-pencil black"></i></a> <a
-										title="Supprimer le module" href="SupprimerModule?id=<c:out value="${module[0]}" />&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"><i
-											class="glyphicon glyphicon-remove black"></i></a></td>
-									<td><c:out value="${module[1]}" /></td>
-									<td><c:out value="${module[2]}" /></td>
-									<td><c:out value="${module[3]}" /></td>
-									<td><c:out value="${module[4]}" /><td>
-								</tr></c:forEach>
+									<tr>
+										<td><a title="Editer module"
+											href="EditerModule?id=<c:out value="${module[0]}" />&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"><i
+												class="glyphicon glyphicon-pencil black"></i></a> <a
+											title="Supprimer le module"
+											href="SupprimerModule?id=<c:out value="${module[0]}" />&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"><i
+												class="glyphicon glyphicon-remove black"></i></a></td>
+										<td><c:out value="${module[1]}" /></td>
+										<td><c:out value="${module[2]}" /></td>
+										<td><c:out value="${module[3]}" /></td>
+										<td><c:out value="${module[4]}" />
+										<td>
+									</tr>
+								</c:forEach>
 
 							</tbody>
 							<tfoot>
 								<tr>
 									<td>&nbsp;</td>
 									<td colspan="12"><div id="creerModule">
-											<a href="CreerModule?id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"> <i
-												class="glyphicon glyphicon-plus black"></i>&nbsp;<b>Creer
+											<a
+												href="CreerModule?id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}">
+												<i class="glyphicon glyphicon-plus black"></i>&nbsp;<b>Creer
 													un module</b>
 											</a>
 										</div></td>
@@ -139,6 +143,10 @@
 							</tfoot>
 						</table>
 					</form>
+					<div id="retour_liste_module">
+						<a href="AfficherParcours" class="btn btn-success btn btn-success">
+							Retour à la liste </a>
+					</div>
 				</div>
 			</div>
 		</div>

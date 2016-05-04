@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+import beans.Module;
 import beans.Parcours;
 import beans.Utilisateur;
 import error.ErrorManager;
@@ -144,6 +145,7 @@ public class ParcoursManager extends ErrorManager {
 			em.getTransaction().begin();
 			em.remove(parcours);
 			em.flush();
+			em.clear();
 			em.getTransaction().commit();
 		} catch (Exception e) {// On verifie que l'id existe
 			setErreur(CHAMP_SUPPRESSION_PARCOURS, "L'id n'existe pas");
