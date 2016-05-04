@@ -77,6 +77,12 @@ public class ParcoursManager extends ErrorManager {
 					parcours = em.find(Parcours.class, id);
 					parcours.setLibelle(libelle_parcours);
 					utilisateur.addParcours(parcours);
+					liste_utilisateurs = utilisateur_repository.findByResponsableParcours(id);
+					utilisateur_existant = em.find(Utilisateur.class,liste_utilisateurs);
+					//Si on change de respo, on supprime le parcours de l'ancien respo 
+					if(utilisateur_existant.getNom()!=nom_responsable){
+						utilisateur_existant.removeParcours(parcours);
+					}
 					em.getTransaction().begin();
 					em.flush();
 					em.getTransaction().commit();
