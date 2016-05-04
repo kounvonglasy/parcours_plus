@@ -51,5 +51,5 @@ public class UtilisateurRepository {
 				.setParameter("id", id);
 		return (List<Utilisateur>) query.getResultList();
 	}
-
+	
 }

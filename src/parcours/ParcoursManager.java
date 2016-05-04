@@ -74,15 +74,14 @@ public class ParcoursManager extends ErrorManager {
 					}
 
 				} else {// Le libelle n'existe pas dans la base
+					utilisateur_existant = this.getResponsableByParcours(id);
 					parcours = em.find(Parcours.class, id);
-					parcours.setLibelle(libelle_parcours);
-					utilisateur.addParcours(parcours);
-					liste_utilisateurs = utilisateur_repository.findByResponsableParcours(id);
-					utilisateur_existant = em.find(Utilisateur.class,liste_utilisateurs);
 					//Si on change de respo, on supprime le parcours de l'ancien respo 
-					if(utilisateur_existant.getNom()!=nom_responsable){
+					if(utilisateur_existant.getNom()!=nom_responsable && utilisateur_existant.getId() != id){
 						utilisateur_existant.removeParcours(parcours);
 					}
+					parcours.setLibelle(libelle_parcours);
+					utilisateur.addParcours(parcours);
 					em.getTransaction().begin();
 					em.flush();
 					em.getTransaction().commit();

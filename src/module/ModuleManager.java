@@ -62,7 +62,12 @@ public class ModuleManager extends ParcoursManager {
 					}
 				} else {// Sinon on fait que mettre à jour les informations du
 						// module
+					utilisateur_existant = this.getResponsableByModuleId(id_module);
 					module = em.find(Module.class, id_module);
+					//Si on change de respo, on supprime le module de l'ancien respo 
+					if(utilisateur_existant.getNom()!=nom_responsable && utilisateur_existant.getId() != id_module){
+						utilisateur_existant.removeModule(module);
+					}
 					module.setLibelle(libelle_module);
 					module.setCarte(a_la_carte);
 					utilisateur.addModule(module);
@@ -176,4 +181,13 @@ public class ModuleManager extends ParcoursManager {
 		return module_existant;
 	}
 
+	public Utilisateur getResponsableByModuleId(int id_module) {
+		try {
+			liste_utilisateurs = utilisateur_repository.findResponsableByModuleId(id_module);
+			utilisateur_existant = em.find(Utilisateur.class, liste_utilisateurs);
+		} catch (Exception e) {
+			return null;
+		}
+		return utilisateur_existant;
+	}
 }
