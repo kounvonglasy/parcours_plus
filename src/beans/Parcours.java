@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +13,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.eclipse.persistence.annotations.CascadeOnDelete;
+
 @Entity
 @Table(name = "parcours")
+@CascadeOnDelete
 public class Parcours {
 
 	@Id
@@ -24,11 +28,13 @@ public class Parcours {
 	@Column(name = "libelle")
 	private String libelle;
 
+
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "parcours", orphanRemoval=true)
+	private List<Module> modules;
+	
 	@ManyToMany(mappedBy = "parcours", cascade = CascadeType.PERSIST)
 	private List<Utilisateur> utilisateurs;
 
-	@OneToMany(mappedBy = "parcours", cascade = CascadeType.REMOVE)
-	private List<Module> modules;
 
 	public void setLibelle(String libelle) {
 		this.libelle = libelle;
@@ -55,4 +61,19 @@ public class Parcours {
 			getUtilisateurs().add(utilisateur);
 		}
 	}
+	
+	public void addModule(Module module) {
+		if (!getModules().contains(module)) {
+			getModules().add(module);
+		}
+	}
+	
+	public void setModules(List<Module> modules){
+		this.modules = modules;
+	}
+	public List<Module> getModules() {
+		// TODO Auto-generated method stub
+		return modules;
+	}
+	
 }

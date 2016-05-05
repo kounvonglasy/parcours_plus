@@ -38,6 +38,7 @@ public class ModuleManager extends ParcoursManager {
 				// On verifie que le libelle module n'existe pas deja dans la
 				// base
 				module = this.getModuleByLibelle(libelle_module);
+				utilisateur_existant = this.getResponsableByModuleId(id_module);
 				if (module != null) {
 					try {
 						module_existant = this.getModuleByParcours(module.getParcours().getId());
@@ -45,9 +46,8 @@ public class ModuleManager extends ParcoursManager {
 								&& module.getLibelle().equals(libelle_module)) {
 							throw new Exception("Le module appartient déjà au parcours");
 						} else if (module.getLibelle().equals(libelle_module)) {
-							// On met à jour l'utilisateur
-							liste_utilisateurs = utilisateur_repository.findResponsableByModuleId(id_module);
-							utilisateur_existant = em.find(Utilisateur.class, liste_utilisateurs);
+							//Si on saisi le meme libellé mais le respo saisi est différent
+							// On met à jour les infos de l'utilisateur
 							utilisateur_existant.removeModule(module);
 							module = em.find(Module.class, id_module);
 							module.setLibelle(libelle_module);
@@ -62,10 +62,10 @@ public class ModuleManager extends ParcoursManager {
 					}
 				} else {// Sinon on fait que mettre à jour les informations du
 						// module
-					utilisateur_existant = this.getResponsableByModuleId(id_module);
 					module = em.find(Module.class, id_module);
-					//Si on change de respo, on supprime le module de l'ancien respo 
-					if(utilisateur_existant.getNom()!=nom_responsable && utilisateur_existant.getId() != id_module){
+					// Si on change de respo, on supprime le module de l'ancien
+					// respo
+					if (utilisateur_existant.getNom() != nom_responsable && utilisateur_existant.getId() != id_module) {
 						utilisateur_existant.removeModule(module);
 					}
 					module.setLibelle(libelle_module);
@@ -140,9 +140,6 @@ public class ModuleManager extends ParcoursManager {
 	public void supprimerModule(int id) {
 		try {
 			module = em.find(Module.class, id);
-			liste_utilisateurs = utilisateur_repository.findResponsableByModuleId(module.getId());
-			utilisateur = em.find(Utilisateur.class, liste_utilisateurs);
-			utilisateur.removeModule(module);
 			em.getTransaction().begin();
 			em.remove(module);
 			em.flush();
@@ -151,12 +148,12 @@ public class ModuleManager extends ParcoursManager {
 			setErreur(CHAMP_SUPPRESSION_MODULE, "L'id n'existe pas");
 		}
 	}
-	
+
 	public List<Module> rechercherModule(HttpServletRequest request) {
 		Map<String, String> critere = new HashMap<String, String>();
 		critere.put("libelle", request.getParameter("libelleFilter"));
 		critere.put("responsable", request.getParameter("responsableFilter"));
-		critere.put("a_la_carte",  request.getParameter("aLaCarteFilter"));
+		critere.put("a_la_carte", request.getParameter("aLaCarteFilter"));
 		liste_module = module_repository.findByCriteriaAsLike(critere);
 		return liste_module;
 	}

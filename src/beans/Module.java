@@ -28,7 +28,7 @@ public class Module {
 	@Column(name = "a_la_carte")
 	private String a_la_carte;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne
 	@JoinColumn(name = "id_parcours")
 	private Parcours parcours;
 

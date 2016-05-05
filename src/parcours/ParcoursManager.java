@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
-import beans.Module;
 import beans.Parcours;
 import beans.Utilisateur;
 import error.ErrorManager;
@@ -76,8 +75,9 @@ public class ParcoursManager extends ErrorManager {
 				} else {// Le libelle n'existe pas dans la base
 					utilisateur_existant = this.getResponsableByParcours(id);
 					parcours = em.find(Parcours.class, id);
-					//Si on change de respo, on supprime le parcours de l'ancien respo 
-					if(utilisateur_existant.getNom()!=nom_responsable && utilisateur_existant.getId() != id){
+					// Si on change de respo, on supprime le parcours de
+					// l'ancien respo
+					if (utilisateur_existant.getNom() != nom_responsable && utilisateur_existant.getId() != id) {
 						utilisateur_existant.removeParcours(parcours);
 					}
 					parcours.setLibelle(libelle_parcours);
@@ -113,16 +113,10 @@ public class ParcoursManager extends ErrorManager {
 						// exception
 						if (utilisateur_existant != null) {
 							throw new Exception("Le parcours appartient déjà à quelqu'un");
-						} else { // le parcours existe mais n'a pas de respo
-							utilisateur.addParcours(parcours);
-							em.getTransaction().begin();
-							em.flush();
-							em.getTransaction().commit();
 						}
 					} catch (Exception e) {
 						setErreur(CHAMP_PARCOURS, e.getMessage());
 					}
-
 				} else {// Le libelle n'existe pas dans la base
 					em.getTransaction().begin();
 					parcours = new Parcours();
@@ -143,14 +137,13 @@ public class ParcoursManager extends ErrorManager {
 
 	public void supprimerParcours(int id) {
 		try {
-			parcours = em.find(Parcours.class, id);
-			liste_utilisateurs = utilisateur_repository.findByResponsableParcours(parcours.getId());
-			utilisateur = em.find(Utilisateur.class, liste_utilisateurs);
-			utilisateur.removeParcours(parcours);
 			em.getTransaction().begin();
+			em.getEntityManagerFactory().getCache().evictAll();
+			parcours = em.find(Parcours.class, id);
+			parcours.getModules().clear();
+			em.flush();
 			em.remove(parcours);
 			em.flush();
-			em.clear();
 			em.getTransaction().commit();
 		} catch (Exception e) {// On verifie que l'id existe
 			setErreur(CHAMP_SUPPRESSION_PARCOURS, "L'id n'existe pas");
