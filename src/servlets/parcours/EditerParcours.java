@@ -55,11 +55,11 @@ public class EditerParcours extends HttpServlet {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		ParcoursManager parametrage_parcours = new ParcoursManager(entitymanager);
-		Boolean succes = parametrage_parcours.editerParcours(id, libelle, nom_responsable); 
+		Boolean succes = parametrage_parcours.editerParcours(id, libelle, nom_responsable);
 		if (succes) {
 			request.getRequestDispatcher("AfficherParcours").forward(request, response);
 		} else {
-			request.setAttribute( ATT_FORM, parametrage_parcours);
+			request.setAttribute(ATT_FORM, parametrage_parcours);
 			request.setAttribute("id", id);
 			request.getRequestDispatcher(VUE).forward(request, response);
 		}

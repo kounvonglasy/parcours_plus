@@ -22,25 +22,27 @@ import parcours.ParcoursManager;
 public class RechercherParcours extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String ATT_FORM = "form";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public RechercherParcours() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "parcours_plus" );
-	    EntityManager entitymanager = emfactory.createEntityManager();
-	    ParcoursManager parametrage_parcours = new ParcoursManager(entitymanager);
-	    List<Parcours> liste_parcours = parametrage_parcours.rechercherParcours(request);
+	public RechercherParcours() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
+		EntityManager entitymanager = emfactory.createEntityManager();
+		ParcoursManager parametrage_parcours = new ParcoursManager(entitymanager);
+		List<Parcours> liste_parcours = parametrage_parcours.rechercherParcours(request);
 		request.setAttribute("liste_parcours", liste_parcours);
-	 request.getRequestDispatcher("/liste_parcours.jsp").forward(request, response); 
+		request.getRequestDispatcher("/liste_parcours.jsp").forward(request, response);
 	}
 
 }

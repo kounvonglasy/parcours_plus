@@ -19,30 +19,32 @@ import parcours.ParcoursManager;
 @WebServlet("/SupprimerParcours")
 public class SupprimerParcours extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public static final String ATT_FORM = "form";
+	public static final String ATT_FORM = "form";
 	public static final String VUE = "AfficherParcours";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SupprimerParcours() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public SupprimerParcours() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "parcours_plus" );
-	    EntityManager entitymanager = emfactory.createEntityManager();
-	    ParcoursManager parametrage_parcours = new ParcoursManager(entitymanager);
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
+		EntityManager entitymanager = emfactory.createEntityManager();
+		ParcoursManager parametrage_parcours = new ParcoursManager(entitymanager);
 		parametrage_parcours.supprimerParcours(id);
-        request.setAttribute( ATT_FORM, parametrage_parcours);
+		request.setAttribute(ATT_FORM, parametrage_parcours);
 		request.getRequestDispatcher(VUE).forward(request, response);
-		
+
 	}
 
 }

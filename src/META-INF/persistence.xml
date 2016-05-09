@@ -5,6 +5,8 @@
      <class>beans.Utilisateur</class>
      <class>beans.Parcours</class>
      <class>beans.Module</class>
+     <class>beans.ParcoursStatus</class>
+     <class>beans.Status</class>
 	<properties>
 	     <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
          <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/parcours_plus"/>

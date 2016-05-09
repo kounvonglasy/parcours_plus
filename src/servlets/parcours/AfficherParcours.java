@@ -22,32 +22,36 @@ import parcours.ParcoursRepository;
 public class AfficherParcours extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static final String VUE = "liste_parcours.jsp";
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AfficherParcours() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "parcours_plus" );
-	    EntityManager entitymanager = emfactory.createEntityManager( );
-		ParcoursRepository parametrage_parcours = new ParcoursRepository(entitymanager);
-		List<Parcours> liste_parcours = parametrage_parcours.findAllParcours();
-		request.setAttribute("liste_parcours", liste_parcours);
-		request.getRequestDispatcher(VUE).forward(request, response); 	
+	public AfficherParcours() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request,response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
+		EntityManager entitymanager = emfactory.createEntityManager();
+		ParcoursRepository parametrage_parcours = new ParcoursRepository(entitymanager);
+		List<Parcours> liste_parcours = parametrage_parcours.findAllParcours();
+		request.setAttribute("liste_parcours", liste_parcours);
+		request.getRequestDispatcher(VUE).forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doGet(request, response);
 	}
 
 }
