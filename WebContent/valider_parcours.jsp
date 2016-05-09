@@ -11,11 +11,13 @@
 <link href="css/valider_parcours.css" rel="stylesheet">
 <script src="js/jquery-1.12.3.js"></script>
 <script src="js/valider_parcours.js"></script>
+<script src="js/jquery-scrollto.js"></script>
 <title>Liste des parcours</title>
 </head>
 <header> <!-- image de couverture --> <IMG
 	src="Images/isep2.png" WIDTH='100%' HEIGHT='20%'> </header>
-<body>
+
+<body onload="$('#scrolly').ScrollTo();">
 	<div class="row">
 		<div class="col-sm-12">
 			<div class="navbar navbar-tabs">
@@ -77,15 +79,13 @@
 
 					<form id="validationParcours" action="ValiderParcours"
 						method="POST">
-						<h3 onclick='afficher_description_icones();'>Validation des choix
-							de parcours</h3>
+
+						<h3>Validation des choix de parcours</h3>
 						<br>
 						<table
 							class="table table-bordered table-condensed table-striped table-hover ">
 							<thead>
 								<tr>
-									<th><input type="text" class="form-control rounded"
-										id="parcoursFilter" name="parcoursFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"
 										id="parcoursFilter" name="parcoursFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"
@@ -96,7 +96,7 @@
 										id="etudiantFilter" name="etudiantFilter" value="%"></th>
 								</tr>
 								<tr>
-									<th></th>
+
 									<th>Nom du Parcours</th>
 									<th>Choix de parcours de l'étudiant</th>
 									<th>Nom de l'étudiant</th>
@@ -106,12 +106,6 @@
 							<tbody>
 								<c:forEach items="${liste_parcours_status}" var="parcours">
 									<tr>
-										<td><a
-											href="ValiderParcours?edit=Edit&id=${parcours[0]}&libelle_parcours=${parcours[1]}"><input
-												type="checkbox" name="id"
-												value="<c:out value='${parcours[0]}'/>"
-												<c:if test="${param.edit=='Edit' && param.id == parcours[0] && param.libelle_parcours == parcours[1]}">checked="checked" </c:if>
-												style="margin: 0 0 0 4px" onclick="radio(this)" /></a></td>
 										<td><c:choose>
 												<c:when
 													test="${param.edit=='Edit' && param.id == parcours[0] && param.libelle_parcours == parcours[1]}">
@@ -135,15 +129,21 @@
 														<OPTION selected="selected"><c:out
 																value="${parcours[2]}" />
 													</SELECT>
+													<div id="scrolly"></div>
+													<input type="hidden" name="id" value="<c:out value='${parcours[0]}' />"/>
 												</c:when>
 												<c:otherwise>
-													<c:out value="${parcours[2]}" />
+													<a
+														href="ValiderParcours?edit=Edit&id=${parcours[0]}&libelle_parcours=${parcours[1]}">
+														<c:out value='${parcours[2]}' />
+													</a>
 												</c:otherwise>
 											</c:choose></td>
 										<td><c:out value="${parcours[3]}" /></td>
 										<td><c:out value="${parcours[4]}" /></td>
 									</tr>
 								</c:forEach>
+
 							</tbody>
 							<tfoot>
 								<tr>
@@ -156,7 +156,6 @@
 								</tr>
 							</tfoot>
 						</table>
-
 					</form>
 				</div>
 			</div>
