@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.ParcoursStatus;
 import beans.Status;
-import parcours.ValiderParcoursManager;
+import parcours.ValidationParcoursManager;
 import parcours.ParcoursStatusRepository;
 
 /**
@@ -74,7 +74,7 @@ public class ValiderParcours extends HttpServlet {
 			int id = Integer.parseInt(request.getParameter("id"));
 			String libelle_parcours = request.getParameter("libelle_parcours");
 			String status = request.getParameter("status");
-			ValiderParcoursManager valider_parcours = new ValiderParcoursManager(entitymanager);
+			ValidationParcoursManager valider_parcours = new ValidationParcoursManager(entitymanager);
 			valider_parcours.validerParcours(id, libelle_parcours, status);
 		}
 		List<ParcoursStatus> liste_parcours_status = validation_parcours.findAllParcoursStatus();

@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -41,6 +42,11 @@ public class Utilisateur {
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "utilisateur_module", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_module"))
 	private List<Module> modules;
+	
+	@OneToMany(mappedBy="utilisateur")
+	@JoinColumn(name = "id_parcours_status")
+	private List<ParcoursStatus> parcours_status;
+
 
 	public void setId(int id) {
 		this.id = id;

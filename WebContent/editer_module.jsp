@@ -5,7 +5,7 @@
 <title>Reponsable des parcours</title>
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap/css/style.css" rel="stylesheet">
-<link href="css/module_manager.css" rel="stylesheet">
+<link href="css/parcours_manager.css" rel="stylesheet">
 <title>Liste des parcours</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -75,13 +75,13 @@
 									<form
 										action="EditerModule?id=${id}&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"
 										class="form-horizontal" method="post" accept-charset="utf-8">
-										<input name="id" class="form-control" type="hidden"
-											value="${id}" /><input name="libelle_module"
-											placeholder="Libelle Module" class="form-control" type="text"
-											id="libelle_module" /><span class="erreur">${form.erreurs['module']}</span>
 										<input name="libelle_parcours" placeholder="Libelle Parcours"
 											class="form-control" type="text" id="libelle_parcours"
-											value="${libelle_parcours }" readonly /><input
+											value="${libelle_parcours }" readonly /> <input name="id"
+											class="form-control" type="hidden" value="${id}" /><input
+											name="libelle_module" placeholder="Libelle Module"
+											class="form-control" type="text" id="libelle_module" /><span
+											class="erreur">${form.erreurs['module']}</span><input
 											name="a_la_carte" placeholder="A la carte?"
 											class="form-control" type="text" id="a_la_carte" /> <input
 											name="nom_responsable" placeholder="Nom du Responsable"
@@ -91,7 +91,8 @@
 											value="Mettre à jour" />
 									</form>
 									<div id="retour_liste_module">
-										<a href="AfficherModule?id=${id}&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"
+										<a
+											href="AfficherModule?id=${id}&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"
 											class="btn btn-success btn btn-success"> Retour à la
 											liste des modules </a>
 									</div>

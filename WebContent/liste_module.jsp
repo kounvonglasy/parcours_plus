@@ -7,7 +7,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="css/liste_module.css" rel="stylesheet">
-<link href="css/module_manager.css" rel="stylesheet">
+<link href="css/parcours_manager.css" rel="stylesheet">
 <script src="js/jquery-1.12.3.js"></script>
 <title>Liste des modules</title>
 <script>
@@ -91,10 +91,9 @@
 							<thead>
 								<tr>
 									<th></th>
+									<th></th>
 									<th><input type="text" class="form-control rounded"
 										id="libelleFilter" name="libelleFilter" value="%"></th>
-									<th><input type="text" class="form-control rounded"
-										name="srch-term" id="srch-term" value="%"></th>
 									<th><input type="text" class="form-control rounded"
 										id="aLaCarteFilter" name="aLaCarteFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"
@@ -102,8 +101,8 @@
 								</tr>
 								<tr>
 									<th></th>
-									<th>Libelle du module</th>
 									<th>Nom de parcours</th>
+									<th>Libelle du module</th>
 									<th>A la carte?</th>
 									<th>Nom du responsable</th>
 								</tr>
@@ -120,8 +119,8 @@
 											title="Supprimer le module"
 											href="SupprimerModule?id=<c:out value="${module[0]}" />&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"><i
 												class="glyphicon glyphicon-remove black"></i></a></td>
-										<td><c:out value="${module[1]}" /></td>
 										<td><c:out value="${module[2]}" /></td>
+										<td><c:out value="${module[1]}" /></td>
 										<td><c:out value="${module[3]}" /></td>
 										<td><c:out value="${module[4]}" />
 										<td>

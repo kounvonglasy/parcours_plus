@@ -5,7 +5,7 @@
 <title>Reponsable des parcours</title>
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap/css/style.css" rel="stylesheet">
-<link href="css/module_manager.css" rel="stylesheet">
+<link href="css/parcours_manager.css" rel="stylesheet">
 <title>Creer un module</title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -71,15 +71,17 @@
 										class="img-rounded img-responsive" />
 								</div>
 								<div class="col-sm-6 col-md-8">
-									<form action="CreerModule?id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"
+									<form
+										action="CreerModule?id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"
 										class="form-horizontal" method="post" accept-charset="utf-8">
+										<input name="libelle_parcours"
+											placeholder="Libelle du parcours" class="form-control"
+											type="text" id="libelle_parcours" value="${libelle_parcours}"
+											readonly /> <span class="erreur">${form.erreurs['parcours']}</span>
 										<input name="libelle_module" placeholder="Libelle du module"
 											class="form-control" type="text" id="libelle_module" /> <span
 											class="erreur">${form.erreurs['module']}</span> <input
-											name="libelle_parcours" placeholder="Libelle du parcours"
-											class="form-control" type="text" id="libelle_parcours"
-											value="${libelle_parcours}" readonly /> <span class="erreur">${form.erreurs['parcours']}</span>
-										<input name="a_la_carte" placeholder="A la carte?"
+											name="a_la_carte" placeholder="A la carte?"
 											class="form-control" type="text" id="a_la_carte" /> <input
 											name="nom_responsable" placeholder="Nom du Responsable"
 											class="form-control" type="text" id="nom_responsable" /><span

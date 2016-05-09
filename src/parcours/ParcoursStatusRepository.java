@@ -23,7 +23,7 @@ public class ParcoursStatusRepository {
 	
 	public List<ParcoursStatus> findAllParcoursStatus() {
 		Query query = em.createQuery(
-				"SELECT u.id, p.libelle, st.libelle, u.nom, ps.priorite_choix_parcours FROM ParcoursStatus ps LEFT JOIN ps.utilisateur u LEFT JOIN ps.parcours p LEFT JOIN ps.status st WHERE u.role<>'responsable' and st.libelle NOT IN ('Accepté','Réfusé')");
+				"SELECT u.id, p.libelle, st.libelle, u.nom, ps.priorite_choix_parcours FROM ParcoursStatus ps LEFT JOIN ps.utilisateur u LEFT JOIN ps.parcours p LEFT JOIN ps.status st WHERE u.role<>'responsable' and st.libelle NOT IN ('Accepté','Réfusé') and u.id NOT IN (SELECT uu.id FROM ParcoursStatus pss  LEFT JOIN pss.utilisateur uu WHERE pss.status.id_status IN (2))");
 		return (List<ParcoursStatus>) query.getResultList();
 	}
 	

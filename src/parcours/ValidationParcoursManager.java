@@ -7,13 +7,13 @@ import beans.ParcoursStatus;
 import beans.Status;
 
 
-public class ValiderParcoursManager {
+public class ValidationParcoursManager {
 	private EntityManager em;
 	private ParcoursStatus parcours_status;
 	private Status status;
 	private ParcoursStatusRepository parcours_status_repository;
 
-	public ValiderParcoursManager(EntityManager em) {
+	public ValidationParcoursManager(EntityManager em) {
 		this.em = em;
 		parcours_status_repository = new ParcoursStatusRepository(em);
 		parcours_status = new ParcoursStatus();
