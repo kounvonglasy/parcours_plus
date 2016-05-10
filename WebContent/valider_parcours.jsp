@@ -98,7 +98,7 @@
 								<tr>
 
 									<th>Nom du Parcours</th>
-									<th>Choix de parcours de l'étudiant</th>
+									<th>Choix de validation du responsable</th>
 									<th>Nom de l'étudiant</th>
 									<th>Priorite des choix</th>
 								</tr>

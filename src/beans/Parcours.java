@@ -17,7 +17,6 @@ import org.eclipse.persistence.annotations.CascadeOnDelete;
 
 @Entity
 @Table(name = "parcours")
-@CascadeOnDelete
 public class Parcours {
 
 	@Id

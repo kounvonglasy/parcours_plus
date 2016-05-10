@@ -74,6 +74,8 @@
 			<div id="content" class="span12">
 				<div id="liste_module">
 					<form id="listeModule" action="RechercherModule" method="POST">
+					<input type="hidden" name="libelle_parcours" value="${libelle_parcours}"/>
+					<input type="hidden" name="id_parcours" value="${id_parcours}"/>
 						<h3 onclick='afficher_description_icones();'>Liste des
 							modules</h3>
 						<span class="erreur">${form.erreurs['suppression_module']}</span>

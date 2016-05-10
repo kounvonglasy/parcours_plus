@@ -39,8 +39,12 @@ public class RechercherModule extends HttpServlet {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "parcours_plus" );
 	    EntityManager entitymanager = emfactory.createEntityManager();
 	    ModuleManager parametrage_module = new ModuleManager(entitymanager);
+	    int id_parcours = Integer.parseInt(request.getParameter("id_parcours"));
+	    String libelle_parcours = request.getParameter("libelle_parcours");
 	    List<Module> liste_module = parametrage_module.rechercherModule(request);
+	    request.setAttribute("id_parcours", id_parcours);
 		request.setAttribute("liste_module", liste_module);
+		request.setAttribute("libelle_parcours", libelle_parcours);
 	 request.getRequestDispatcher(VUE).forward(request, response); 
 	}
 

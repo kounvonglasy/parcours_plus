@@ -151,6 +151,7 @@ public class ModuleManager extends ParcoursManager {
 
 	public List<Module> rechercherModule(HttpServletRequest request) {
 		Map<String, String> critere = new HashMap<String, String>();
+		critere.put("libelle_parcours", request.getParameter("libelle_parcours"));
 		critere.put("libelle", request.getParameter("libelleFilter"));
 		critere.put("responsable", request.getParameter("responsableFilter"));
 		critere.put("a_la_carte", request.getParameter("aLaCarteFilter"));

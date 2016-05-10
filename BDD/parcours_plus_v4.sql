@@ -134,6 +134,8 @@ INSERT INTO `utilisateur_parcours` (`id`, `id_parcours`) VALUES
 (1, 1);
 
 
+-- --------------------------------------------------------
+
 --
 -- Structure de la table `profile`
 --
@@ -144,13 +146,16 @@ CREATE TABLE IF NOT EXISTS `profile` (
   `prenom` varchar(20) NOT NULL,
   `promotion` varchar(50) NOT NULL,
   `parcours` varchar(20) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `image` longblob,
   PRIMARY KEY (`id_profile`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
--- contenu de la table profile
+--
+-- Contenu de la table `profile`
+--
+
 INSERT INTO `profile` (`id_profile`, `nom`, `prenom`, `promotion`, `parcours`, `image`) VALUES
-(1, 'raj', 'raj', 'A2', 'GL', '');
+(1, 'raj', 'raj', 'A2', 'GL', NULL);
 
 --
 -- Structure de la table `utilisateur_profile`
@@ -159,8 +164,8 @@ INSERT INTO `profile` (`id_profile`, `nom`, `prenom`, `promotion`, `parcours`, `
 CREATE TABLE IF NOT EXISTS `utilisateur_profile` (
   `id` int(11) NOT NULL,
   `id_profile` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`id_parcours`),
-  KEY `FK_utilisateur_parcours_id_profile` (`id_parcours`)
+  PRIMARY KEY (`id`,`id_profile`),
+  KEY `FK_utilisateur_parcours_id_profile` (`id_profile`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 

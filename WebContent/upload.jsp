@@ -70,7 +70,7 @@
                                 <img src="Images/olive.PNG" alt="" class="img-rounded img-responsive" />
                             </div>
                             <div class="col-sm-6 col-md-8">
-                        <form action="Upload" method="post" >
+                        <form action="Upload" method="post" enctype="multipart/form-data">
   						<input type="file" name="pic" accept="image/*">
  						<input type="submit">
 						</form> 
