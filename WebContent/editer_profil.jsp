@@ -86,10 +86,13 @@
 		  <br/>
 		  <input name="userrole" placeholder="Role" class="form-control" type="text" id="UserUserRole" />
 		  <br/>
+		  				<label>Image de Profil :</label> 
   						<input type="file" name="pic" accept="image/*">
   						<br/>
+  						<label>CV :</label>
   						<input type="file" name="cv">
   						<br/>
+  						<label>Lettre de motivation :</label>
   						<input type="file" name="lm">
   						<br/>
  						<input type="submit">

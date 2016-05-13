@@ -8,7 +8,7 @@
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="css/parcours_manager.css" rel="stylesheet">
 <script src="js/jquery-1.12.3.js"></script>
-<title>Liste des parcours</title>
+<title>Page de Profil</title>
 <script>
 	function afficher_description_icones() {
 		$("#description_icones").toggle("blind");
@@ -105,19 +105,19 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${liste_parcours}" var="parcours">
+								<c:forEach items="${liste_profile}" var="profile">
 									<tr>
 										<td><a title="Editer parcours"
-											href="EditerParcours?id=<c:out value="${parcours[0]}" />&nom_responsable=<c:out value="${parcours[2]}" />"><i
+											href="EditerParcours?id=<c:out value="${profile[0]}" />&nom_responsable=<c:out value="${parcours[2]}" />"><i
 												class="glyphicon glyphicon-pencil black"></i></a> <a
 											title="Editer les modules"
-											href="AfficherModule?id_parcours=<c:out value="${parcours[0]}" />&libelle_parcours=<c:out value="${parcours[1]}" />"><i
+											href="AfficherModule?id_parcours=<c:out value="${profile[0]}" />&libelle_parcours=<c:out value="${parcours[1]}" />"><i
 												class="glyphicon glyphicon-edit black"></i></a> <a
 											title="Supprimer le parcours"
-											href="SupprimerParcours?id=<c:out value="${parcours[0]}" />"><i
+											href="SupprimerParcours?id=<c:out value="${profile[0]}" />"><i
 												class="glyphicon glyphicon-remove black"></i></a></td>
-										<td><c:out value="${parcours[1]}" /></td>
-										<td><c:out value="${parcours[2]}" /></td>
+										<td><c:out value="${profile[2]}" /></td>
+										<td><c:out value="${profile[1]}" /></td>
 									</tr>
 								</c:forEach>
 							</tbody>

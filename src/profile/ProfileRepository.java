@@ -1,13 +1,5 @@
 package profile;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-
 import java.util.List;
 import java.util.Map;
 
@@ -16,35 +8,20 @@ import javax.persistence.Query;
 
 import beans.Utilisateur;
 
-/**
- * Servlet implementation class ProfileRepository
- */
-@WebServlet("/ProfileRepository")
-public class ProfileRepository extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProfileRepository() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+public class ProfileRepository {
+	
+	protected EntityManager em;
+
+	public ProfileRepository(EntityManager em) {
+		this.em = em;
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	@SuppressWarnings("unchecked")
+	public List<Utilisateur> findAllProfile() {
+		Query query = em.createQuery(
+				"SELECT u.nom, u.prenom, u.login, p.id_parcours FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.role ='responsable' AND p.id_parcours IS NOT NULL");
+		return (List<Utilisateur>) query.getResultList();
 	}
 
 }

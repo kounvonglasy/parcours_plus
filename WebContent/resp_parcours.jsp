@@ -44,9 +44,11 @@
 						<li class="active"><a href="consulter_parcours.html">Consulter
 								parcours</a></li>
 						<li><a href="resp_parcours.jsp">Responsable des parcours</a></li>
+						<!-- a faire ctrl+z pour remettre editer profile -->
 						<c:if test="${!empty sessionScope.session_utilisateur}">
-							<li><a href="editer_profil.jsp">Editer profils</a></li>
+							<li><form action="AfficherProfile" method="get" enctype="multipart/form-data"><input type="submit" value="Voir Profil"></form></li>
 						</c:if>
+						 
 					</ul>
 
 					<!-- Barre de recherche -->

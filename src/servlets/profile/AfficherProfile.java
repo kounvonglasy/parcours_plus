@@ -42,8 +42,8 @@ public class AfficherProfile extends HttpServlet {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		ProfileRepository parametrage_profile = new ProfileRepository(entitymanager);
-		List<Profile> liste_profile = parametrage_profile.findAllProfile();
-		request.setAttribute("liste_parcours", liste_parcours);
+		List<Utilisateur> liste_profile = parametrage_profile.findAllProfile();
+		request.setAttribute("liste_profile", liste_profile);
 		request.getRequestDispatcher(VUE).forward(request, response);
 		
 		
