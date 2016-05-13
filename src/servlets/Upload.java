@@ -78,12 +78,25 @@ public class Upload extends HttpServlet {
 		byte[] image = IOUtils.toByteArray(fileContent);
 		user.setImage(image);
 		
+		
+		// on upload une cv 
+		Part cvPart = request.getPart("cv");
+		InputStream cvContent = cvPart.getInputStream();
+		byte[] cv = IOUtils.toByteArray(cvContent);
+		user.setCv(cv);
+		
+		// on upload une lm
+		Part lmPart = request.getPart("lm");
+		InputStream lmContent = lmPart.getInputStream();
+		byte[] lm = IOUtils.toByteArray(lmContent);
+		user.setLm(lm);
+		
 		// ON fait une transaction vers la base 
 		entitymanager.getTransaction().begin();
 		entitymanager.persist(user);
 		entitymanager.getTransaction().commit();
 
-		request.getRequestDispatcher("/JPA_EXAMPLE.jsp").forward(request, response);
+		request.getRequestDispatcher("/profile_voir.jsp").forward(request, response);
 
 	}
 

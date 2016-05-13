@@ -73,13 +73,25 @@
                                   <form action="Upload" method="post" enctype="multipart/form-data">
                                   
            <input name="username" placeholder="Nom" class="form-control" type="text" id="UserUsername" />
+           <br/>
            <input name="userfname" placeholder="Prenom" class="form-control" type="text" id="UserFname" />
+           <br/>
 		  <input name="userlogin" placeholder="Login" class="form-control" type="text" id="UserLogin" />
+		  <br/>
 		    <input name="userpwd" placeholder="Mot de Passe" class="form-control" type="text" id="UserPwd" />
+		    <br/>
 		    <input name="userpromotion" placeholder="Promotion" class="form-control" type="text" id="UserUserPromotion" />
+		    <br/>
 		  <input name="useremail" placeholder="Email" class="form-control" type="text" id="UserUserEmail" />
+		  <br/>
 		  <input name="userrole" placeholder="Role" class="form-control" type="text" id="UserUserRole" />
+		  <br/>
   						<input type="file" name="pic" accept="image/*">
+  						<br/>
+  						<input type="file" name="cv">
+  						<br/>
+  						<input type="file" name="lm">
+  						<br/>
  						<input type="submit">
 						</form> 
                                     <br/>

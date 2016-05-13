@@ -46,6 +46,14 @@ public class Utilisateur {
 	 @Lob
 	 @Column( name = "image" )
 	 private byte[] image;
+	 
+	 @Lob
+	 @Column( name = "cv" )
+	 private byte[] cv;
+	 
+	 @Lob
+	 @Column( name = "lm" )
+	 private byte[] lm;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "utilisateur_parcours", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_parcours"))
@@ -71,6 +79,16 @@ public class Utilisateur {
 	public void setImage( byte[] image )
     {
         this.image = image;
+    }
+	
+	public void setCv( byte[] cv )
+    {
+        this.cv = cv;
+    }
+	
+	public void setLm( byte[] lm )
+    {
+        this.lm = lm;
     }
 
 	public void setLogin(String login) {
@@ -107,6 +125,16 @@ public class Utilisateur {
         return image;
     }
 
+	
+	public byte[] getCv()
+    {
+        return cv;
+    }
+	
+	public byte[] geLm()
+    {
+        return lm;
+    }
 	public String getNom() {
 		return this.nom;
 	}

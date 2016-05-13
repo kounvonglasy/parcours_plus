@@ -45,7 +45,7 @@
 								parcours</a></li>
 						<li><a href="resp_parcours.jsp">Responsable des parcours</a></li>
 						<c:if test="${!empty sessionScope.session_utilisateur}">
-							<li><a href="editer_profil.html">Editer profils</a></li>
+							<li><a href="editer_profil.jsp">Editer profils</a></li>
 						</c:if>
 					</ul>
 
