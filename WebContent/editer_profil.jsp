@@ -70,17 +70,20 @@
                                 <img src="Images/olive.PNG" alt="" class="img-rounded img-responsive" />
                             </div>
                             <div class="col-sm-6 col-md-8">
-                              <h4>prenom </h4>
-
-                                <small><cite title="Systéme d'information"><i class="glyphicon glyphicon-user">
-                                </i>&nbsp;A2 Promotion 2017 (59) (Alternant)</cite></small>
-                                <p>
+                                  <form action="Upload" method="post" enctype="multipart/form-data">
+                                  
+           <input name="username" placeholder="Nom" class="form-control" type="text" id="UserUsername" />
+           <input name="userfname" placeholder="Prenom" class="form-control" type="text" id="UserFname" />
+		  <input name="userlogin" placeholder="Login" class="form-control" type="text" id="UserLogin" />
+		    <input name="userpwd" placeholder="Mot de Passe" class="form-control" type="text" id="UserPwd" />
+		    <input name="userpromotion" placeholder="Promotion" class="form-control" type="text" id="UserUserPromotion" />
+		  <input name="useremail" placeholder="Email" class="form-control" type="text" id="UserUserEmail" />
+		  <input name="userrole" placeholder="Role" class="form-control" type="text" id="UserUserRole" />
+  						<input type="file" name="pic" accept="image/*">
+ 						<input type="submit">
+						</form> 
                                     <br/>
-                                    <i class="glyphicon glyphicon-envelope"></i>&nbsp; prenom@isep.fr
                                     <br/>
-                                    <br/>
-
-
                             </div>
                         </div>
                     </div>

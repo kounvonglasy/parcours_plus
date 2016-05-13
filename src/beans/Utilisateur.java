@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -34,6 +35,17 @@ public class Utilisateur {
 
 	@Column(name = "mdp")
 	private String mdp;
+	
+
+	@Column(name = "prenom")
+	private String prenom;
+
+	@Column(name = "promotion")
+	private String promotion;
+	
+	 @Lob
+	 @Column( name = "image" )
+	 private byte[] image;
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "utilisateur_parcours", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_parcours"))
@@ -55,6 +67,11 @@ public class Utilisateur {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+	
+	public void setImage( byte[] image )
+    {
+        this.image = image;
+    }
 
 	public void setLogin(String login) {
 		this.login = login;
@@ -71,10 +88,24 @@ public class Utilisateur {
 	public void setMdp(String mdp) {
 		this.mdp = mdp;
 	}
+	
+	
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setPromotion(String promotion) {
+		this.promotion = promotion;
+	}
 
 	public int getId() {
 		return this.id;
 	}
+	
+	public byte[] getImage()
+    {
+        return image;
+    }
 
 	public String getNom() {
 		return this.nom;
@@ -94,6 +125,15 @@ public class Utilisateur {
 
 	public String getMdp() {
 		return this.mdp;
+	}
+	
+	
+	public String getPrenom() {
+		return this.prenom;
+	}
+
+	public String getPromotion() {
+		return this.promotion;
 	}
 
 	public void addParcours(Parcours parcours) {

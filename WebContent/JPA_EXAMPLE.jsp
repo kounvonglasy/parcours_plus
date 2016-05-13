@@ -70,15 +70,18 @@
                                 <img src="Images/olive.PNG" alt="" class="img-rounded img-responsive" />
                             </div>
                             <div class="col-sm-6 col-md-8">
-                      	<form action="AddUser" name="list" role="form" class="form-horizontal" method="post" accept-charset="utf-8">
-		  <input name="username" placeholder="Nom" class="form-control" type="text" id="UserUsername" />
+                      	<form action="Upload" method="post" enctype="multipart/form-data">
+                                  
+           <input name="username" placeholder="Nom" class="form-control" type="text" id="UserUsername" />
+           <input name="userfname" placeholder="Prenom" class="form-control" type="text" id="UserFname" />
 		  <input name="userlogin" placeholder="Login" class="form-control" type="text" id="UserLogin" />
 		    <input name="userpwd" placeholder="Mot de Passe" class="form-control" type="text" id="UserPwd" />
+		    <input name="userpromotion" placeholder="Promotion" class="form-control" type="text" id="UserUserPromotion" />
 		  <input name="useremail" placeholder="Email" class="form-control" type="text" id="UserUserEmail" />
 		  <input name="userrole" placeholder="Role" class="form-control" type="text" id="UserUserRole" />
-                    <input class="btn btn-success btn btn-success" type="submit"
-                           value="Ajouter Utilisateur" />
-        </form>
+  						<input type="file" name="pic" accept="image/*">
+ 						<input type="submit">
+						</form> 
                                     <br/>
                                     <br/>
 

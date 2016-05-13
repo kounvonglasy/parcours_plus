@@ -16,6 +16,9 @@ import javax.servlet.http.Part;
 import org.apache.commons.io.IOUtils;
 
 import beans.Profile;
+import beans.Utilisateur;
+
+import beans.Utilisateur;
 
 /**
  * Servlet implementation class Upload
@@ -54,13 +57,30 @@ public class Upload extends HttpServlet {
 
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		Profile profile = entitymanager.find(Profile.class, 1);
+		
+	//	Profile profile = entitymanager.find(Profile.class, 1);
+		
+	     
+  	  Utilisateur user = new Utilisateur();
+  	  
+  	  // On récupère les champs à saisir dans la base 
+  	  user.setLogin(request.getParameter("userlogin"));
+  	  user.setNom(request.getParameter("username"));
+  	 user.setPrenom(request.getParameter("userfname"));
+  	 user.setPromotion(request.getParameter("userpromotion"));
+  	  user.setEmail(request.getParameter("useremail"));
+  	  user.setRole(request.getParameter("userrole"));
+  	  user.setMdp(request.getParameter("userpwd"));
+  	  
+  	  // on upload une image 
 		Part filePart = request.getPart("pic");
 		InputStream fileContent = filePart.getInputStream();
 		byte[] image = IOUtils.toByteArray(fileContent);
-		profile.setImage(image);
+		user.setImage(image);
+		
+		// ON fait une transaction vers la base 
 		entitymanager.getTransaction().begin();
-		entitymanager.persist(profile);
+		entitymanager.persist(user);
 		entitymanager.getTransaction().commit();
 
 		request.getRequestDispatcher("/JPA_EXAMPLE.jsp").forward(request, response);
