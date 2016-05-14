@@ -34,7 +34,6 @@ public class SupprimerModule extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		int id = Integer.parseInt(request.getParameter("id"));
 		String libelle_parcours = request.getParameter("libelle_parcours");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "parcours_plus" );

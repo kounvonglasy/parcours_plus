@@ -15,11 +15,13 @@ public class UtilisateurRepository {
 	}
 	
 
+	@SuppressWarnings("unchecked")
 	public List<Utilisateur> findByLogin(String login) {
 		Query q = em.createQuery("SELECT u.id FROM Utilisateur u WHERE u.login = :login").setParameter("login", login);
 		return (List<Utilisateur>) q.getResultList();
 	}
-    
+	
+	@SuppressWarnings("unchecked")   
 	public List<Utilisateur> findResponsablePedagogiqueByName(String nom) {
 		Query query = em
 				.createQuery(
@@ -27,7 +29,8 @@ public class UtilisateurRepository {
 				.setParameter("nom", nom);
 		return (List<Utilisateur>) query.getResultList();
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	public List<Utilisateur> findResponsableByName(String nom) {
 		Query query = em
 				.createQuery(
@@ -35,7 +38,8 @@ public class UtilisateurRepository {
 				.setParameter("nom", nom);
 		return (List<Utilisateur>) query.getResultList();
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	public List<Utilisateur> findByResponsableParcours(int id) {
 		Query query = em
 				.createQuery(
@@ -43,7 +47,8 @@ public class UtilisateurRepository {
 				.setParameter("id", id);
 		return (List<Utilisateur>) query.getResultList();
 	}
-		
+	
+	@SuppressWarnings("unchecked")
 	public List<Utilisateur> findResponsableByModuleId(int id){
 		Query query = em
 				.createQuery(

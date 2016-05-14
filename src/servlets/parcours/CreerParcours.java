@@ -36,7 +36,7 @@ public class CreerParcours extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+        request.setCharacterEncoding("UTF-8");
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 
@@ -46,6 +46,7 @@ public class CreerParcours extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 		String libelle = request.getParameter("libelle_parcours");
 		String nom_responsable = request.getParameter("nom_responsable");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");

@@ -65,5 +65,13 @@ public class ParcoursStatus {
 	public Status getStatus() {
 		return this.status;
 	}
+	
+	public void setIdParcours(Parcours parcours) {
+		this.parcours = parcours;
+	}
+
+	public Parcours getIdParcours() {
+		return this.parcours;
+	}
 
 }

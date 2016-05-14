@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import beans.Utilisateur;
 import forms.ConnexionForm;
-import ldap.LDAPConnection;
 
 /**
  * Servlet implementation class Connexion
@@ -22,10 +21,10 @@ import ldap.LDAPConnection;
 @WebServlet("/Connexion")
 public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    public static final String ATT_USER = "utilisateur";
-    public static final String ATT_FORM = "form";
+	public static final String ATT_USER = "utilisateur";
+	public static final String ATT_FORM = "form";
 	public static final String ATT_SESSION_USER = "session_utilisateur";
-	public static final String VUE = "/resp_parcours.jsp";
+	public static final String VUE = "/index.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -52,30 +51,39 @@ public class Connexion extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "parcours_plus" );
-	    EntityManager entitymanager = emfactory.createEntityManager( );
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
+		EntityManager entitymanager = emfactory.createEntityManager();
 		/* Préparation de l'objet formulaire */
 		ConnexionForm form = new ConnexionForm(entitymanager);
-		
-		//Utilisable qu'à l'ISEP (ligne 58 à remplacer par la ligne ci-dessous)
-		//LDAPConnection ldap = new LDAPConnection();
+
+		// Utilisable qu'à l'ISEP (ligne 58 à remplacer par la ligne ci-dessous)
+		// LDAPConnection ldap = new LDAPConnection();
 
 		/* Traitement de la requête et récupération du bean en résultant */
 		Utilisateur utilisateur = form.connecterUtilisateur(request);
 
-		//Utilisable qu'à l'ISEP (ligne 64 à remplacer par la ligne ci-dessous)
-		//Utilisateur utilisateur = ldap.connecterUtilisateur(request);
+		// Utilisable qu'à l'ISEP (ligne 64 à remplacer par la ligne ci-dessous)
+		// Utilisateur utilisateur = ldap.connecterUtilisateur(request);
 
-        /* Stockage du formulaire et du bean dans l'objet request */
-        request.setAttribute( ATT_FORM, form );
-        request.setAttribute( ATT_USER, utilisateur );
-        
-		//Si la connexion n'est pas valide, on ne cree pas de session
-		if(utilisateur != null){
+		/* Stockage du formulaire et du bean dans l'objet request */
+		request.setAttribute(ATT_FORM, form);
+		request.setAttribute(ATT_USER, utilisateur);
+
+		// Si la connexion n'est pas valide, on ne cree pas de session
+		if (utilisateur != null) {
 			/* Récupération de la session depuis la requête */
-			HttpSession session = request.getSession(true);		
+			HttpSession session = request.getSession(true);
 			session.setAttribute(ATT_SESSION_USER, utilisateur);
+			// Redirection pour le responsable pedagogique
+			if (utilisateur.getRole().equals("responsable")) {
+				this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
+			}
+			// redirection pour l'étudiant
+			else if (utilisateur.getRole().equals("etudiant")) {
+				this.getServletContext().getRequestDispatcher("/accueil_etudiant.jsp").forward(request, response);
+			}
 		}
+
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	}
 

@@ -8,12 +8,12 @@ import javax.naming.directory.*;
 
 
 /**
- * accÃ¨s Ã  l'annuaire LDAP de l'ISEP
+ * accés à l'annuaire LDAP de l'ISEP
  * pour :
  * authentification des utilisateurs
  * retrouver le mail ISEP d'un utilisateur
  * @author gilles Carpentier
- * @version 09/02/2015 ajout de la fermeture du contexte pour libÃ©rer les ressources plus rapidement
+ * @version 09/02/2015 ajout de la fermeture du contexte pour libérer les ressources plus rapidement
  */
 public class LDAPaccess implements Serializable
 {
@@ -24,7 +24,7 @@ public class LDAPaccess implements Serializable
  * authentification
  * @param user
  * @param mot de passe
- * @return l'objet LDAP ou null si pas trouvÃ©
+ * @return l'objet LDAP ou null si pas trouvé
  * @throws Exception
  */
 
@@ -40,7 +40,7 @@ public class LDAPaccess implements Serializable
 		String MY_FILTER = "(uid=" + user + ")";
 
 		String login = null;
-		String nom = null; // nom complet (nom + prÃ©nom)
+		String nom = null; // nom complet (nom + prénom)
 		String nomFamille = null;
 		String prenom = null;
 		String type = null;
@@ -79,10 +79,6 @@ public class LDAPaccess implements Serializable
 			while (results != null && results.hasMore())
 			{
 				SearchResult sr = (SearchResult) results.next();
-
-				String dn = sr.getName();
-//				System.out.println("Distinguished Name is " + dn);
-
 				Attribute cn = sr.getAttributes().get("cn");
 				nom = (String) cn.get();
 				Attribute uid = sr.getAttributes().get("uid");
@@ -98,12 +94,10 @@ public class LDAPaccess implements Serializable
 					Attribute en = sr.getAttributes().get("employeeNumber");
 					employeeNumber = (String) en.get();
 				} catch (Exception e) {
-					messageErreur = "numÃ©ro d'Ã©lÃ¨ve non trouvÃ© dans l'annuaire";
+					messageErreur = "numéro d'élève non trouvé dans l'annuaire";
 				}
 				Attribute em = sr.getAttributes().get("mail");			
 				mail = (String) em.get();				
-//				System.out.println("nom=" + nom + " login=" + login+ " type=" + type + " numero=" + employeeNumber + " mail=" + mail);
-				
 				ctx.close();
 			}
 		} catch (Exception e)

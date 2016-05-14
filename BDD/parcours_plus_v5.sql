@@ -73,6 +73,11 @@ CREATE TABLE IF NOT EXISTS `parcours_status` (
   KEY `FK_parcours_status_id_parcours` (`id_parcours`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+INSERT INTO `status` (`id_status`, `libelle`) VALUES
+(1, 'Nouvelle'),
+(2, 'Accepté'),
+(3, 'Refusé');
+
 -- --------------------------------------------------------
 
 --
@@ -143,6 +148,8 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `role` varchar(20) DEFAULT NULL,
   `mdp` varchar(255) DEFAULT NULL,
   `image` longblob NOT NULL,
+  `cv` longblob NOT NULL,
+  `lm` longblob NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 

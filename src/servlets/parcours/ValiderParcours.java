@@ -64,6 +64,7 @@ public class ValiderParcours extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		ParcoursStatusRepository validation_parcours = new ParcoursStatusRepository(entitymanager);

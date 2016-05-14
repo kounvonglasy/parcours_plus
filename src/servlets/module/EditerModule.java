@@ -36,6 +36,7 @@ public class EditerModule extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
 		int id = Integer.parseInt(request.getParameter("id"));
 		String libelle_parcours = request.getParameter("libelle_parcours");
 		int id_parcours = Integer.parseInt(request.getParameter("id_parcours"));
@@ -51,7 +52,8 @@ public class EditerModule extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
+        request.setCharacterEncoding("UTF-8");		
+        int id = Integer.parseInt(request.getParameter("id"));
 		int id_parcours = Integer.parseInt(request.getParameter("id_parcours"));
 		String libelle_module = request.getParameter("libelle_module");
 		String libelle_parcours = request.getParameter("libelle_parcours");

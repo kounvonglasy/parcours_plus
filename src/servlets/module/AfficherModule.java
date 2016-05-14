@@ -37,6 +37,7 @@ public class AfficherModule extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		int id_parcours = Integer.parseInt(request.getParameter("id_parcours"));
 		String libelle_parcours = request.getParameter("libelle_parcours");

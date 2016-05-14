@@ -5,13 +5,14 @@ import javax.persistence.EntityManager;
 
 import beans.ParcoursStatus;
 import beans.Status;
+import error.ErrorManager;
 
 
-public class ValidationParcoursManager {
-	private EntityManager em;
-	private ParcoursStatus parcours_status;
-	private Status status;
-	private ParcoursStatusRepository parcours_status_repository;
+public class ValidationParcoursManager extends ErrorManager {
+	protected EntityManager em;
+	protected ParcoursStatus parcours_status;
+	protected Status status;
+	protected ParcoursStatusRepository parcours_status_repository;
 
 	public ValidationParcoursManager(EntityManager em) {
 		this.em = em;

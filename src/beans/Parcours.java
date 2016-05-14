@@ -13,8 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.eclipse.persistence.annotations.CascadeOnDelete;
-
 @Entity
 @Table(name = "parcours")
 public class Parcours {

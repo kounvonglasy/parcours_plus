@@ -1,6 +1,7 @@
 package servlets.parcours;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,21 +12,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import parcours.ParcoursManager;
+import beans.Parcours;
+import parcours.ChoixParcoursManager;
+import parcours.ParcoursRepository;
 
 /**
- * Servlet implementation class AjouterParcours
+ * Servlet implementation class AfficherParcours
  */
-@WebServlet("/EditerParcours")
-public class EditerParcours extends HttpServlet {
+@WebServlet("/ChoisirParcours")
+public class ChoisirParcours extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String VUE = "/editer_parcours.jsp";
+	public static final String VUE = "choisir_parcours.jsp";
 	public static final String ATT_FORM = "form";
+
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditerParcours() {
+	public ChoisirParcours() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,10 +41,11 @@ public class EditerParcours extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-		int id = Integer.parseInt(request.getParameter("id"));
-		String nom_responsable = request.getParameter("nom_responsable");
-		request.setAttribute("id", id);
-		request.setAttribute("nom_responsable", nom_responsable);
+		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
+		EntityManager entitymanager = emfactory.createEntityManager();
+		ParcoursRepository parametrage_parcours = new ParcoursRepository(entitymanager);
+		List<Parcours> liste_parcours = parametrage_parcours.findAllParcours();
+		request.setAttribute("liste_parcours", liste_parcours);
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 
@@ -50,21 +55,19 @@ public class EditerParcours extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-		int id = Integer.parseInt(request.getParameter("id"));
-		String libelle = request.getParameter("libelle_parcours");
-		String nom_responsable = request.getParameter("nom_responsable");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		ParcoursManager parametrage_parcours = new ParcoursManager(entitymanager);
-		Boolean succes = parametrage_parcours.editerParcours(id, libelle, nom_responsable);
-		if (succes) {
-			request.getRequestDispatcher("AfficherParcours").forward(request, response);
+		ParcoursRepository choix_parcours = new ParcoursRepository(entitymanager);
+		List<Parcours> liste_parcours = choix_parcours.findAllParcours();
+		ChoixParcoursManager choix_parcours_manager = new ChoixParcoursManager(entitymanager);
+		Boolean succes = choix_parcours_manager.creerParcoursStatus(request);
+		request.setAttribute("liste_parcours", liste_parcours);
+		if (succes == false) {
+			request.setAttribute(ATT_FORM, choix_parcours_manager);
 		} else {
-			request.setAttribute(ATT_FORM, parametrage_parcours);
-			request.setAttribute("id", id);
-			request.getRequestDispatcher(VUE).forward(request, response);
+			request.setAttribute("succes_validation", "Parcours enregistré(s) avec succès");
 		}
+		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 
 }

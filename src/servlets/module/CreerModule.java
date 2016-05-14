@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import module.ModuleManager;
-import parcours.ParcoursRepository;
 
 /**
  * Servlet implementation class AjouterParcours
@@ -35,7 +34,6 @@ public class CreerModule extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		String libelle_parcours = request.getParameter("libelle_parcours");
 		int id_parcours = Integer.parseInt(request.getParameter("id_parcours"));
 		request.setAttribute("id_parcours", id_parcours);

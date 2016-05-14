@@ -28,9 +28,9 @@ public class SelectionResponsableParcours extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json; charset=UTF-8");
 		JSONObject js = new JSONObject();
 		PrintWriter out = response.getWriter();
@@ -82,7 +82,7 @@ public class SelectionResponsableParcours extends HttpServlet {
 					email = "bill.gates@isep.fr ";
 					type_responsable = "systeme d'information";
 					libelle = "Bill";
-				}
+				} 
 				js.put("email", email);
 				js.put("type_responsable", type_responsable);
 				js.put("libelle", libelle);
