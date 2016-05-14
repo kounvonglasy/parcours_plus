@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- GÃ©nÃ©rÃ© le :  Ven 13 Mai 2016 Ã  15:29
+-- GÃ©nÃ©rÃ© le :  Ven 13 Mai 2016 Ã  15:29
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -73,10 +73,6 @@ CREATE TABLE IF NOT EXISTS `parcours_status` (
   KEY `FK_parcours_status_id_parcours` (`id_parcours`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `status` (`id_status`, `libelle`) VALUES
-(1, 'Nouvelle'),
-(2, 'Accepté'),
-(3, 'Refusé');
 
 -- --------------------------------------------------------
 
@@ -131,6 +127,12 @@ CREATE TABLE IF NOT EXISTS `status` (
   `libelle` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+INSERT INTO `status` (`id_status`, `libelle`) VALUES
+(1, 'Nouvelle'),
+(2, 'Accepté'),
+(3, 'Refusé');
 
 -- --------------------------------------------------------
 
