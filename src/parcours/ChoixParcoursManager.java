@@ -1,5 +1,7 @@
 package parcours;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,7 +13,6 @@ import beans.Utilisateur;
 
 public class ChoixParcoursManager extends ValidationParcoursManager {
 	private static final String CHAMP_CHOIX_PARCOURS = "choix_parcours";
-
 	public ChoixParcoursManager(EntityManager em) {
 		super(em);
 	}
@@ -41,13 +42,22 @@ public class ChoixParcoursManager extends ValidationParcoursManager {
 					Parcours parcours = new Parcours();
 					parcours = em.find(Parcours.class, choix);
 					parcours_status.setIdParcours(parcours);
-					em.getTransaction().begin();
-					em.persist(parcours_status);
-					em.getTransaction().commit();
+					try{
+						List<ParcoursStatus> liste_parcours_status = parcours_status_repository.findParcoursStatusByIdAndIdParcours(etudiant.getId(),choix);
+						ParcoursStatus parcours_status_existant = em.find(ParcoursStatus.class, liste_parcours_status);
+						parcours_status_existant.setIdParcours(parcours);
+						parcours_status_existant.setPrioriteChoixParcours(i);
+						em.getTransaction().begin();
+						em.flush();
+						em.getTransaction().commit();
+					}catch(Exception e){
+						em.getTransaction().begin();
+						em.persist(parcours_status);
+						em.getTransaction().commit();
+					}						
 				}
 			}
 		}
 		return succes;
-
 	}
 }

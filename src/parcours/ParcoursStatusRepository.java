@@ -44,6 +44,13 @@ public class ParcoursStatusRepository {
 				.setParameter("libelle_status", libelle_status);
 		return (List<Status>) query.getResultList();
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	public List<ParcoursStatus> findParcoursStatusByIdAndIdParcours(int id_utilisateur,int id_parcours){
+		Query query = em.createQuery(
+				"SELECT ps.id_parcours_status FROM ParcoursStatus ps LEFT JOIN ps.utilisateur u LEFT JOIN ps.parcours p WHERE u.id=:id_utilisateur and p.id_parcours=:id_parcours")
+				.setParameter("id_utilisateur", id_utilisateur).setParameter("id_parcours", id_parcours);
+		return (List<ParcoursStatus>) query.getResultList();
+	}
 
 }
