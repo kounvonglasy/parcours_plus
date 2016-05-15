@@ -57,4 +57,19 @@ public class UtilisateurRepository {
 		return (List<Utilisateur>) query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+	public List<Utilisateur> findAllEtudiants(){
+		Query query = em
+				.createQuery("SELECT u.id, u.nom, u.prenom FROM Utilisateur u WHERE u.role = 'etudiant'");
+		return (List<Utilisateur>) query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Utilisateur> findEtudiantById(int id){
+		Query query = em
+				.createQuery("SELECT u.id, u.nom, u.prenom, u.login, u.promotion, u.email, u.image, u.cv, u.lm FROM Utilisateur u WHERE u.role = 'etudiant' and u.id = :id")
+		.setParameter("id", id);
+		return (List<Utilisateur>) query.getResultList();
+	}
+	
 }

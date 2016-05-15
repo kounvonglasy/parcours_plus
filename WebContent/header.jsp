@@ -8,6 +8,7 @@
 <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 <link href="bootstrap/css/style.css" rel="stylesheet">
 <link href="css/parcours_manager.css" rel="stylesheet">
+<link href="css/profil_etudiant.css" rel="stylesheet">
 <link href="css/liste_module.css" rel="stylesheet">
 <link href="css/valider_parcours.css" rel="stylesheet">
 <script src="js/jquery-1.12.3.js"></script>

@@ -132,7 +132,7 @@ public class Utilisateur {
         return cv;
     }
 	
-	public byte[] geLm()
+	public byte[] getLm()
     {
         return lm;
     }

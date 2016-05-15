@@ -20,10 +20,14 @@
 								</c:otherwise>
 							</c:choose></a></li>
 					<li><a href="index.jsp">Responsable des parcours</a></li>
-					<c:if test="${!empty sessionScope.session_utilisateur}">
-						<li><a href="editer_profil.jsp">Editer profils</a></li>
+					<c:if test="${sessionScope.session_utilisateur != null}">
+						<li><a href="AfficherEtudiants">Liste des étudiants</a></li>
 					</c:if>
-					<c:if test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours != '[]'}">
+					<c:if test="${!empty sessionScope.session_utilisateur}">
+						<li><a href="EditerProfil">Editer profil</a></li>
+					</c:if>
+					<c:if
+						test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours != '[]'}">
 						<li><a href="ValiderParcours">Valider les parcours</a></li>
 					</c:if>
 					<c:if test="${sessionScope.session_utilisateur.role == 'etudiant'}">
