@@ -20,7 +20,7 @@ public class ProfileRepository {
 	@SuppressWarnings("unchecked")
 	public List<Utilisateur> findAllProfile() {
 		Query query = em.createQuery(
-				"SELECT u.nom, u.prenom, u.login, p.id_parcours FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.role ='responsable' AND p.id_parcours IS NOT NULL");
+				"SELECT u.nom, u.prenom, u.login, u.image, p.id_parcours FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.role ='responsable' AND p.id_parcours IS NOT NULL");
 		return (List<Utilisateur>) query.getResultList();
 	}
 
