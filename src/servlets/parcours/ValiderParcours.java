@@ -11,9 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.ParcoursStatus;
 import beans.Status;
+import beans.Utilisateur;
 import parcours.ValidationParcoursManager;
 import parcours.ParcoursStatusRepository;
 
@@ -39,10 +41,12 @@ public class ValiderParcours extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
+		Utilisateur responsable = (Utilisateur) session.getAttribute("session_utilisateur");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		ParcoursStatusRepository validation_parcours = new ParcoursStatusRepository(entitymanager);
-		List<ParcoursStatus> liste_parcours_status = validation_parcours.findAllParcoursStatus();
+		List<ParcoursStatus> liste_parcours_status = validation_parcours.findAllParcoursStatusByIdUser(responsable.getId());
 		List<Status> liste_status = validation_parcours.findAllStatus();
 		request.setAttribute("liste_parcours_status", liste_parcours_status);
 		request.setAttribute("liste_status", liste_status);
@@ -64,7 +68,8 @@ public class ValiderParcours extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		HttpSession session = request.getSession(true);
+		Utilisateur responsable = (Utilisateur) session.getAttribute("session_utilisateur");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		ParcoursStatusRepository validation_parcours = new ParcoursStatusRepository(entitymanager);
@@ -78,7 +83,7 @@ public class ValiderParcours extends HttpServlet {
 			ValidationParcoursManager valider_parcours = new ValidationParcoursManager(entitymanager);
 			valider_parcours.validerParcours(id, libelle_parcours, status);
 		}
-		List<ParcoursStatus> liste_parcours_status = validation_parcours.findAllParcoursStatus();
+		List<ParcoursStatus> liste_parcours_status = validation_parcours.findAllParcoursStatusByIdUser(responsable.getId());
 		request.setAttribute("liste_parcours_status", liste_parcours_status);
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}

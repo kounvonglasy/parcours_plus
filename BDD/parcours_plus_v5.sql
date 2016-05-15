@@ -78,7 +78,6 @@ CREATE TABLE IF NOT EXISTS `parcours_status` (
   `id_parcours` int(11) DEFAULT NULL,
   `id_status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_parcours_status`),
-  UNIQUE KEY `id_parcours` (`id_parcours`),
   KEY `FK_parcours_status_id_status` (`id_status`),
   KEY `FK_parcours_status_id_utilisateur` (`id_utilisateur`),
   KEY `FK_parcours_status_id_parcours` (`id_parcours`)

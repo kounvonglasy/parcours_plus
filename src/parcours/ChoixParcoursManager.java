@@ -47,6 +47,7 @@ public class ChoixParcoursManager extends ValidationParcoursManager {
 						ParcoursStatus parcours_status_existant = em.find(ParcoursStatus.class, liste_parcours_status);
 						parcours_status_existant.setIdParcours(parcours);
 						parcours_status_existant.setPrioriteChoixParcours(i);
+						parcours_status_existant.setStatus(status);
 						em.getTransaction().begin();
 						em.flush();
 						em.getTransaction().commit();
