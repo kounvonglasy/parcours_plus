@@ -47,16 +47,18 @@ public class ProfilManager {
 		user.setImage(image);
 
 		// on upload une cv
-		Part cvPart = request.getPart("cv");
-		InputStream cvContent = cvPart.getInputStream();
-		byte[] cv = IOUtils.toByteArray(cvContent);
-		user.setCv(cv);
+		if (!user.getRole().equals("responsable")) {
+			Part cvPart = request.getPart("cv");
+			InputStream cvContent = cvPart.getInputStream();
+			byte[] cv = IOUtils.toByteArray(cvContent);
+			user.setCv(cv);
 
-		// on upload une lm
-		Part lmPart = request.getPart("lm");
-		InputStream lmContent = lmPart.getInputStream();
-		byte[] lm = IOUtils.toByteArray(lmContent);
-		user.setLm(lm);
+			// on upload une lm
+			Part lmPart = request.getPart("lm");
+			InputStream lmContent = lmPart.getInputStream();
+			byte[] lm = IOUtils.toByteArray(lmContent);
+			user.setLm(lm);
+		}
 
 		// ON fait une transaction vers la base
 		em.getTransaction().begin();
