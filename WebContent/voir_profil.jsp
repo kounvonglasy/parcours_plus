@@ -24,14 +24,24 @@
 						</thead>
 						<tbody>
 							<c:forEach items="${liste_etudiants}" var="profil">
+								<div class="col-xs-2">
+									<img src="DisplayBlob?id=${profil[0]}" alt=""
+										class="img-rounded img-responsive" /><br/>
+								</div>
 								<tr>
 									<td><c:out value="${profil[1]}" /></td>
 									<td><c:out value="${profil[2]}" /></td>
 									<td><c:out value="${profil[3]}" /></td>
 									<td><c:out value="${profil[4]}" /></td>
 									<td><c:out value="${profil[5]}" /></td>
-									<td><c:if test="${profil[7] != null}" ><a href="DownloadFile?file=CV&id=${profil[0]}">Télécharger le CV</a></c:if></td>
-									<td><c:if test="${profil[8] != null}" ><a href="DownloadFile?file=LM&id=${profil[0]}">Télécharger la lettre de motivation</a></c:if></td>
+									<td><c:if test="${profil[7] != null}">
+											<a href="DownloadFile?file=CV&id=${profil[0]}">Télécharger
+												le CV</a>
+										</c:if></td>
+									<td><c:if test="${profil[8] != null}">
+											<a href="DownloadFile?file=LM&id=${profil[0]}">Télécharger
+												la lettre de motivation</a>
+										</c:if></td>
 								</tr>
 							</c:forEach>
 						</tbody>
