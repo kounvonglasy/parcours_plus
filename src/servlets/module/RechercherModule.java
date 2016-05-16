@@ -21,7 +21,6 @@ import module.ModuleManager;
 @WebServlet("/RechercherModule")
 public class RechercherModule extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String ATT_FORM = "form";
 	public static final String VUE = "liste_module.jsp";
        
     /**

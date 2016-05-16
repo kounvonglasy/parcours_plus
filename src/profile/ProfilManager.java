@@ -2,6 +2,9 @@ package profile;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
@@ -12,15 +15,19 @@ import javax.servlet.http.Part;
 import org.apache.commons.io.IOUtils;
 
 import beans.Utilisateur;
+import utilisateur.UtilisateurRepository;
 
 public class ProfilManager {
 	private EntityManager em;
+	UtilisateurRepository utilisateur_repository;
 
 	public ProfilManager(EntityManager em) {
 		this.em = em;
+		utilisateur_repository = new UtilisateurRepository(em);
 	}
 
-	public Utilisateur editerProfil(HttpServletRequest request, HttpServletResponse response) throws IllegalStateException, IOException, ServletException {
+	public Utilisateur editerProfil(HttpServletRequest request, HttpServletResponse response)
+			throws IllegalStateException, IOException, ServletException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		Utilisateur user = em.find(Utilisateur.class, id);
 
@@ -57,6 +64,15 @@ public class ProfilManager {
 		em.getTransaction().commit();
 
 		return user;
+	}
+
+	public List<Utilisateur> rechercherEtudiant(HttpServletRequest request) {
+		Map<String, String> critere = new HashMap<String, String>();
+		critere.put("nom", request.getParameter("nomFilter"));
+		critere.put("prenom", request.getParameter("prenomFilter"));
+		critere.put("promotion", request.getParameter("promotionFilter"));
+		List<Utilisateur> liste_etudiants = utilisateur_repository.findByCriteriaAsLike(critere);
+		return liste_etudiants;
 	}
 
 }

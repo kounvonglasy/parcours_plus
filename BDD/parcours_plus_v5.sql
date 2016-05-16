@@ -86,26 +86,6 @@ CREATE TABLE IF NOT EXISTS `parcours_status` (
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `profile`
---
-
-CREATE TABLE IF NOT EXISTS `profile` (
-  `id_profile` int(20) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(20) NOT NULL,
-  `prenom` varchar(20) NOT NULL,
-  `promotion` varchar(50) NOT NULL,
-  `parcours` varchar(20) DEFAULT NULL,
-  `image` blob,
-  PRIMARY KEY (`id_profile`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Contenu de la table `profile`
---
-
-INSERT INTO `profile` (`id_profile`, `nom`, `prenom`, `promotion`, `parcours`, `image`) VALUES
-(1, 'raj', 'raj', 'A2', 'GL', '');
 
 -- --------------------------------------------------------
 
@@ -212,24 +192,6 @@ INSERT INTO `utilisateur_parcours` (`id`, `id_parcours`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur_profile`
---
-
-CREATE TABLE IF NOT EXISTS `utilisateur_profile` (
-  `id` int(11) NOT NULL,
-  `id_profile` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`id_profile`),
-  KEY `FK_utilisateur_parcours_id_profile` (`id_profile`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Contenu de la table `utilisateur_profile`
---
-
-INSERT INTO `utilisateur_profile` (`id`, `id_profile`) VALUES
-(1, 1);
-
---
 -- Contraintes pour les tables exportées
 --
 
@@ -255,12 +217,6 @@ ALTER TABLE `utilisateur_parcours`
   ADD CONSTRAINT `FK_utilisateur_parcours_id` FOREIGN KEY (`id`) REFERENCES `utilisateur` (`id`),
   ADD CONSTRAINT `FK_utilisateur_parcours_id_parcours` FOREIGN KEY (`id_parcours`) REFERENCES `parcours` (`id_parcours`);
 
---
--- Contraintes pour la table `utilisateur_profile`
---
-ALTER TABLE `utilisateur_profile`
-  ADD CONSTRAINT `FK_utilisateur_profile_id` FOREIGN KEY (`id`) REFERENCES `utilisateur` (`id`),
-  ADD CONSTRAINT `FK_utilisateur_profile_id_profile` FOREIGN KEY (`id_profile`) REFERENCES `profile` (`id_profile`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

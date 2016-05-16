@@ -8,7 +8,7 @@
 		<div class="row">
 			<div id="content" class="span12">
 				<div id="liste-etudiants">
-					<form id="listeEtudiants" action="AfficherEtudiants" method="POST">
+					<form id="listeEtudiants" action="RechercherEtudiant" method="POST">
 						<h3>Liste des étudiants</h3>
 						<br>
 						<p class="hide">
@@ -23,18 +23,20 @@
 										id="nomFilter" name="nomFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"
 										id="prenomFilter" name="prenomFilter" value="%"></th>
+									<th><input type="text" class="form-control rounded"
+										id="promotionFilter" name="promotionFilter" value="%"></th>
 								</tr>
 								<tr>
 									<th></th>
 									<th>Nom de l'étudiant</th>
 									<th>Prénom de l'étudiant</th>
+									<th>Promotion</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach items="${liste_etudiants}" var="etudiant">
 									<tr>
-										<c:url value="/AfficherProfil"
-											var="url_afficher_profile">
+										<c:url value="/AfficherProfil" var="url_afficher_profile">
 											<c:param name="id" value="${etudiant[0]}" />
 										</c:url>
 										<th><a title="Voir le profil de l'étudiant"
@@ -42,6 +44,7 @@
 												class="glyphicon glyphicon-eye-open black"></i></a></th>
 										<td><c:out value="${etudiant[1]}" /></td>
 										<td><c:out value="${etudiant[2]}" /></td>
+										<td><c:out value="${etudiant[3]}" /></td>
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -1,6 +1,7 @@
 package utilisateur;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -60,7 +61,7 @@ public class UtilisateurRepository {
 	@SuppressWarnings("unchecked")
 	public List<Utilisateur> findAllEtudiants(){
 		Query query = em
-				.createQuery("SELECT u.id, u.nom, u.prenom FROM Utilisateur u WHERE u.role = 'etudiant'");
+				.createQuery("SELECT u.id, u.nom, u.prenom, u.promotion FROM Utilisateur u WHERE u.role = 'etudiant'");
 		return (List<Utilisateur>) query.getResultList();
 	}
 	
@@ -72,4 +73,11 @@ public class UtilisateurRepository {
 		return (List<Utilisateur>) query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+    public List<Utilisateur> findByCriteriaAsLike(Map<String,String> critere) {
+		Query query = em.createQuery(
+				"SELECT u.id, u.nom, u.prenom, u.promotion from Utilisateur u WHERE u.nom like :nom AND u.prenom LIKE :prenom AND u.promotion LIKE :promotion AND u.role ='etudiant'").setParameter("nom", '%'+critere.get("nom")+'%').setParameter("prenom", '%'+critere.get("prenom")+'%').setParameter("promotion", '%'+critere.get("promotion")+'%');
+		return (List<Utilisateur>) query.getResultList();
+
+    }
 }

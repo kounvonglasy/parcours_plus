@@ -40,21 +40,38 @@
 											class="form-control" type="text" id="UserPwd"
 											value="${user.mdp}" /> <br /> <input name="userpromotion"
 											placeholder="Promotion" class="form-control" type="text"
-											id="UserUserPromotion" value="${user.promotion}" /> <br /> <input
-											name="useremail" placeholder="Email" class="form-control"
-											type="text" id="UserUserEmail" value="${user.email}" /> <br />
-										<input name="userrole" placeholder="Role" class="form-control"
-											type="text" id="UserUserRole" value="${user.role}" /> <br />
-										<label>Image de Profil :</label> <input type="file" name="pic"
-											accept="image/*"> <br /> <label>CV :</label> <input
-											type="file" name="cv"> <br /> <label>Lettre
-											de motivation :</label> <input type="file" name="lm"> <br />
-										<input type="submit">
+											id="UserUserPromotion" value="${user.promotion}" /> <br />
+										<input name="useremail" placeholder="Email"
+											class="form-control" type="text" id="UserUserEmail"
+											value="${user.email}" /> <br /> <input name="userrole"
+											placeholder="Role" class="form-control" type="text"
+											id="UserUserRole" value="${user.role}" /> <br /> <label>Image
+											de Profil :</label> <input type="file" name="pic" accept="image/*">
+										<c:if
+											test="${sessionScope.session_utilisateur.role == 'etudiant'}">
+											<br />
+											<label>CV :</label>
+											<input type="file" name="cv">
+											<br />
+											<label>Lettre de motivation :</label>
+											<input type="file" name="lm">
+										</c:if>
+										<br /> <input type="submit">
 									</form>
+
 									<div id="retour_liste_etudiants">
-										<br /> <a href="AfficherEtudiants"
-											class="btn btn-success btn btn-success"> Retour à la
-											liste des étudiants </a>
+										<br />
+										<c:if
+											test="${sessionScope.session_utilisateur.role == 'etudiant'}">
+											<a href="AfficherEtudiants"
+												class="btn btn-success btn btn-success"> Retour à la
+												liste des étudiants </a>
+										</c:if>
+										<c:if
+											test="${sessionScope.session_utilisateur.role == 'responsable'}">
+											<a href="index.jsp" class="btn btn-success btn btn-success">
+												Retour à la liste des responsables parcours </a>
+										</c:if>
 									</div>
 									<br /> <br />
 								</div>

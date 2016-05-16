@@ -1,4 +1,4 @@
-package servlets.parcours;
+package servlets.profil;
 
 import java.io.IOException;
 import java.util.List;
@@ -12,20 +12,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Parcours;
-import parcours.ParcoursManager;
+import beans.Utilisateur;
+import profile.ProfilManager;
 
 /**
  * Servlet implementation class AjouterParcours
  */
-@WebServlet("/RechercherParcours")
-public class RechercherParcours extends HttpServlet {
+@WebServlet("/RechercherEtudiant")
+public class RechercherEtudiant extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public RechercherParcours() {
+	public RechercherEtudiant() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -38,10 +38,10 @@ public class RechercherParcours extends HttpServlet {
 			throws ServletException, IOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		ParcoursManager parametrage_parcours = new ParcoursManager(entitymanager);
-		List<Parcours> liste_parcours = parametrage_parcours.rechercherParcours(request);
-		request.setAttribute("liste_parcours", liste_parcours);
-		request.getRequestDispatcher("/liste_parcours.jsp").forward(request, response);
+		ProfilManager profil_manager = new ProfilManager(entitymanager);
+		List<Utilisateur> liste_etudiants = profil_manager.rechercherEtudiant(request);
+		request.setAttribute("liste_etudiants", liste_etudiants);
+		request.getRequestDispatcher("/liste_etudiants.jsp").forward(request, response);
 	}
 
 }
