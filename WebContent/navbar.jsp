@@ -33,6 +33,9 @@
 					<c:if test="${sessionScope.session_utilisateur.role == 'etudiant'}">
 						<li><a href="ChoisirParcours">Choisir les parcours</a></li>
 					</c:if>
+					<c:if test="${sessionScope.session_utilisateur.role == 'responsable'}">
+						<li><a href="contacter_utilisateur.jsp">Mail groupé</a></li>
+					</c:if>
 				</ul>
 
 				<!-- Barre de recherche -->

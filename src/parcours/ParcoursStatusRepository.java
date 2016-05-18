@@ -54,5 +54,5 @@ public class ParcoursStatusRepository {
 				.setParameter("id_utilisateur", id_utilisateur).setParameter("id_parcours", id_parcours);
 		return (List<ParcoursStatus>) query.getResultList();
 	}
-
+	
 }
