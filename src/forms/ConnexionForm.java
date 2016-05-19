@@ -52,16 +52,16 @@ public class ConnexionForm extends ErrorManager {
 
 	private void validationLogin(String login) throws Exception {
 		if (login == null) {
-			throw new Exception("Login incorrect, merci de les saisir à nouveau.");
+			throw new Exception("Login incorrect, merci de le saisir à nouveau.");
 		}
 	}
 
 	private void validationMdp(String password_form, String password) throws Exception {
 		if (password_form != null) {
 			if (!password_form.equals(password)) {
-				throw new Exception("Le mot de passe saisi est incorrect, merci de les saisir à nouveau.");
+				throw new Exception("Le mot de passe saisi est incorrect, merci de le saisir à nouveau.");
 			} else if (password_form.length() < 1) {
-				throw new Exception("Les mots de passe doivent contenir au moins 1 caractère.");
+				throw new Exception("Le mot de passe doit contenir au moins 1 caractère.");
 			}
 		} else {
 			throw new Exception("Merci de saisir votre mot de passe.");

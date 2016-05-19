@@ -24,7 +24,15 @@
 						<li><a href="AfficherEtudiants">Liste des étudiants</a></li>
 					</c:if>
 					<c:if test="${!empty sessionScope.session_utilisateur}">
-						<li><a href="EditerProfil">Editer profil</a></li>
+						<li><a class="dropdown-toggle" data-toggle="dropdown"
+							href="#">Profil <span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a
+									href="AfficherProfil?id=${sessionScope.session_utilisateur.id}">Voir
+										profil</a></li>
+								<li><a href="EditerProfil">Editer profil</a></li>
+							</ul></li>
 					</c:if>
 					<c:if
 						test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours != '[]'}">
@@ -33,7 +41,8 @@
 					<c:if test="${sessionScope.session_utilisateur.role == 'etudiant'}">
 						<li><a href="ChoisirParcours">Choisir les parcours</a></li>
 					</c:if>
-					<c:if test="${sessionScope.session_utilisateur.role == 'responsable'}">
+					<c:if
+						test="${sessionScope.session_utilisateur.role == 'responsable'}">
 						<li><a href="contacter_utilisateur.jsp">Mail groupé</a></li>
 					</c:if>
 				</ul>

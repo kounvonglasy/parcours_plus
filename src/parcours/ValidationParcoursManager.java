@@ -23,7 +23,7 @@ public class ValidationParcoursManager extends ErrorManager {
 
 	public void validerParcours(int id, String libelle_parcours, String choix_responsable) {
 		em.getTransaction().begin();
-		List<ParcoursStatus> liste_parcours_status = parcours_status_repository.findParcoursStatusByIdAndParcours(id,
+		List<ParcoursStatus> liste_parcours_status = parcours_status_repository.findParcoursStatusByIdAndLibelleParcours(id,
 				libelle_parcours);
 		parcours_status = em.find(ParcoursStatus.class, liste_parcours_status);
 		List<Status> liste_status = parcours_status_repository.findStatusByLibelle(choix_responsable);

@@ -80,7 +80,7 @@ public class Connexion extends HttpServlet {
 			}
 			// redirection pour l'étudiant
 			else if (utilisateur.getRole().equals("etudiant")) {
-				this.getServletContext().getRequestDispatcher("/accueil_etudiant.jsp").forward(request, response);
+				this.getServletContext().getRequestDispatcher("/AfficherProfil?id="+utilisateur.getId()).forward(request, response);
 			}
 		}
 

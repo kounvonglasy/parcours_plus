@@ -63,9 +63,8 @@
 										<br />
 										<c:if
 											test="${sessionScope.session_utilisateur.role == 'etudiant'}">
-											<a href="AfficherEtudiants"
-												class="btn btn-success btn btn-success"> Retour à la
-												liste des étudiants </a>
+											<a href="AfficherProfil?id=${sessionScope.session_utilisateur.id}"
+												class="btn btn-success btn btn-success"> Retour à la page profil </a>
 										</c:if>
 										<c:if
 											test="${sessionScope.session_utilisateur.role == 'responsable'}">

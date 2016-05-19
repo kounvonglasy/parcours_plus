@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.io.IOUtils;
 import profile.DownloadFileManager;
 
 /**
@@ -39,12 +38,7 @@ public class DownloadFile extends HttpServlet {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		DownloadFileManager download_file_manager = new DownloadFileManager(entitymanager);
-		String file = request.getParameter("file");
-		byte[] file_type = download_file_manager.downloadFile(request, response);
-		response.setHeader("Content-Disposition", "attachment;filename=" + file + ".pdf");
-		ByteArrayInputStream bis = new ByteArrayInputStream(file_type);
-		IOUtils.copy(bis, response.getOutputStream());
-		response.flushBuffer();
+		response = download_file_manager.downloadFile(request, response);
 		request.getRequestDispatcher("/voir_profil.jsp").forward(request, response);
 	}
 
