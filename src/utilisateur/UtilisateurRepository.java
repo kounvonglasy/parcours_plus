@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import beans.CV;
+import beans.LM;
 import beans.Utilisateur;
 
 public class UtilisateurRepository {
@@ -80,4 +82,20 @@ public class UtilisateurRepository {
 		return (List<Utilisateur>) query.getResultList();
 
     }
+	
+	@SuppressWarnings("unchecked")
+	public List<CV> findCVByIdEtudiant(int id){
+		Query query = em
+				.createQuery("SELECT cv.id_cv FROM CV cv LEFT JOIN cv.utilisateur u WHERE u.id = :id")
+		.setParameter("id", id);
+		return (List<CV>) query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<LM> findLMByIdEtudiant(int id){
+		Query query = em
+				.createQuery("SELECT lm.id_lm FROM LM lm LEFT JOIN lm.utilisateur u WHERE u.id = :id")
+		.setParameter("id", id);
+		return (List<LM>) query.getResultList();
+	}
 }

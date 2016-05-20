@@ -12,6 +12,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -44,17 +45,15 @@ public class Utilisateur {
 	@Column(name = "promotion")
 	private String promotion;
 	
-	 @Lob
-	 @Column( name = "image" )
-	 private byte[] image;
+	@Lob
+	@Column( name = "image" )
+	private byte[] image;
 	 
-	 @Lob
-	 @Column( name = "cv" )
-	 private byte[] cv;
-	 
-	 @Lob
-	 @Column( name = "lm" )
-	 private byte[] lm;
+	@OneToOne(mappedBy = "utilisateur", cascade = CascadeType.REMOVE)
+	private CV cv;
+	
+	@OneToOne(mappedBy = "utilisateur", cascade = CascadeType.REMOVE)
+	private LM lm;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(name = "utilisateur_parcours", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_parcours"))
@@ -82,16 +81,6 @@ public class Utilisateur {
         this.image = image;
     }
 	
-	public void setCv( byte[] cv )
-    {
-        this.cv = cv;
-    }
-	
-	public void setLm( byte[] lm )
-    {
-        this.lm = lm;
-    }
-
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -126,16 +115,6 @@ public class Utilisateur {
         return image;
     }
 
-	
-	public byte[] getCv()
-    {
-        return cv;
-    }
-	
-	public byte[] getLm()
-    {
-        return lm;
-    }
 	public String getNom() {
 		return this.nom;
 	}
@@ -192,5 +171,15 @@ public class Utilisateur {
 	public List<Module> getModules() {
 		return this.modules;
 	}
+	
+	public CV getCv()
+    {
+        return cv;
+    }
+	
+	public LM getLm()
+    {
+        return lm;
+    }
 
 }

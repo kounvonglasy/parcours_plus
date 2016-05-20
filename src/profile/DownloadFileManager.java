@@ -24,11 +24,13 @@ public class DownloadFileManager {
 		Utilisateur etudiant = em.find(Utilisateur.class, id);
 		byte[] file_type = null;
 		if (request.getParameter("file").equals("CV")) {
-			file_type = etudiant.getCv();
+			file = etudiant.getCv().getFilename();
+			file_type = etudiant.getCv().getCv();
 		} else if (request.getParameter("file").equals("LM")) {
-			file_type = etudiant.getLm();
+			file = etudiant.getCv().getFilename();
+			file_type = etudiant.getLm().getLm();
 		}
-		response.setHeader("Content-Disposition", "attachment;filename=" + file + ".pdf");
+		response.setHeader("Content-Disposition", "attachment;filename=" + file);
 		ByteArrayInputStream bis = new ByteArrayInputStream(file_type);
 		IOUtils.copy(bis, response.getOutputStream());
 		response.flushBuffer();

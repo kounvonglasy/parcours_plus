@@ -8,15 +8,18 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
 import org.apache.commons.io.IOUtils;
 
+import beans.CV;
+import beans.LM;
 import beans.Utilisateur;
 import utilisateur.UtilisateurRepository;
 
+@MultipartConfig
 public class ProfilManager {
 	private EntityManager em;
 	UtilisateurRepository utilisateur_repository;
@@ -50,22 +53,58 @@ public class ProfilManager {
 		if (!user.getRole().equals("responsable")) {
 			Part cvPart = request.getPart("cv");
 			InputStream cvContent = cvPart.getInputStream();
+			String cvName = getFileName(cvPart);
 			byte[] cv = IOUtils.toByteArray(cvContent);
-			user.setCv(cv);
+			try {
+				List<CV> list_user_cv_existant = utilisateur_repository.findCVByIdEtudiant(user.getId());
+				CV user_cv_existant = em.find(CV.class, list_user_cv_existant);
+				if (user_cv_existant != null) {
+					user_cv_existant.setUtilisateur(user);
+					user_cv_existant.setCv(cv);
+					user_cv_existant.setFileName(cvName);
+					em.getTransaction().begin();
+					em.flush();
+					em.getTransaction().commit();
+				}
+			} catch (Exception e) {
+				CV user_cv = new CV();
+				user_cv.setUtilisateur(user);
+				user_cv.setCv(cv);
+				user_cv.setFileName(cvName);
+				em.getTransaction().begin();
+				em.persist(user_cv);
+				em.getTransaction().commit();
+			}
 
 			// on upload une lm
 			Part lmPart = request.getPart("lm");
 			InputStream lmContent = lmPart.getInputStream();
+			String lmName = getFileName(lmPart);
 			byte[] lm = IOUtils.toByteArray(lmContent);
-			user.setLm(lm);
+			try {
+				List<LM> list_user_lm_existant = utilisateur_repository.findLMByIdEtudiant(user.getId());
+				LM user_lm_existant = em.find(LM.class, list_user_lm_existant);
+				if (user_lm_existant != null) {
+					user_lm_existant.setUtilisateur(user);
+					user_lm_existant.setLm(lm);
+					user_lm_existant.setFileName(cvName);
+					em.getTransaction().begin();
+					em.flush();
+					em.getTransaction().commit();
+				}
+			} catch (Exception e) {
+				LM user_lm = new LM();
+				user_lm.setUtilisateur(user);
+				user_lm.setLm(lm);
+				user_lm.setFileName(lmName);
+				em.getTransaction().begin();
+				em.persist(user_lm);
+				em.getTransaction().commit();
+			}
 		}
 
-		// ON fait une transaction vers la base
-		em.getTransaction().begin();
-		em.flush();
-		em.getTransaction().commit();
-
 		return user;
+
 	}
 
 	public List<Utilisateur> rechercherEtudiant(HttpServletRequest request) {
@@ -75,6 +114,16 @@ public class ProfilManager {
 		critere.put("promotion", request.getParameter("promotionFilter"));
 		List<Utilisateur> liste_etudiants = utilisateur_repository.findByCriteriaAsLike(critere);
 		return liste_etudiants;
+	}
+
+	public static String getFileName(Part filePart) {
+		String header = filePart.getHeader("content-disposition");
+		for (String headerPart : header.split(";")) {
+			if (headerPart.trim().startsWith("filename")) {
+				return headerPart.substring(headerPart.indexOf('=') + 1).trim().replace("\"", "");
+			}
+		}
+		return null;
 	}
 
 }
