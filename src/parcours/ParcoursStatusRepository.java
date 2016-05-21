@@ -1,6 +1,7 @@
 package parcours;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -63,5 +64,14 @@ public class ParcoursStatusRepository {
 				.setParameter("id_utilisateur", id_utilisateur).setParameter("id_parcours", id_parcours);
 		return (List<ParcoursStatus>) query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+    public List<ParcoursStatus> findByCriteriaAsLike(Map<String,String> critere, int id_responsable) {
+		Query query = em.createQuery(
+				"SELECT u.id, p.libelle, st.libelle, u.nom, ps.priorite_choix_parcours FROM ParcoursStatus ps LEFT JOIN ps.utilisateur u LEFT JOIN ps.parcours p LEFT JOIN ps.status st WHERE u.role<>'responsable' and p.id_parcours IN (SELECT rp.id_parcours FROM Utilisateur responsable LEFT JOIN responsable.parcours rp WHERE responsable.id = :id_responsable) and st.libelle NOT IN ('Accepté','Réfusé') and u.id NOT IN (SELECT uu.id FROM ParcoursStatus pss  LEFT JOIN pss.utilisateur uu WHERE pss.status.id_status IN (2)) AND u.nom LIKE :nom_etudiant AND CAST(ps.priorite_choix_parcours as CHAR) LIKE :priorite")
+				.setParameter("id_responsable", id_responsable).setParameter("nom_etudiant", '%'+critere.get("nom_etudiant")+'%').setParameter("priorite", '%'+critere.get("priorite")+'%');
+			return (List<ParcoursStatus>) query.getResultList();
+
+    }
 	
 }

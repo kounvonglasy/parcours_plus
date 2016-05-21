@@ -19,18 +19,19 @@ public class DownloadFileManager {
 	}
 
 	public HttpServletResponse downloadFile(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		String file = request.getParameter("file");
+		String filetype = request.getParameter("file");
+		String filename = "";
 		int id = Integer.parseInt(request.getParameter("id"));
 		Utilisateur etudiant = em.find(Utilisateur.class, id);
 		byte[] file_type = null;
-		if (request.getParameter("file").equals("CV")) {
-			file = etudiant.getCv().getFilename();
+		if (filetype.equals("CV")) {
+			filename = etudiant.getCv().getFilename();
 			file_type = etudiant.getCv().getCv();
-		} else if (request.getParameter("file").equals("LM")) {
-			file = etudiant.getCv().getFilename();
+		} else if (filetype.equals("LM")) {
+			filename = etudiant.getCv().getFilename();
 			file_type = etudiant.getLm().getLm();
 		}
-		response.setHeader("Content-Disposition", "attachment;filename=" + file);
+		response.setHeader("Content-Disposition", "attachment;filename=" + filename);
 		ByteArrayInputStream bis = new ByteArrayInputStream(file_type);
 		IOUtils.copy(bis, response.getOutputStream());
 		response.flushBuffer();

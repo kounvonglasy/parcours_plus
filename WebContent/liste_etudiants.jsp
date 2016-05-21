@@ -44,7 +44,7 @@
 												class="glyphicon glyphicon-eye-open black"></i></a></th>
 										<td><c:out value="${etudiant[1]}" /></td>
 										<td><c:out value="${etudiant[2]}" /></td>
-										<td><c:out value="${etudiant[3]}" /></td>
+										<td><c:out value="${etudiant[3].promotion}" /></td>
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -1,4 +1,4 @@
-package utilisateur;
+package servlets.utilisateur;
 
 import java.io.IOException;
 import java.util.List;
@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Utilisateur;
+import utilisateur.UtilisateurRepository;
 
 /**
  * Servlet implementation class AfficherParcours

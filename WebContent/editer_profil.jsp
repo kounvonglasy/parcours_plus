@@ -38,9 +38,14 @@
 											id="UserLogin" value="${user.login}" /> <br /> <input
 											name="userpwd" placeholder="Mot de Passe"
 											class="form-control" type="text" id="UserPwd"
-											value="${user.mdp}" /> <br /> <input name="userpromotion"
-											placeholder="Promotion" class="form-control" type="text"
-											id="UserUserPromotion" value="${user.promotion}" /> <br />
+											value="${user.mdp}" /> <br />
+										<c:if
+											test="${sessionScope.session_utilisateur.role == 'eleve'}">
+											<input name="userannee" placeholder="Promotion Année"
+												class="form-control" type="text" id="UserUserAnnee"
+												value="${user.promotion.annee}" />
+											<br />
+										</c:if>
 										<input name="useremail" placeholder="Email"
 											class="form-control" type="text" id="UserUserEmail"
 											value="${user.email}" /> <br /> <input name="userrole"
@@ -48,7 +53,7 @@
 											id="UserUserRole" value="${user.role}" /> <br /> <label>Image
 											de Profil :</label> <input type="file" name="pic" accept="image/*">
 										<c:if
-											test="${sessionScope.session_utilisateur.role == 'etudiant'}">
+											test="${sessionScope.session_utilisateur.role == 'eleve'}">
 											<br />
 											<label>CV :</label>
 											<input type="file" name="cv">
@@ -60,17 +65,10 @@
 									</form>
 
 									<div id="retour_liste_etudiants">
-										<br />
-										<c:if
-											test="${sessionScope.session_utilisateur.role == 'etudiant'}">
-											<a href="AfficherProfil?id=${sessionScope.session_utilisateur.id}"
-												class="btn btn-success btn btn-success"> Retour à la page profil </a>
-										</c:if>
-										<c:if
-											test="${sessionScope.session_utilisateur.role == 'responsable'}">
-											<a href="index.jsp" class="btn btn-success btn btn-success">
-												Retour à la liste des responsables parcours </a>
-										</c:if>
+										<br /> <a
+											href="AfficherProfil?id=${sessionScope.session_utilisateur.id}"
+											class="btn btn-success btn btn-success"> Retour à la page
+											profil </a>
 									</div>
 									<br /> <br />
 								</div>

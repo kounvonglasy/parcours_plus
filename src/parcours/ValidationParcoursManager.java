@@ -1,7 +1,11 @@
 package parcours;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpServletRequest;
 
 import beans.ParcoursStatus;
 import beans.Status;
@@ -33,6 +37,14 @@ public class ValidationParcoursManager extends ErrorManager {
 		em.flush();
 		em.getTransaction().commit();
 
+	}
+	
+	public List<ParcoursStatus> rechercherParcoursStatus(HttpServletRequest request,int id_utilisateur) {
+		Map<String, String> critere = new HashMap<String, String>();
+		critere.put("nom_etudiant", request.getParameter("etudiantFilter"));
+		critere.put("priorite", request.getParameter("prioriteFilter"));
+		List<ParcoursStatus> liste_parcours = parcours_status_repository.findByCriteriaAsLike(critere, id_utilisateur);
+		return liste_parcours;
 	}
 
 }

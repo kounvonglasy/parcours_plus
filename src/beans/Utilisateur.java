@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -38,12 +39,12 @@ public class Utilisateur {
 	@Column(name = "mdp")
 	private String mdp;
 	
-
 	@Column(name = "prenom")
 	private String prenom;
 
-	@Column(name = "promotion")
-	private String promotion;
+	@ManyToOne
+	@JoinColumn(name = "id_promotion")
+	private Promotion promotion;
 	
 	@Lob
 	@Column( name = "image" )
@@ -63,7 +64,7 @@ public class Utilisateur {
 	@JoinTable(name = "utilisateur_module", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_module"))
 	private List<Module> modules;
 	
-	@OneToMany(mappedBy="utilisateur")
+	@OneToMany(mappedBy="utilisateur", cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "id_parcours_status")
 	private List<ParcoursStatus> parcours_status;
 
@@ -102,10 +103,6 @@ public class Utilisateur {
 		this.prenom = prenom;
 	}
 
-	public void setPromotion(String promotion) {
-		this.promotion = promotion;
-	}
-
 	public int getId() {
 		return this.id;
 	}
@@ -138,10 +135,6 @@ public class Utilisateur {
 	
 	public String getPrenom() {
 		return this.prenom;
-	}
-
-	public String getPromotion() {
-		return this.promotion;
 	}
 
 	public void addParcours(Parcours parcours) {
@@ -181,5 +174,15 @@ public class Utilisateur {
     {
         return lm;
     }
+	
+	public void setPromotion(Promotion promotion){
+		this.promotion = promotion;
+	}
+	
+	public Promotion getPromotion(){
+		return promotion;
+	}
+	
+	
 
 }

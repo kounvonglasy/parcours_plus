@@ -68,11 +68,13 @@ public class ValiderParcours extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession(true);
-		Utilisateur responsable = (Utilisateur) session.getAttribute("session_utilisateur");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
 		ParcoursStatusRepository validation_parcours = new ParcoursStatusRepository(entitymanager);
+		List<ParcoursStatus> liste_parcours_status = null;
+		HttpSession session = request.getSession(true);
+		Utilisateur responsable = (Utilisateur) session.getAttribute("session_utilisateur");
+		if(request.getParameter("rechercheParcours")==null){
 		List<Status> liste_status = validation_parcours.findAllStatus();
 		request.setAttribute("liste_status", liste_status);
 		if (request.getParameter("id") != null && request.getParameter("libelle_parcours") != null
@@ -83,7 +85,14 @@ public class ValiderParcours extends HttpServlet {
 			ValidationParcoursManager valider_parcours = new ValidationParcoursManager(entitymanager);
 			valider_parcours.validerParcours(id, libelle_parcours, status);
 		}
-		List<ParcoursStatus> liste_parcours_status = validation_parcours.findAllParcoursStatusByIdUser(responsable.getId());
+		liste_parcours_status = validation_parcours.findAllParcoursStatusByIdUser(responsable.getId());
+		}
+		else {
+			ValidationParcoursManager valider_parcours = new ValidationParcoursManager(entitymanager);
+			liste_parcours_status = valider_parcours.rechercherParcoursStatus(request,responsable.getId());
+			//ParcoursStatusRepository parcours_status_repository = new ParcoursStatusRepository(entitymanager);
+		    //liste_parcours_status= parcours_status_repository.findByCriteriaAsLike(critere,responsable.getId());
+		}
 		request.setAttribute("liste_parcours_status", liste_parcours_status);
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}

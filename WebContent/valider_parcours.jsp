@@ -12,18 +12,19 @@
 						method="POST">
 						<h3>Validation des choix de parcours</h3>
 						<br>
+						<p class="hide">
+							<button type="submit" name="rechercheParcours" value="rechercheParcours"></button>
+						</p>
 						<table
 							class="table table-bordered table-condensed table-striped table-hover ">
 							<thead>
 								<tr>
-									<th><input type="text" class="form-control rounded"
-										id="parcoursFilter" name="parcoursFilter" value="%"></th>
-									<th><input type="text" class="form-control rounded"
-										id="choixFilter" name="choixFilter" value="%"></th>
+									<th></th>
+									<th></th>
 									<th><input type="text" class="form-control rounded"
 										id="etudiantFilter" name="etudiantFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"
-										id="etudiantFilter" name="etudiantFilter" value="%"></th>
+										id="prioriteFilter" name="prioriteFilter" value="%"></th>
 								</tr>
 								<tr>
 

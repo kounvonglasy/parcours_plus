@@ -12,7 +12,7 @@
 					<form id="listeParcours" action="RechercherParcours" method="POST">
 						<h3
 							<c:if
-							test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours == '[]'}"> onclick='afficher_description_icones();'</c:if>>Liste
+							test="${sessionScope.session_utilisateur.role == 'administration'}"> onclick='afficher_description_icones();'</c:if>>Liste
 							des parcours</h3>
 						<span class="erreur">${form.erreurs['suppression_parcours']}</span>
 						<div id="description_icones">
@@ -31,7 +31,6 @@
 							<thead>
 								<tr>
 									<th></th>
-
 									<th><input type="text" class="form-control rounded"
 										id="libelleFilter" name="libelleFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"
@@ -48,7 +47,6 @@
 							<tbody>
 								<c:forEach items="${liste_parcours}" var="parcours">
 									<tr>
-
 										<c:url value="/EditerParcours" var="url_edition_parcours">
 											<c:param name="id" value="${parcours[0]}" />
 											<c:param name="nom_responsable" value="${parcours[2]}" />
@@ -63,7 +61,7 @@
 										</c:url>
 										<c:choose>
 											<c:when
-												test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours == '[]'}">
+												test="${sessionScope.session_utilisateur.role == 'administration'}">
 												<td><a title="Editer parcours"
 													href="${url_edition_parcours}"><i
 														class="glyphicon glyphicon-pencil black"></i></a> <a
@@ -89,7 +87,7 @@
 									<td>&nbsp;</td>
 									<td colspan="12"><div id="creerParcours">
 											<c:if
-												test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours == '[]'}">
+												test="${sessionScope.session_utilisateur.role == 'administration'}">
 												<a href="CreerParcours"> <i
 													class="glyphicon glyphicon-plus black"></i>&nbsp;<b>Creer
 														un parcours</b>

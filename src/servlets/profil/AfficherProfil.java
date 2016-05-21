@@ -41,7 +41,8 @@ public class AfficherProfil extends HttpServlet {
 		EntityManager entitymanager = emfactory.createEntityManager();
 		UtilisateurRepository utilisateur_repository = new UtilisateurRepository(entitymanager);
 		List<Utilisateur> liste_etudiants = utilisateur_repository.findEtudiantById(id);
-		request.setAttribute("liste_etudiants", liste_etudiants);
+		Utilisateur etudiant = entitymanager.find(Utilisateur.class,liste_etudiants);
+		request.setAttribute("profil", etudiant);
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 	

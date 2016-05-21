@@ -16,7 +16,7 @@
 <script src="js/selection_responsable_parcours.js"></script>
 <script src="js/jquery-scrollto.js"></script>
 <script type="text/javascript" src="js/choix_parcours.js"></script>
-<c:if test="${sessionScope.session_utilisateur.role == 'responsable'}">
+<c:if test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'}">
 	<script>
 		function afficher_description_icones() {
 			$("#description_icones").toggle("blind");

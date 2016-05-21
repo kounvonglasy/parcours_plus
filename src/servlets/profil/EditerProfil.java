@@ -55,9 +55,9 @@ public class EditerProfil extends HttpServlet {
 		EntityManager entitymanager = emfactory.createEntityManager();
 		ProfilManager profil_manager = new ProfilManager(entitymanager);
 		Utilisateur user = profil_manager.editerProfil(request, response);
-		if(user.getRole().equals("etudiant")){
+		if(user.getRole().equals("eleve")){
 			request.getRequestDispatcher("AfficherProfil?id=" + user.getId()).forward(request, response);
-		} else if (user.getRole().equals("responsable")){
+		} else if (!user.getRole().equals("eleve")){
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 

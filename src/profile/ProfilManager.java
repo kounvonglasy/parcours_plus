@@ -16,17 +16,21 @@ import org.apache.commons.io.IOUtils;
 
 import beans.CV;
 import beans.LM;
+import beans.Promotion;
 import beans.Utilisateur;
+import promotion.PromotionRepository;
 import utilisateur.UtilisateurRepository;
 
 @MultipartConfig
 public class ProfilManager {
 	private EntityManager em;
 	UtilisateurRepository utilisateur_repository;
+	PromotionRepository promotion_repository;
 
 	public ProfilManager(EntityManager em) {
 		this.em = em;
 		utilisateur_repository = new UtilisateurRepository(em);
+		promotion_repository = new PromotionRepository(em);
 	}
 
 	public Utilisateur editerProfil(HttpServletRequest request, HttpServletResponse response)
@@ -38,7 +42,6 @@ public class ProfilManager {
 		user.setLogin(request.getParameter("userlogin"));
 		user.setNom(request.getParameter("username"));
 		user.setPrenom(request.getParameter("userfname"));
-		user.setPromotion(request.getParameter("userpromotion"));
 		user.setEmail(request.getParameter("useremail"));
 		user.setRole(request.getParameter("userrole"));
 		user.setMdp(request.getParameter("userpwd"));
@@ -49,15 +52,20 @@ public class ProfilManager {
 		byte[] image = IOUtils.toByteArray(fileContent);
 		user.setImage(image);
 
-		// on upload une cv
-		if (!user.getRole().equals("responsable")) {
+		if (user.getRole().equals("eleve")) {
+			// On met à jour la promotion
+			List<Promotion> liste_promotion = promotion_repository
+					.findPromotionByAnnee(request.getParameter("userannee"));
+			Promotion promotion = em.find(Promotion.class, liste_promotion);
+			user.setPromotion(promotion);
+			// on upload une cv
 			Part cvPart = request.getPart("cv");
 			InputStream cvContent = cvPart.getInputStream();
 			String cvName = getFileName(cvPart);
 			byte[] cv = IOUtils.toByteArray(cvContent);
 			try {
-				List<CV> list_user_cv_existant = utilisateur_repository.findCVByIdEtudiant(user.getId());
-				CV user_cv_existant = em.find(CV.class, list_user_cv_existant);
+				List<CV> liste_user_cv_existant = utilisateur_repository.findCVByIdEtudiant(user.getId());
+				CV user_cv_existant = em.find(CV.class, liste_user_cv_existant);
 				if (user_cv_existant != null) {
 					user_cv_existant.setUtilisateur(user);
 					user_cv_existant.setCv(cv);
@@ -73,6 +81,7 @@ public class ProfilManager {
 				user_cv.setFileName(cvName);
 				em.getTransaction().begin();
 				em.persist(user_cv);
+				em.getEntityManagerFactory().getCache().evictAll();
 				em.getTransaction().commit();
 			}
 
@@ -82,12 +91,12 @@ public class ProfilManager {
 			String lmName = getFileName(lmPart);
 			byte[] lm = IOUtils.toByteArray(lmContent);
 			try {
-				List<LM> list_user_lm_existant = utilisateur_repository.findLMByIdEtudiant(user.getId());
-				LM user_lm_existant = em.find(LM.class, list_user_lm_existant);
+				List<LM> liste_user_lm_existant = utilisateur_repository.findLMByIdEtudiant(user.getId());
+				LM user_lm_existant = em.find(LM.class, liste_user_lm_existant);
 				if (user_lm_existant != null) {
 					user_lm_existant.setUtilisateur(user);
 					user_lm_existant.setLm(lm);
-					user_lm_existant.setFileName(cvName);
+					user_lm_existant.setFileName(lmName);
 					em.getTransaction().begin();
 					em.flush();
 					em.getTransaction().commit();
@@ -99,8 +108,13 @@ public class ProfilManager {
 				user_lm.setFileName(lmName);
 				em.getTransaction().begin();
 				em.persist(user_lm);
+				em.getEntityManagerFactory().getCache().evictAll();
 				em.getTransaction().commit();
 			}
+		} else {
+			em.getTransaction().begin();
+			em.flush();
+			em.getTransaction().commit();
 		}
 
 		return user;

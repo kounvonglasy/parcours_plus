@@ -12,7 +12,7 @@
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="AfficherParcours"> <c:choose>
 								<c:when
-									test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours == '[]'}">
+									test="${sessionScope.session_utilisateur.role == 'administration'}">
 									<c:out value="Paramétrage des parcours" />
 								</c:when>
 								<c:otherwise>
@@ -35,15 +35,19 @@
 							</ul></li>
 					</c:if>
 					<c:if
-						test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours != '[]'}">
+						test="${sessionScope.session_utilisateur.role == 'prof'}">
 						<li><a href="ValiderParcours">Valider les parcours</a></li>
 					</c:if>
-					<c:if test="${sessionScope.session_utilisateur.role == 'etudiant'}">
+					<c:if test="${sessionScope.session_utilisateur.role == 'eleve'}">
 						<li><a href="ChoisirParcours">Choisir les parcours</a></li>
 					</c:if>
 					<c:if
-						test="${sessionScope.session_utilisateur.role == 'responsable'}">
+						test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'  }">
 						<li><a href="contacter_utilisateur.jsp">Mail groupé</a></li>
+					</c:if>
+					<c:if
+						test="${sessionScope.session_utilisateur.role == 'administration'}">
+						<li><a href="EditerPromotion">Editer les promotions</a></li>
 					</c:if>
 				</ul>
 

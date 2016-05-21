@@ -6,7 +6,7 @@
 <body>
 	<div class="container">
 		<c:if
-			test="${sessionScope.session_utilisateur.role == 'responsable' }">
+			test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration' }">
 			<h2>Envoyer un mail groupé</h2>
 
 			<div>
@@ -31,14 +31,14 @@
 					</table>
 				</div>
 			</div>
-			</br>
+			
 
 
 			<div>
+			<br/>
 				<button type="button" class="btn btn-info" data-toggle="collapse"
 					data-target="#demo2">Etudiants A2</button>
 				<div id="demo2" class="collapse">
-					</br>
 					<table class="table table">
 						<thead>
 						</thead>
@@ -55,8 +55,7 @@
 								<td><button class="btn btn-default" type="submit">Rédiger
 										le message</button></td>
 							</tr>
-
-							</br>
+					
 							<!-- envoie mail groupé par parcours -->
 							<tr>
 								<td>
@@ -167,9 +166,8 @@
 										alternants</b></td>
 								<td><button class="btn btn-default" type="submit">Rédiger
 										le message</button></td>
+										
 							</tr>
-
-							</br>
 							<!-- envoie mail groupé par parcours -->
 							<tr>
 								<td>

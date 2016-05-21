@@ -11,7 +11,7 @@
 					<form id="listeModule" action="RechercherModule" method="POST">
 						<h3
 							<c:if
-											test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours == '[]'}">onclick='afficher_description_icones();' </c:if>>Liste
+											test="${sessionScope.session_utilisateur.role == 'admnistration'}">onclick='afficher_description_icones();' </c:if>>Liste
 							des modules</h3>
 						<input type="hidden" name="libelle_parcours"
 							value="${libelle_parcours}" /> <input type="hidden"
@@ -55,7 +55,7 @@
 								<c:forEach items="${liste_module}" var="module">
 									<tr>
 										<td><c:if
-												test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours == '[]'}">
+												test="${sessionScope.session_utilisateur.role == 'administration'}">
 												<a title="Editer module"
 													href="EditerModule?id=<c:out value="${module[0]}" />&id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}"><i
 													class="glyphicon glyphicon-pencil black"></i></a>
@@ -77,7 +77,7 @@
 									<td>&nbsp;</td>
 									<td colspan="12"><div id="creerModule">
 											<c:if
-												test="${sessionScope.session_utilisateur.role == 'responsable' && sessionScope.session_utilisateur.parcours == '[]'}">
+												test="${sessionScope.session_utilisateur.role == 'administration'}">
 												<a
 													href="CreerModule?id_parcours=${id_parcours}&libelle_parcours=${libelle_parcours}">
 													<i class="glyphicon glyphicon-plus black"></i>&nbsp;<b>Creer

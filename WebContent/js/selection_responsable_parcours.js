@@ -8,6 +8,8 @@ function ajax_loader(x) {
 			$("#libelle").html(result.libelle);
 			$("#type_responsable").html(result.type_responsable);
 			$("#email").html(result.email);
+			$("#image").attr('src','DisplayBlob?id='+result.img);
+			
 		}
 	});
 }

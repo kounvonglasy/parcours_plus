@@ -18,7 +18,7 @@ public class ParcoursRepository {
 	@SuppressWarnings("unchecked")
 	public List<Parcours> findAllParcours() {
 		Query query = em.createQuery(
-				"SELECT p.id_parcours, p.libelle, u.nom FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.role ='responsable' AND p.id_parcours IS NOT NULL");
+				"SELECT p.id_parcours, p.libelle, u.nom FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.role ='prof' AND p.id_parcours IS NOT NULL");
 		return (List<Parcours>) query.getResultList();
 	}
 
@@ -32,7 +32,7 @@ public class ParcoursRepository {
 	@SuppressWarnings("unchecked")
     public List<Parcours> findByCriteriaAsLike(Map<String,String> critere) {
 		Query query = em.createQuery(
-				"SELECT p.id_parcours, p.libelle, u.nom FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.nom like :nom AND p.libelle LIKE :libelle AND u.role='responsable'").setParameter("libelle", '%'+critere.get("libelle")+'%').setParameter("nom", '%'+critere.get("responsable")+'%');
+				"SELECT p.id_parcours, p.libelle, u.nom FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.nom like :nom AND p.libelle LIKE :libelle AND u.role='prof'").setParameter("libelle", '%'+critere.get("libelle")+'%').setParameter("nom", '%'+critere.get("responsable")+'%');
 		return (List<Parcours>) query.getResultList();
 
     }
