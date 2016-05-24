@@ -46,14 +46,6 @@ public class SelectionResponsableParcours extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		boolean ajax = "XMLHttpRequest".equals(request.getHeader("X-Requested-With"));
 		String nom = request.getParameter("name");
-		// On est censé récuperer l'email à partir de la base de données
-		/*
-		 * EntityManagerFactory emfactory =
-		 * Persistence.createEntityManagerFactory("parcours_plus");
-		 * EntityManager entitymanager = emfactory.createEntityManager(); Query
-		 * q = entitymanager.createQuery("user.findEmail", Utilisateur.class);
-		 * List results = query.getResultList(); email = results.get(0);
-		 */
 		try {
 			EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 			EntityManager entitymanager = emfactory.createEntityManager();

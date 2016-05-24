@@ -54,9 +54,18 @@ public class ProfilManager {
 
 		if (user.getRole().equals("eleve")) {
 			// On met à jour la promotion
+			Promotion promotion = new Promotion ();
+			try{
 			List<Promotion> liste_promotion = promotion_repository
 					.findPromotionByAnnee(request.getParameter("userannee"));
-			Promotion promotion = em.find(Promotion.class, liste_promotion);
+			promotion = em.find(Promotion.class, liste_promotion);}
+			catch(Exception e){
+				promotion.setAnnee(request.getParameter("userannee"));
+				promotion.setPromotion("ancien");
+				em.getTransaction().begin();
+				em.persist(promotion);
+				em.getTransaction().commit();
+			}
 			user.setPromotion(promotion);
 			// on upload une cv
 			Part cvPart = request.getPart("cv");

@@ -34,6 +34,13 @@ public class ValidationParcoursManager extends ErrorManager {
 		status = em.find(Status.class, liste_status);
 		status.setLibelle(choix_responsable);
 		parcours_status.setStatus(status);
+		if(status.getId() == 2){//Si le responsable valide le parcours, on supprime les autres parcours
+			List<ParcoursStatus> liste_parcours_status_existant = parcours_status_repository.findNotAcceptedParcoursStatusByIdEtudiant(id);
+			for (int i = 0; i < liste_parcours_status_existant.size(); i++) {
+				ParcoursStatus parcours_status_existant = liste_parcours_status_existant.get(i);
+				em.remove(parcours_status_existant);
+			}
+		}
 		em.flush();
 		em.getTransaction().commit();
 

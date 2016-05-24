@@ -64,7 +64,7 @@ public class Utilisateur {
 	@JoinTable(name = "utilisateur_module", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_module"))
 	private List<Module> modules;
 	
-	@OneToMany(mappedBy="utilisateur", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy="utilisateur", cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
 	@JoinColumn(name = "id_parcours_status")
 	private List<ParcoursStatus> parcours_status;
 

@@ -46,6 +46,15 @@ public class ParcoursStatusRepository {
 				.setParameter("id_utilisateur", id_utilisateur);
 		return (List<Integer>) query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<ParcoursStatus> findNotAcceptedParcoursStatusByIdEtudiant(int id_utilisateur) {
+		Query query = em
+				.createQuery(
+						"SELECT ps FROM ParcoursStatus ps LEFT JOIN ps.utilisateur u LEFT JOIN ps.status s WHERE u.id = :id_utilisateur and s.id_status <> 2")
+				.setParameter("id_utilisateur", id_utilisateur);
+		return (List<ParcoursStatus>) query.getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<ParcoursStatus> findParcoursStatusByIdAndLibelleParcours(int id_utilisateur, String libelle_parcours) {

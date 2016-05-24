@@ -150,9 +150,7 @@ CREATE TABLE IF NOT EXISTS `promotion` (
 INSERT INTO `promotion` (`id_promotion`, `annee`, `promotion`) VALUES
 (1, '2017', 'A1'),
 (2, '2018', 'A2'),
-(3, '2019', 'A3'),
-(0, 'ancien', 'ancien')
-;
+(3, '2019', 'A3');
 
 
 -- --------------------------------------------------------
