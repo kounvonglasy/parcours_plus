@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import beans.Utilisateur;
 import forms.ConnexionForm;
+//import ldap.LDAPConnection;
 
 /**
  * Servlet implementation class Connexion
@@ -55,15 +56,15 @@ public class Connexion extends HttpServlet {
 		EntityManager entitymanager = emfactory.createEntityManager();
 		/* Préparation de l'objet formulaire */
 		ConnexionForm form = new ConnexionForm(entitymanager);
-
+		
 		// Utilisable qu'à l'ISEP (ligne 58 à remplacer par la ligne ci-dessous)
-		// LDAPConnection ldap = new LDAPConnection();
+		 //LDAPConnection ldap = new LDAPConnection(entitymanager);
 
 		/* Traitement de la requête et récupération du bean en résultant */
 		Utilisateur utilisateur = form.connecterUtilisateur(request);
 
 		// Utilisable qu'à l'ISEP (ligne 64 à remplacer par la ligne ci-dessous)
-		// Utilisateur utilisateur = ldap.connecterUtilisateur(request);
+		//Utilisateur utilisateur = ldap.connecterUtilisateur(request);
 
 		/* Stockage du formulaire et du bean dans l'objet request */
 		request.setAttribute(ATT_FORM, form);
@@ -75,11 +76,11 @@ public class Connexion extends HttpServlet {
 			HttpSession session = request.getSession(true);
 			session.setAttribute(ATT_SESSION_USER, utilisateur);
 			// Redirection pour le responsable pedagogique
-			if (utilisateur.getRole().equals("responsable")) {
+			if (utilisateur.getRole().equals("prof")) {
 				this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 			}
 			// redirection pour l'étudiant
-			else if (utilisateur.getRole().equals("etudiant")) {
+			else if (utilisateur.getRole().equals("eleve")) {
 				this.getServletContext().getRequestDispatcher("/AfficherProfil?id="+utilisateur.getId()).forward(request, response);
 			}
 		}

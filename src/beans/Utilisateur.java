@@ -6,6 +6,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -21,6 +23,7 @@ import javax.persistence.Table;
 public class Utilisateur {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
 	private int id;
 
@@ -47,8 +50,8 @@ public class Utilisateur {
 	private Promotion promotion;
 	
 	@Lob
-	@Column( name = "image" )
-	private byte[] image;
+	@Column( name = "image" , nullable = true)
+	private byte[] image = null;
 	 
 	@OneToOne(mappedBy = "utilisateur", cascade = CascadeType.REMOVE)
 	private CV cv;

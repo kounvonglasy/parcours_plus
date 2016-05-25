@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `email` varchar(50) NOT NULL,
   `role` varchar(20) DEFAULT NULL,
   `mdp` varchar(255) DEFAULT NULL,
-  `image` longblob NOT NULL,
+  `image` longblob,
   `id_promotion` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
