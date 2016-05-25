@@ -39,7 +39,7 @@ public class LDAPConnection extends ErrorManager {
 				throw new Exception("Login invalide");
 			}
 			type = connexion.getType();
-			nom = connexion.getNom();
+			nom = connexion.getNomFamille();
 			prenom = connexion.getPrenom();
 			password = connexion.getPassword();		
 			email = connexion.getMail();
@@ -53,7 +53,7 @@ public class LDAPConnection extends ErrorManager {
 		try{//l'user existe dans la base
 		List<Utilisateur> liste_utilisateur = utilisateur_repository.findByLogin(login);
 		utilisateur = em.find(Utilisateur.class, liste_utilisateur);
-		}catch (Exception e){//l'utilisateur existe dans la base mais n'est pas dans le LDAP
+		}catch (Exception e){//l'utilisateur existe dans l'annuaire LDAP mais n'est pas dans la base
 			utilisateur = new Utilisateur();
 			utilisateur.setLogin(login);
 			utilisateur.setMdp(mdp);
