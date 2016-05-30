@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="parcours_plus">
-	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-     <class>beans.Utilisateur</class>
-     <class>beans.Parcours</class>
-     <class>beans.Module</class>
-     <class>beans.ParcoursStatus</class>
-     <class>beans.Status</class>
-     <class>beans.CV</class>
-     <class>beans.LM</class>
-     <class>beans.Promotion</class>
-	<properties>
-	     <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-         <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/parcours_plus"/>
-         <property name="javax.persistence.jdbc.user" value="root"/>
-         <property name="javax.persistence.jdbc.password" value=""/>
-         <property name="eclipselink.logging.level" value="FINE"/>
-         <property name="eclipselink.ddl-generation" value="create-tables"/>
-      </properties>
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>beans.Utilisateur</class>
+		<class>beans.Parcours</class>
+		<class>beans.Module</class>
+		<class>beans.ParcoursStatus</class>
+		<class>beans.Status</class>
+		<class>beans.CV</class>
+		<class>beans.LM</class>
+		<class>beans.Promotion</class>
+		<class>beans.Message</class>
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/parcours_plus" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+		</properties>
 	</persistence-unit>
 </persistence>

@@ -97,4 +97,11 @@ public class UtilisateurRepository {
 		return (List<LM>) query.getResultList();
 	}
 	
+	@SuppressWarnings("unchecked")
+    public List<Utilisateur> findIdByEmail(String email) {
+		Query query = em.createQuery(
+				"SELECT u.id from Utilisateur u WHERE u.email = :email").setParameter("email", email);
+		return (List<Utilisateur>) query.getResultList();
+
+    }
 }

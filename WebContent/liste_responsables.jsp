@@ -26,10 +26,15 @@
 						Liste des responsable de parcours <span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<c:forEach items="${liste_responsables}" var="responsable">	
-						<li class="dropdown-header">Responsable <c:forEach items="${responsable.parcours}" var="parcours">	<c:out value="${parcours.libelle}"/></c:forEach></li>
-						<li><a href="#" onClick="ajax_loader('${responsable.nom}')"><c:out value="${responsable.nom}"/> <c:out value="${responsable.prenom}"/></a></li>
-						<li class="divider"></li>
+						<c:forEach items="${liste_responsables}" var="responsable">
+							<li class="dropdown-header">Responsable <c:forEach
+									items="${responsable.parcours}" var="parcours">
+									<c:out value="${parcours.libelle}" />
+								</c:forEach></li>
+							<li><a href="#" onClick="ajax_loader('${responsable.nom}')"><c:out
+										value="${responsable.nom}" /> <c:out
+										value="${responsable.prenom}" /></a></li>
+							<li class="divider"></li>
 						</c:forEach>
 					</ul>
 				</div>
@@ -43,7 +48,7 @@
 						<div class="well well-sm" id="nom_respo2">
 							<div class="row">
 								<div class="col-sm-1 col-md-2">
-									<img id ="image" src="DisplayBlob?id=5" alt=""
+									<img id="image" src="DisplayBlob?id=5" alt=""
 										class="img-rounded img-responsive" />
 								</div>
 								<div class="col-sm-6 col-md-8">
@@ -58,7 +63,7 @@
 										<c:if test="${!empty sessionScope.session_utilisateur}">
 											<br />
 											<i class="glyphicon glyphicon-envelope"></i>&nbsp; <span
-												id="email">zakia.kazi@isep.fr </span>
+												id="email"> zakia.kazi@isep.fr </span>
 											<br />
 										</c:if>
 										<br /> <i class="glyphicon glyphicon-globe"></i><a
@@ -77,7 +82,9 @@
 											<ul class="dropdown-menu">
 												<li><a href="#">Lettre recommandée</a></li>
 												<li class="divider"></li>
-												<li><a href="#">Envoyer un message</a></li>
+												<li><a id="envoi_message"
+													href="redac_mess.jsp?destinataire=zakia.kazi@isep.fr" >Envoyer
+														un message</a></li>
 											</ul>
 										</div>
 									</c:if>

@@ -43,7 +43,7 @@
 					</c:if>
 					<c:if
 						test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'  }">
-						<li><a href="contacter_utilisateur.jsp">Mail groupé</a></li>
+						<li><a href="selection_mail_groupe.jsp">Mail groupé</a></li>
 					</c:if>
 					<c:if
 						test="${sessionScope.session_utilisateur.role == 'administration'}">
