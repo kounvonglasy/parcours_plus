@@ -63,8 +63,11 @@ public class SelectionResponsableParcours extends HttpServlet {
 						list.add(parcours.getLibelle());
 					}
 					String listString = "";
-					for (String s : list) {
-						listString += s + "\t";
+					for (int i = 0; i < list.size(); ++i) {
+						listString += list.get(i);
+						if (i != list.size() - 1) {
+							listString += " / ";
+						}
 					}
 					type_responsable = listString;
 					libelle = responsable.getNom() + " " + responsable.getPrenom();

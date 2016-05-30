@@ -28,7 +28,7 @@ public class DownloadFileManager {
 			filename = etudiant.getCv().getFilename();
 			file_type = etudiant.getCv().getCv();
 		} else if (filetype.equals("LM")) {
-			filename = etudiant.getCv().getFilename();
+			filename = etudiant.getLm().getFilename();
 			file_type = etudiant.getLm().getLm();
 		}
 		response.setHeader("Content-Disposition", "attachment;filename=" + filename);

@@ -52,14 +52,14 @@ public class ProfilManager {
 		byte[] image = IOUtils.toByteArray(fileContent);
 		user.setImage(image);
 
-		if (user.getRole().equals("eleve")) {
+		if (!user.getRole().equals("prof") && !user.getRole().equals("administration")) {
 			// On met à jour la promotion
-			Promotion promotion = new Promotion ();
-			try{
-			List<Promotion> liste_promotion = promotion_repository
-					.findPromotionByAnnee(request.getParameter("userannee"));
-			promotion = em.find(Promotion.class, liste_promotion);}
-			catch(Exception e){
+			Promotion promotion = new Promotion();
+			try {
+				List<Promotion> liste_promotion = promotion_repository
+						.findPromotionByAnnee(request.getParameter("userannee"));
+				promotion = em.find(Promotion.class, liste_promotion);
+			} catch (Exception e) {
 				promotion.setAnnee(request.getParameter("userannee"));
 				promotion.setPromotion("ancien");
 				em.getTransaction().begin();
