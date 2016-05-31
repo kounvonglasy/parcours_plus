@@ -77,7 +77,7 @@ public class Message {
 	}
 	
 	public void setStatus(String status){
-		this.setStatus(status);
+		this.status = status;
 	}
 
 	public String getStatus() {

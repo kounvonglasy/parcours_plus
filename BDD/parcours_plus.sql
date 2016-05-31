@@ -98,6 +98,22 @@ CREATE TABLE IF NOT EXISTS `parcours` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
+-- Structure de la table `message`
+--
+
+CREATE TABLE IF NOT EXISTS `message` (
+  `id_message` int(11) NOT NULL AUTO_INCREMENT,
+  `id_expediteur` int(11) DEFAULT NULL,
+  `id_destinataire` int(11) DEFAULT NULL,
+  `date` varchar(255) DEFAULT NULL,
+  `titre` varchar(255) DEFAULT NULL,
+  `message` longtext DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_message`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+--
 -- Contenu de la table `parcours`
 --
 
@@ -271,6 +287,8 @@ ALTER TABLE `cv`
 --
 ALTER TABLE `lm`
   ADD CONSTRAINT `FK_lm_id` FOREIGN KEY (`id`) REFERENCES `utilisateur` (`id`);
+  
+
 
 --
 -- Contraintes pour la table `parcours_status`
@@ -297,3 +315,8 @@ ALTER TABLE `utilisateur_parcours`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ --
+-- magouille pour messagerie 
+--
+ ALTER TABLE `message` ADD `name_dest` VARCHAR(255) NOT NULL ;
