@@ -36,6 +36,9 @@ public class Message {
 	@Column(name = "status")
 	private String status;
 	
+	@Column(name = "name_dest")
+	private String dest_name;
+	
 	public void setIdExpediteur(int id_expediteur) {
 		this.id_expediteur = id_expediteur;
 	}
@@ -60,6 +63,15 @@ public class Message {
 		return this.date;
 	}
 	
+	public void setDest_name(String dest_name) {
+		this.dest_name = dest_name; 
+	}
+	
+	public String getDest_name() {
+		return this.dest_name; 
+	}
+	
+	
 	public void setTitre(String titre) {
 		this.titre = titre;
 	}
@@ -83,5 +95,7 @@ public class Message {
 	public String getStatus() {
 		return this.status;
 	}
+
+	
 	
 }

@@ -46,6 +46,10 @@
 						<li><a href="selection_mail_groupe.jsp">Mail groupé</a></li>
 					</c:if>
 					<c:if
+						test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'  }">
+						<li><a href="ListMessage">Voir Message</a></li>
+					</c:if>
+					<c:if
 						test="${sessionScope.session_utilisateur.role == 'administration'}">
 						<li><a href="EditerPromotion">Editer les promotions</a></li>
 					</c:if>

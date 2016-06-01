@@ -31,6 +31,7 @@ public class MessageManager {
 		int id_expediteur = expediteur.getId();*/
 		String message = request.getParameter("message");
 		String titre = request.getParameter("titre");
+		String dest_name = request.getParameter("email_destinataire");
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 		// get current date time with Date()
 		Date getCurrentDate = new Date();
@@ -43,6 +44,7 @@ public class MessageManager {
 		message_to_persist.setDate(date);
 		message_to_persist.setStatus(status);
 		message_to_persist.setTitre(titre);
+		message_to_persist.setDest_name(dest_name);
 		em.getTransaction().begin();
 		em.persist(message_to_persist);
 		em.getTransaction().commit();

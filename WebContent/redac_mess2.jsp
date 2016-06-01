@@ -26,32 +26,10 @@
 					<div class="form-group">
 						<label for="email">À :</label> <input
 							class="form-control" id="email_destinataire"
-							placeholder="Entrer email" name="email_destinataire"
-							value="<%=request.getParameter("destinataire")%>" /> <input
-							type="hidden" name='email_expediteur'
-							value="${sessionScope.session_utilisateur.email}" />
+							placeholder="Entrer email" name="email_destinataire"/>
 					</div>
 					<br />
 					
-					<!-- Liste déroulante des responsable-->
-				<div class="dropdown">
-					<button class="btn btn-default dropdown-toggle" type="button"
-						data-toggle="dropdown">
-						Liste des responsable de parcours <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<c:forEach items="${liste_responsables}" var="responsable">
-							<li class="dropdown-header">Responsable <c:forEach
-									items="${responsable.parcours}" var="parcours">
-									<c:out value="${parcours.libelle}" />
-								</c:forEach></li>
-							<li><a href="#" onClick="ajax_loader('${responsable.nom}')"><c:out
-										value="${responsable.nom}" /> <c:out
-										value="${responsable.prenom}" /></a></li>
-							<li class="divider"></li>
-						</c:forEach>
-					</ul>
-				</div>
 				
 				<br />
 				<br />
