@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.persistence.EntityManager;
 import javax.servlet.http.HttpServletRequest;
 
+//import beans.Parcours;
 import beans.ParcoursStatus;
 import beans.Status;
 import error.ErrorManager;
@@ -40,6 +41,10 @@ public class ValidationParcoursManager extends ErrorManager {
 				ParcoursStatus parcours_status_existant = liste_parcours_status_existant.get(i);
 				em.remove(parcours_status_existant);
 			}
+			//Trouver le parcours statut accepté			
+			//créer le parcours
+			//Affecter le parcours à l'utilisateur et flush
+			//Parcours parcours = em.find(Parcours.class, arg1)		
 		}
 		em.flush();
 		em.getTransaction().commit();

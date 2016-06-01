@@ -47,7 +47,7 @@
 						<!-- Cadre du profil repo parcours-->
 						<div class="well well-sm" id="nom_respo2">
 							<div class="row">
-								<div class="col-sm-1 col-md-2">
+								<div class="col-sm-4 col-md-4">
 									<img id="image" src="DisplayBlob?id=5" alt=""
 										class="img-rounded img-responsive" />
 								</div>
@@ -83,7 +83,7 @@
 												<li><a href="#">Lettre recommandée</a></li>
 												<li class="divider"></li>
 												<li><a id="envoi_message"
-													href="redac_mess.jsp?destinataire=zakia.kazi@isep.fr" >Envoyer
+													href="redac_mess.jsp?email_destinataire=zakia.kazi@isep.fr" >Envoyer
 														un message</a></li>
 											</ul>
 										</div>

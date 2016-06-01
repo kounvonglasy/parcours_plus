@@ -223,7 +223,7 @@
 		</c:if>
 		<br /> <br />
 		<div style="text-align: center;">
-			<a href="redac_mess2.jsp"><button class="btn btn-danger"
+			<a href="redac_mess.html"><button class="btn btn-danger"
 					type="submit">Rédiger le message</button></a>
 		</div>
 	</div>

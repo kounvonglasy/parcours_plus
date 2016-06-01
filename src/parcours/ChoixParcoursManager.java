@@ -51,7 +51,7 @@ public class ChoixParcoursManager extends ValidationParcoursManager {
 					Integer choix = Integer.parseInt(request.getParameter("choix" + i));
 					Parcours parcours = new Parcours();
 					parcours = em.find(Parcours.class, choix);
-					parcours_status.setIdParcours(parcours);
+					parcours_status.setParcours(parcours);
 					em.getTransaction().begin();
 					em.persist(parcours_status);
 					em.getTransaction().commit();

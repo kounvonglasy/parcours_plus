@@ -2,6 +2,7 @@ package beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,7 +20,7 @@ public class ParcoursStatus {
 	@Column(name = "id_parcours_status")
 	private int id_parcours_status;
 
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "id_utilisateur")
 	private Utilisateur utilisateur;
 
@@ -27,7 +28,7 @@ public class ParcoursStatus {
 	@JoinColumn(name = "id_parcours")
 	private Parcours parcours;
 
-	@OneToOne
+	@OneToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name = "id_status")
 	private Status status;
 
@@ -66,11 +67,11 @@ public class ParcoursStatus {
 		return this.status;
 	}
 	
-	public void setIdParcours(Parcours parcours) {
+	public void setParcours(Parcours parcours) {
 		this.parcours = parcours;
 	}
 
-	public Parcours getIdParcours() {
+	public Parcours getParcours() {
 		return this.parcours;
 	}
 

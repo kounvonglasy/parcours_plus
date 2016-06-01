@@ -53,6 +53,7 @@ public class SelectionResponsableParcours extends HttpServlet {
 			List<Utilisateur> liste_responsable = utilisateur_repository.findResponsableByName(nom);
 			Utilisateur responsable = entitymanager.find(Utilisateur.class, liste_responsable);
 			String email, libelle, type_responsable;
+			Boolean img_existante = true;
 			if (ajax) {
 				if (nom != null) {
 					email = responsable.getEmail();
@@ -71,6 +72,9 @@ public class SelectionResponsableParcours extends HttpServlet {
 					}
 					type_responsable = listString;
 					libelle = responsable.getNom() + " " + responsable.getPrenom();
+					if(responsable.getImage().length == 0){
+						 img_existante = false;
+					}
 				} else {
 					email = "zakia.kazi@isep.fr ";
 					type_responsable = "systeme d'information";
@@ -80,6 +84,7 @@ public class SelectionResponsableParcours extends HttpServlet {
 				js.put("type_responsable", type_responsable);
 				js.put("libelle", libelle);
 				js.put("img", responsable.getId());
+				js.put("img_existante", img_existante);
 				out.print(js);
 			}
 		} finally {

@@ -73,7 +73,7 @@ public class ProfilManager {
 			String cvName = getFileName(cvPart);
 			byte[] cv = IOUtils.toByteArray(cvContent);
 			try {
-				List<CV> liste_user_cv_existant = utilisateur_repository.findCVByIdEtudiant(user.getId());
+				List<CV> liste_user_cv_existant = utilisateur_repository.findCVById(user.getId());
 				CV user_cv_existant = em.find(CV.class, liste_user_cv_existant);
 				if (user_cv_existant != null) {
 					user_cv_existant.setUtilisateur(user);
@@ -100,7 +100,7 @@ public class ProfilManager {
 			String lmName = getFileName(lmPart);
 			byte[] lm = IOUtils.toByteArray(lmContent);
 			try {
-				List<LM> liste_user_lm_existant = utilisateur_repository.findLMByIdEtudiant(user.getId());
+				List<LM> liste_user_lm_existant = utilisateur_repository.findLMById(user.getId());
 				LM user_lm_existant = em.find(LM.class, liste_user_lm_existant);
 				if (user_lm_existant != null) {
 					user_lm_existant.setUtilisateur(user);

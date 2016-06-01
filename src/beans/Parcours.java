@@ -31,7 +31,7 @@ public class Parcours {
 	@ManyToMany(mappedBy = "parcours", cascade = CascadeType.PERSIST)
 	private List<Utilisateur> utilisateurs;
 
-	@OneToOne(mappedBy = "parcours", cascade = CascadeType.REMOVE)
+	@OneToOne(mappedBy = "parcours")
 	private ParcoursStatus parcours_status;
 
 	public void setLibelle(String libelle) {

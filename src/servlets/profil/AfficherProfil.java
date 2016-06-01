@@ -1,7 +1,6 @@
 package servlets.profil;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -13,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Utilisateur;
-import utilisateur.UtilisateurRepository;
 
 /**
  * Servlet implementation class AfficherProfile
@@ -39,10 +37,9 @@ public class AfficherProfil extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		UtilisateurRepository utilisateur_repository = new UtilisateurRepository(entitymanager);
-		List<Utilisateur> liste_etudiants = utilisateur_repository.findEtudiantById(id);
-		Utilisateur etudiant = entitymanager.find(Utilisateur.class,liste_etudiants);
+		Utilisateur etudiant = entitymanager.find(Utilisateur.class,id);	
 		request.setAttribute("profil", etudiant);
+		request.setAttribute("parcours_status", etudiant.getParcoursStatus());
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 	

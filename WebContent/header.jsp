@@ -11,6 +11,7 @@
 <link href="css/profil_etudiant.css" rel="stylesheet">
 <link href="css/liste_module.css" rel="stylesheet">
 <link href="css/valider_parcours.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
 <script src="js/jquery-1.12.3.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/selection_responsable_parcours.js"></script>

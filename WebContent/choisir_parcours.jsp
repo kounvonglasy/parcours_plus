@@ -6,7 +6,7 @@
 <body>
 	<div class="container">
 		<c:if test="${succes_validation != null}">
-		<c:out value="${succes_validation}" />
+			<c:out value="${succes_validation}" />
 		</c:if>
 		<h1></h1>
 		<form method="POST" action="ChoisirParcours" id="choixParcours">
@@ -42,7 +42,24 @@
 								name="choix5" value="<c:out value="${parcours[0]}" />" /></td>
 						</tr>
 					</c:forEach>
+
 				</tbody>
+			</table>
+			<table class="table table-striped">
+				<thead>
+					<!-- Les colonnes du tableau -->
+					<tr>
+						<th>Nom du parcours choisi</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<c:forEach items="${liste_parcours_selectionne}"
+					var="parcours_selectionne" varStatus="loop">
+					<tr>
+						<td>${parcours_selectionne[0]}</td>
+						<td>${parcours_selectionne[1]}</td>
+					</tr>
+				</c:forEach>
 			</table>
 			<input type="submit" class="btn btn-success" name="submit"
 				value="Valider mes

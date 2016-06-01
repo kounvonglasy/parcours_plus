@@ -1,30 +1,35 @@
-package servlets.profil;
+package servlets.message;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import beans.Message;
 import beans.Utilisateur;
+import message.MessageRepository;
+
 
 /**
- * Servlet implementation class DisplayBlob
+ * Servlet implementation class AfficherParcours
  */
-@WebServlet("/DisplayBlob")
-public class DisplayBlob extends HttpServlet {
+@WebServlet("/AfficherMessages")
+public class AfficherMessages extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	public static final String VUE = "liste_messages.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DisplayBlob() {
+	public AfficherMessages() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -35,16 +40,14 @@ public class DisplayBlob extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int id = Integer.parseInt(request.getParameter("id"));
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		Utilisateur utilisateur = entitymanager.find(Utilisateur.class, id);
-		ServletOutputStream out = response.getOutputStream();
-		response.setContentType("image/gif");
-		byte[] buffer = utilisateur.getImage();
-		out.write(buffer, 0, utilisateur.getImage().length);
-		out.flush();
+		HttpSession session = request.getSession(true);
+		Utilisateur user = (Utilisateur) session.getAttribute("session_utilisateur");
+		MessageRepository message_manager = new MessageRepository(entitymanager);
+		List<Message> liste_messages = message_manager.findUserMessagesById(user.getId());
+		request.setAttribute("liste_messages", liste_messages);
+		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 
 }

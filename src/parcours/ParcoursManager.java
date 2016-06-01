@@ -186,7 +186,7 @@ public class ParcoursManager extends ErrorManager {
 
 	public Utilisateur getResponsableByParcours(int id_parcours) {
 		try {
-			liste_utilisateurs = utilisateur_repository.findByResponsableParcours(id_parcours);
+			liste_utilisateurs = utilisateur_repository.findResponsableParcours(id_parcours);
 			utilisateur_existant = em.find(Utilisateur.class, liste_utilisateurs);
 		} catch (Exception e) {
 			return null;

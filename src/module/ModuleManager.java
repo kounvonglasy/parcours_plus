@@ -171,7 +171,7 @@ public class ModuleManager extends ParcoursManager {
 
 	public Module getModuleByParcours(int id_parcours) {
 		try {
-			liste_module = module_repository.findModuleByParcours(id_parcours);
+			liste_module = module_repository.findModuleByIdParcours(id_parcours);
 			module_existant = em.find(Module.class, liste_module);
 		} catch (Exception e) {
 			return null;
@@ -181,7 +181,7 @@ public class ModuleManager extends ParcoursManager {
 
 	public Utilisateur getResponsableByModuleId(int id_module) {
 		try {
-			liste_utilisateurs = utilisateur_repository.findResponsableByModuleId(id_module);
+			liste_utilisateurs = utilisateur_repository.findByModuleId(id_module);
 			utilisateur_existant = em.find(Utilisateur.class, liste_utilisateurs);
 		} catch (Exception e) {
 			return null;

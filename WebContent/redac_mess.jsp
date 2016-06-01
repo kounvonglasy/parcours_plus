@@ -26,7 +26,7 @@
 						<label for="email">À :</label> <input type="email"
 							class="form-control" id="email_destinataire"
 							placeholder="Entrer email" name="email_destinataire"
-							value="<%=request.getParameter("destinataire")%>" /> <input
+							value="<%=request.getParameter("email_destinataire")%>" /> <input
 							type="hidden" name='email_expediteur'
 							value="${sessionScope.session_utilisateur.email}" />
 					</div>

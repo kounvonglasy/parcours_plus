@@ -39,6 +39,15 @@ public class ParcoursStatusRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<ParcoursStatus> findAllParcoursStatus() {
+		Query query = em
+				.createQuery(
+						"SELECT u.id, p.libelle, st.libelle, u.nom, ps.priorite_choix_parcours FROM ParcoursStatus ps LEFT JOIN ps.utilisateur u LEFT JOIN ps.parcours p LEFT JOIN ps.status st WHERE u.role<>'responsable' ORDER BY ps.priorite_choix_parcours")
+				;
+		return (List<ParcoursStatus>) query.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Integer> findAllParcoursStatusByIdEtudiant(int id_utilisateur) {
 		Query query = em
 				.createQuery(

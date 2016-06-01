@@ -11,8 +11,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import beans.Parcours;
+import beans.Utilisateur;
 import parcours.ChoixParcoursManager;
 import parcours.ParcoursRepository;
 
@@ -43,9 +45,13 @@ public class ChoisirParcours extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		ParcoursRepository parametrage_parcours = new ParcoursRepository(entitymanager);
-		List<Parcours> liste_parcours = parametrage_parcours.findAllParcours();
+		ParcoursRepository choix_parcours = new ParcoursRepository(entitymanager);
+		List<Parcours> liste_parcours = choix_parcours.findAllParcours();
 		request.setAttribute("liste_parcours", liste_parcours);
+		HttpSession session = request.getSession(true);
+		Utilisateur etudiant = (Utilisateur) session.getAttribute("session_utilisateur");
+		List<Parcours> liste_parcours_selectionne = choix_parcours.findSelectedParcours(etudiant.getId());
+		request.setAttribute("liste_parcours_selectionne",liste_parcours_selectionne);
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 
@@ -66,6 +72,10 @@ public class ChoisirParcours extends HttpServlet {
 			request.setAttribute(ATT_FORM, choix_parcours_manager);
 		} else {
 			request.setAttribute("succes_validation", "Parcours enregistré(s) avec succès");
+			HttpSession session = request.getSession(true);
+			Utilisateur etudiant = (Utilisateur) session.getAttribute("session_utilisateur");
+			List<Parcours> liste_parcours_selectionne = choix_parcours.findSelectedParcours(etudiant.getId());
+			request.setAttribute("liste_parcours_selectionne",liste_parcours_selectionne);
 		}
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}

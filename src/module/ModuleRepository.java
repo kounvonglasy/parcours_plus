@@ -32,7 +32,7 @@ public class ModuleRepository {
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Module> findModuleByParcours(int id) {
+	public List<Module> findModuleByIdParcours(int id) {
 		Query query = em.createQuery("SELECT m.id_module FROM Module m LEFT JOIN m.parcours p WHERE p.id_parcours= :id")
 				.setParameter("id", id);
 		return (List<Module>) query.getResultList();

@@ -21,6 +21,13 @@ public class ParcoursRepository {
 				"SELECT p.id_parcours, p.libelle, u.nom FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.role ='prof' AND p.id_parcours IS NOT NULL");
 		return (List<Parcours>) query.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Parcours> findSelectedParcours(int id) {
+		Query query = em.createQuery(
+				"SELECT  p.libelle, s.libelle FROM Utilisateur u LEFT JOIN u.parcours_status ps LEFT JOIN ps.parcours p LEFT JOIN ps.status s WHERE u.id = :id").setParameter("id", id);
+		return (List<Parcours>) query.getResultList();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Parcours> findParcoursByLibelle(String libelle) {

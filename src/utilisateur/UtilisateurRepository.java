@@ -34,7 +34,7 @@ public class UtilisateurRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Utilisateur> findByResponsableParcours(int id) {
+	public List<Utilisateur> findResponsableParcours(int id) {
 		Query query = em
 				.createQuery(
 						"SELECT u.id FROM Utilisateur u LEFT JOIN u.parcours p WHERE u.role ='prof' AND p.id_parcours= :id")
@@ -43,7 +43,7 @@ public class UtilisateurRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<Utilisateur> findResponsableByModuleId(int id){
+	public List<Utilisateur> findByModuleId(int id){
 		Query query = em
 				.createQuery(
 						"SELECT u.id FROM Utilisateur u LEFT JOIN u.modules m  WHERE m.id_module= :id")
@@ -65,13 +65,6 @@ public class UtilisateurRepository {
 		return (List<Utilisateur>) query.getResultList();
 	}
 	
-	@SuppressWarnings("unchecked")
-	public List<Utilisateur> findEtudiantById(int id){
-		Query query = em
-				.createQuery("SELECT u.id FROM Utilisateur u WHERE u.id = :id")
-		.setParameter("id", id);
-		return (List<Utilisateur>) query.getResultList();
-	}
 	
 	@SuppressWarnings("unchecked")
     public List<Utilisateur> findByCriteriaAsLike(Map<String,String> critere) {
@@ -82,7 +75,7 @@ public class UtilisateurRepository {
     }
 	
 	@SuppressWarnings("unchecked")
-	public List<CV> findCVByIdEtudiant(int id){
+	public List<CV> findCVById(int id){
 		Query query = em
 				.createQuery("SELECT cv.id_cv FROM CV cv LEFT JOIN cv.utilisateur u WHERE u.id = :id")
 		.setParameter("id", id);
@@ -90,7 +83,7 @@ public class UtilisateurRepository {
 	}
 	
 	@SuppressWarnings("unchecked")
-	public List<LM> findLMByIdEtudiant(int id){
+	public List<LM> findLMById(int id){
 		Query query = em
 				.createQuery("SELECT lm.id_lm FROM LM lm LEFT JOIN lm.utilisateur u WHERE u.id = :id")
 		.setParameter("id", id);

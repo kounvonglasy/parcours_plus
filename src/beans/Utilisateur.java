@@ -67,8 +67,7 @@ public class Utilisateur {
 	@JoinTable(name = "utilisateur_module", joinColumns = @JoinColumn(name = "id"), inverseJoinColumns = @JoinColumn(name = "id_module"))
 	private List<Module> modules;
 	
-	@OneToMany(mappedBy="utilisateur", cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_parcours_status")
+	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.REMOVE,fetch=FetchType.EAGER)
 	private List<ParcoursStatus> parcours_status;
 
 
@@ -184,6 +183,20 @@ public class Utilisateur {
 	
 	public Promotion getPromotion(){
 		return promotion;
+	}
+	
+	public void addParcoursStatus(ParcoursStatus parcours_status) {
+		if (!getParcoursStatus().contains(parcours_status)) {
+			getParcoursStatus().add(parcours_status);
+		}
+	}
+
+	public void removeParcoursStatus(ParcoursStatus parcours_status) {
+		getParcoursStatus().remove(parcours_status);
+	}
+
+	public List<ParcoursStatus> getParcoursStatus() {
+		return this.parcours_status;
 	}
 	
 	

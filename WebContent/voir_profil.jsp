@@ -3,80 +3,142 @@
 	<jsp:param name="pageTitle" value="Profil étudiant" />
 </jsp:include>
 <%@ include file="navbar.jsp"%>
+<script>
+	function date_heure(id) {
+		date = new Date;
+		annee = date.getFullYear();
+		moi = date.getMonth();
+		mois = new Array('Janvier', 'F&eacute;vrier', 'Mars', 'Avril', 'Mai',
+				'Juin', 'Juillet', 'Ao&ucirc;t', 'Septembre', 'Octobre',
+				'Novembre', 'D&eacute;cembre');
+		j = date.getDate();
+		jour = date.getDay();
+		jours = new Array('Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi',
+				'Vendredi', 'Samedi');
+		h = date.getHours();
+		if (h < 10) {
+			h = "0" + h;
+		}
+		m = date.getMinutes();
+		if (m < 10) {
+			m = "0" + m;
+		}
+		s = date.getSeconds();
+		if (s < 10) {
+			s = "0" + s;
+		}
+		resultat = jours[jour] + ' ' + j + ' ' + mois[moi] + ' ' + annee + ' '
+				+ h + ':' + m + ':' + s;
+		document.getElementById(id).innerHTML = resultat;
+		setTimeout('date_heure("' + id + '");', '1000');
+		return true;
+	}
+</script>
+
 <body>
 	<div class="container">
 		<div class="row">
-			<div id="content" class="span12">
-				<div id="profil-etudiant">
+			<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+				<p class=" text-info">
+					<span id="date_heure"></span>
+					<script type="text/javascript">
+						window.onload = date_heure('date_heure');
+					</script>
+				</p>
+			</div>
+			<div
+				class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+
+
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<h3 class="panel-title">Profil</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-md-3 col-lg-3 " align="center">
+								<img src="DisplayBlob?id=${profil.id}" alt=""
+									class="img-rounded img-responsive" />
+							</div>
+
+							<div class=" col-md-9 col-lg-9 ">
+								<table class="table table-user-information">
+									<tbody>
+										<tr>
+											<td>Nom:</td>
+											<td>${profil.nom}</td>
+										</tr>
+										<tr>
+											<td>Prénom:</td>
+											<td>${profil.prenom}</td>
+										</tr>
+										<tr>
+											<td>Parcours:</td>
+											<td><c:forEach items="${parcours_status}"
+													var="parcours_status">
+													<c:if test="${parcours_status.status.libelle == 'Accepté'}">
+											${parcours_status.parcours.libelle}</c:if>
+												</c:forEach></td>
+										</tr>
+										<tr>
+											<td>Login:</td>
+											<td>${profil.login}</td>
+										</tr>
+
+										<tr>
+										<tr>
+											<td>Email:</td>
+											<td>${profil.email}</td>
+										</tr>
+										<c:if test="${profil.role == 'eleve'}">
+											<tr>
+												<td>Année:</td>
+												<td>${profil.promotion.annee}</td>
+											</tr>
+											<tr>
+												<td>Promotion:</td>
+												<td>${profil.promotion.promotion}</td>
+											</tr>
+											<tr>
+												<td>CV:</td>
+												<td><c:if test="${!empty(profil.cv.filename)}">
+														<a href="DownloadFile?file=CV&id=${profil.id}">Télécharger
+															le CV</a>
+													</c:if></td>
+											</tr>
+											<tr>
+												<td>LM:</td>
+												<td><c:if test="${!empty(profil.lm.filename)}">
+														<a href="DownloadFile?file=LM&id=${profil.id}">Télécharger
+															la lettre de motivation</a>
+													</c:if></td>
+											</tr>
+										</c:if>
+
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
 					<c:choose>
-						<c:when test="${profil.role == 'eleve'}">
-							<h3>Profil de l'étudiant</h3>
+						<c:when test="${sessionScope.session_utilisateur.id != profil.id}">
+							<div class="panel-footer">
+								<a data-original-title="Broadcast Message" data-toggle="tooltip"
+									type="button" class="btn btn-sm btn-primary"
+									href="EnvoyerMessage?email_destinataire=${profil.email}&email_expediteur=${sessionScope.session_utilisateur.email}"><i
+									class="glyphicon glyphicon-envelope"></i></a>
+							</div>
 						</c:when>
 						<c:otherwise>
-							<h3>Profil du responsable</h3>
+						<a href="EditerProfil" data-original-title="Edit this user"
+								data-toggle="tooltip" type="button"
+								class="btn btn-sm btn-warning"><i
+								class="glyphicon glyphicon-edit"></i></a> 
 						</c:otherwise>
 					</c:choose>
-
-					<div class="col-xs-2">
-						<img src="DisplayBlob?id=${profil.id}" alt=""
-							class="img-rounded img-responsive" /><br />
-					</div>
-					<table
-						class="table table-bordered table-condensed table-striped table-hover ">
-						<thead>
-							<tr>
-								<th>Nom</th>
-								<th>Prénom</th>
-								<th>Login</th>
-								<th>Email</th>
-								<c:if test="${profil.role == 'eleve'}">
-									<th>Annee</th>
-									<th>Promotion</th>
-									<th>CV</th>
-									<th>Lettre de motivation</th>
-								</c:if>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td><c:out value="${profil.nom}" /></td>
-								<td><c:out value="${profil.prenom}" /></td>
-								<td><c:out value="${profil.login}" /></td>
-								<td><c:out value="${profil.email}" /></td>
-								<c:if test="${profil.role == 'eleve'}">
-									<td><c:out value="${profil.promotion.annee}" /></td>
-									<td><c:out value="${profil.promotion.promotion}" /></td>
-									<td><c:if test="${!empty(profil.cv.filename)}">
-											<a href="DownloadFile?file=CV&id=${profil.id}">Télécharger
-												le CV</a>
-										</c:if></td>
-									<td><c:if test="${!empty(profil.lm.filename)}">
-											<a href="DownloadFile?file=LM&id=${profil.id}">Télécharger
-												la lettre de motivation</a>
-										</c:if></td>
-								</c:if>
-							</tr>
-
-						</tbody>
-					</table>
-					<div id="retour_liste_etudiants">
-						<br />
-						<c:if
-							test="${sessionScope.session_utilisateur.role == 'eleve'}">
-							<a
-								href="AfficherEtudiants"
-								class="btn btn-success btn btn-success"> Retour à la page
-								liste des etudiants </a>
-						</c:if>
-						<c:if
-							test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'}">
-							<a href="index.jsp" class="btn btn-success btn btn-success">
-								Retour à la liste des responsables parcours </a>
-						</c:if>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
-</html>
