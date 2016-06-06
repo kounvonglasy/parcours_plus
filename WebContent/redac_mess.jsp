@@ -22,8 +22,8 @@
 					</div>
 				</tr>
 				<tr>
-					<div class="form-group">
-						<label for="email">À :</label> <input type="email"
+					<div class="form-group"> 
+						<label for="email">À :</label> <input type="text"
 							class="form-control" id="email_destinataire"
 							placeholder="Entrer email" name="email_destinataire"
 							value="<%=request.getParameter("email_destinataire")%>" /> <input

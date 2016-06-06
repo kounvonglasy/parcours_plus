@@ -1,6 +1,7 @@
 package servlets.message;
 
 import java.io.IOException;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -10,39 +11,35 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Message;
 import message.MessageManager;
 
-
 /**
- * Servlet implementation class AfficherParcours
+ * Servlet implementation class SupprimerParcours
  */
-@WebServlet("/VoirMessage")
-public class VoirMessage extends HttpServlet {
+@WebServlet("/SupprimerMessage")
+public class SupprimerMessage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String VUE = "voir_message.jsp";
+    public static final String ATT_FORM = "form";
+    public static final String VUE = "AfficherMessages";
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public SupprimerMessage() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#HttpServlet()
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	public VoirMessage() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-        int id = Integer.parseInt(request.getParameter("id"));
-		Message message = entitymanager.find(Message.class,id);
 		MessageManager message_manager = new MessageManager(entitymanager);
-		message_manager.changerStatusMessage(message);
-		request.setAttribute("message", message);
+		message_manager.supprimerMessage(id);
+		request.setAttribute(ATT_FORM, message_manager);
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 

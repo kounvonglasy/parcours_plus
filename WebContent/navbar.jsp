@@ -43,15 +43,14 @@
 							test="${sessionScope.session_utilisateur.role == 'administration'}">
 							<li><a href="ValiderParcours">Valider les parcours</a></li>
 						</c:if>
-						<c:if test="${sessionScope.session_utilisateur.role == 'eleve'}">
+						<c:if test="${sessionScope.session_utilisateur.role == 'eleve' && sessionScope.session_utilisateur.promotion.promotion == 'A2'}">
 							<li><a href="ChoisirParcours">Choisir les parcours</a></li>
 						</c:if>
 						<c:if
 							test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'  }">
-							<li><a href="selection_mail_groupe.jsp">Mail groupé</a></li>
+							<li><a href="SelectionMessageGroupe">Mail groupé</a></li>
 						</c:if>
-						<c:if
-							test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'  }">
+						<c:if test="${!empty sessionScope.session_utilisateur}">
 							<li><a href="AfficherMessages">Liste des messages</a></li>
 						</c:if>
 						<c:if

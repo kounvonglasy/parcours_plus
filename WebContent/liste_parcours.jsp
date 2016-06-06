@@ -27,7 +27,7 @@
 							<button type="submit"></button>
 						</p>
 						<table
-							class="table table-bordered table-condensed table-striped table-hover ">
+							class="table table-bordered table-condensed table-striped table-hover">
 							<thead>
 								<tr>
 									<th></th>

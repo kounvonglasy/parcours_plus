@@ -27,7 +27,6 @@ public class ValidationParcoursManager extends ErrorManager {
 	}
 
 	public void validerParcours(int id, String libelle_parcours, String choix_responsable) {
-		em.getTransaction().begin();
 		List<ParcoursStatus> liste_parcours_status = parcours_status_repository.findParcoursStatusByIdAndLibelleParcours(id,
 				libelle_parcours);
 		parcours_status = em.find(ParcoursStatus.class, liste_parcours_status);
@@ -35,27 +34,24 @@ public class ValidationParcoursManager extends ErrorManager {
 		status = em.find(Status.class, liste_status);
 		status.setLibelle(choix_responsable);
 		parcours_status.setStatus(status);
+		em.getTransaction().begin();
 		if(status.getId() == 2){//Si le responsable valide le parcours, on supprime les autres parcours
 			List<ParcoursStatus> liste_parcours_status_existant = parcours_status_repository.findNotAcceptedParcoursStatusByIdEtudiant(id);
 			for (int i = 0; i < liste_parcours_status_existant.size(); i++) {
 				ParcoursStatus parcours_status_existant = liste_parcours_status_existant.get(i);
 				em.remove(parcours_status_existant);
 			}
-			//Trouver le parcours statut accepté			
-			//créer le parcours
-			//Affecter le parcours à l'utilisateur et flush
-			//Parcours parcours = em.find(Parcours.class, arg1)		
 		}
 		em.flush();
 		em.getTransaction().commit();
 
 	}
 	
-	public List<ParcoursStatus> rechercherParcoursStatus(HttpServletRequest request,int id_utilisateur) {
+	public List<ParcoursStatus> rechercherParcoursStatus(HttpServletRequest request) {
 		Map<String, String> critere = new HashMap<String, String>();
 		critere.put("nom_etudiant", request.getParameter("etudiantFilter"));
 		critere.put("priorite", request.getParameter("prioriteFilter"));
-		List<ParcoursStatus> liste_parcours = parcours_status_repository.findByCriteriaAsLike(critere, id_utilisateur);
+		List<ParcoursStatus> liste_parcours = parcours_status_repository.findByCriteriaAsLike(critere);
 		return liste_parcours;
 	}
 

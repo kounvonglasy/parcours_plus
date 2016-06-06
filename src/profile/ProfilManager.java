@@ -44,7 +44,9 @@ public class ProfilManager {
 		user.setPrenom(request.getParameter("userfname"));
 		user.setEmail(request.getParameter("useremail"));
 		user.setRole(request.getParameter("userrole"));
+		user.setAlternant(request.getParameter("useralternant"));
 		user.setMdp(request.getParameter("userpwd"));
+		user.setDescription(request.getParameter("userdescription"));
 
 		// on upload une image
 		Part filePart = request.getPart("pic");
@@ -148,5 +150,4 @@ public class ProfilManager {
 		}
 		return null;
 	}
-
 }

@@ -9,11 +9,13 @@
 			<div id="content" class="span12">
 				<div id="liste_message">
 					<h3>Liste des messages</h3>
+					<span class="erreur">${form.erreurs['suppression_message']}</span>
 					<br>
 					<table
 						class="table table-bordered table-condensed table-striped table-hover ">
 						<thead>
 							<tr>
+								<th></th>
 								<th>Titre</th>
 								<th>Status</th>
 								<th>Date</th>
@@ -22,6 +24,8 @@
 						<tbody>
 							<c:forEach items="${liste_messages}" var="message">
 								<tr>
+									<td><a title="Supprimer le message" href="SupprimerMessage?id=${message[3]}"><i
+														class="glyphicon glyphicon-remove black"></i></a></td>
 									<td><a href="VoirMessage?id=${message[3]}">${message[0]}</a></td>
 									<td>${message[1]}</td>
 									<td>${message[2]}</td>

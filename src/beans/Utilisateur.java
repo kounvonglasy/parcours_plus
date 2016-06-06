@@ -44,10 +44,13 @@ public class Utilisateur {
 	
 	@Column(name = "prenom")
 	private String prenom;
-
+		
 	@ManyToOne
 	@JoinColumn(name = "id_promotion")
 	private Promotion promotion;
+	
+	@Column(name = "alternant")
+	private String alternant = "Non";
 	
 	@Lob
 	@Column( name = "image" , nullable = true)
@@ -69,7 +72,9 @@ public class Utilisateur {
 	
 	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.REMOVE,fetch=FetchType.EAGER)
 	private List<ParcoursStatus> parcours_status;
-
+	
+	@Column(name = "description", nullable = true)
+	private String description;
 
 	public void setId(int id) {
 		this.id = id;
@@ -100,9 +105,17 @@ public class Utilisateur {
 		this.mdp = mdp;
 	}
 	
+	public void setAlternant(String alternant) {
+		this.alternant = alternant;
+	}
+	
 	
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
+	}
+	
+	public void setDescription(String description){
+		this.description = description;
 	}
 
 	public int getId() {
@@ -134,9 +147,12 @@ public class Utilisateur {
 		return this.mdp;
 	}
 	
-	
 	public String getPrenom() {
 		return this.prenom;
+	}
+	
+	public String getAlternant() {
+		return this.alternant;
 	}
 
 	public void addParcours(Parcours parcours) {
@@ -199,6 +215,8 @@ public class Utilisateur {
 		return this.parcours_status;
 	}
 	
+	public String getDescription(){
+		return this.description;
+	}
 	
-
 }

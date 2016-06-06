@@ -97,4 +97,21 @@ public class UtilisateurRepository {
 		return (List<Utilisateur>) query.getResultList();
 
     }
+	
+	@SuppressWarnings("unchecked")
+    public List<Utilisateur> findForMessageGroupe(Map<String, String> critere, String operator) {
+		String parcours = critere.get("parcours");
+		Query query = em.createQuery(
+				"SELECT u.id, u.email from Utilisateur u LEFT JOIN u.parcours_status ps LEFT JOIN ps.parcours p LEFT JOIN ps.status s LEFT JOIN u.promotion promotion WHERE u.role='eleve' and s.libelle='Accepté' AND u.alternant LIKE :alternant AND promotion.promotion = :promotion AND p.libelle " +operator + parcours).setParameter("alternant", critere.get("alternant")).setParameter("promotion", critere.get("promotion"));
+		return (List<Utilisateur>) query.getResultList();
+
+    }
+	
+	@SuppressWarnings("unchecked")
+    public List<Utilisateur> findEleveA1ForMessageGroupe(String critere) {
+		Query query = em.createQuery(
+				"SELECT u.id, u.email from Utilisateur u LEFT JOIN u.promotion promotion WHERE u.role='eleve' AND promotion.promotion = :promotion").setParameter("promotion", critere);
+		return (List<Utilisateur>) query.getResultList();
+
+    }
 }

@@ -21,4 +21,10 @@ public class MessageRepository {
 		return (List<Message>) query.getResultList();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Message> findMessagesNonLues(int id) {
+		Query query = em.createQuery(
+				"SELECT COUNT(m.id_message) as nombre FROM Message m WHERE m.id_destinataire = :id and m.status = 'Nouvelle'").setParameter("id", id);
+		return (List<Message>) query.getResultList();
+	}
 }

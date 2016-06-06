@@ -72,8 +72,8 @@ public class SelectionResponsableParcours extends HttpServlet {
 					}
 					type_responsable = listString;
 					libelle = responsable.getNom() + " " + responsable.getPrenom();
-					if(responsable.getImage().length == 0){
-						 img_existante = false;
+					if (responsable.getImage().length == 0) {
+						img_existante = false;
 					}
 				} else {
 					email = "zakia.kazi@isep.fr ";

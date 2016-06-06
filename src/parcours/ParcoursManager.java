@@ -1,6 +1,5 @@
 package parcours;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,18 +15,16 @@ import utilisateur.UtilisateurRepository;
 
 public class ParcoursManager extends ErrorManager {
 	protected EntityManager em;
-	protected static final String CHAMP_NOM_RESPONSABLE = "nom_responsable";
+	private List<Parcours> liste_parcours;
+	private ParcoursRepository parcours_repository;
+	private static final String CHAMP_NOM_RESPONSABLE = "nom_responsable";
+	private static final String CHAMP_SUPPRESSION_PARCOURS = "suppression_parcours";
 	protected static final String CHAMP_PARCOURS = "parcours";
-	protected static final String CHAMP_SUPPRESSION_PARCOURS = "suppression_parcours";
 	protected Utilisateur utilisateur;
 	protected Utilisateur utilisateur_existant;
 	protected Parcours parcours;
 	protected List<Utilisateur> liste_utilisateurs;
-	protected List<Parcours> liste_parcours;
-	protected ParcoursRepository parcours_repository;
 	protected UtilisateurRepository utilisateur_repository;
-	protected List<Utilisateur> utilisateurs_liste;
-	protected List<Parcours> parcours_liste;
 
 	public ParcoursManager(EntityManager em) {
 		this.em = em;
@@ -36,8 +33,6 @@ public class ParcoursManager extends ErrorManager {
 		parcours = new Parcours();
 		parcours_repository = new ParcoursRepository(em);
 		utilisateur_repository = new UtilisateurRepository(em);
-		utilisateurs_liste = new ArrayList<Utilisateur>();
-		parcours_liste = new ArrayList<Parcours>();
 	}
 
 	public boolean editerParcours(int id, String libelle_parcours, String nom_responsable) {

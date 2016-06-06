@@ -1,33 +1,34 @@
-package servlets.profil;
+package servlets.message;
 
-import java.io.*;
+import java.io.IOException;
+import java.util.List;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import beans.Utilisateur;
-import profile.ProfilManager;
+
+import beans.Parcours;
+import message.MessageManager;
+import parcours.ParcoursRepository;
 
 /**
- * Servlet implementation class Upload
+ * Servlet implementation class AfficherParcours
  */
-@WebServlet("/EditerProfil")
-@MultipartConfig
-public class EditerProfil extends HttpServlet {
+@WebServlet("/SelectionMessageGroupe")
+public class SelectionMessageGroupe extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String ATT_SESSION_USER = "session_utilisateur";
+	public static final String VUE = "selection_message_groupe.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EditerProfil() {
+	public SelectionMessageGroupe() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -40,12 +41,12 @@ public class EditerProfil extends HttpServlet {
 			throws ServletException, IOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		HttpSession session = request.getSession(true);
-		Utilisateur user = (Utilisateur) session.getAttribute("session_utilisateur");
-		user = entitymanager.find(Utilisateur.class, user.getId());
-		request.setAttribute("user", user);
-		request.getRequestDispatcher("/editer_profil.jsp").forward(request, response);
+		ParcoursRepository parcours_repository = new ParcoursRepository(entitymanager);
+		List<Parcours> liste_parcours = parcours_repository.findAllParcours();
+		request.setAttribute("liste_parcours", liste_parcours);
+		request.getRequestDispatcher(VUE).forward(request, response);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -54,16 +55,9 @@ public class EditerProfil extends HttpServlet {
 			throws ServletException, IOException {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
-		ProfilManager profil_manager = new ProfilManager(entitymanager);
-		Utilisateur user = profil_manager.editerProfil(request, response);
-		HttpSession session = request.getSession(true);
-		session.setAttribute(ATT_SESSION_USER, user);
-		if(user.getRole().equals("eleve")){
-			request.getRequestDispatcher("AfficherProfil?id=" + user.getId()).forward(request, response);
-		} else if (!user.getRole().equals("eleve")){
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-		}
-
+		MessageManager message_manager = new MessageManager(entitymanager);
+		String email_destinataires = message_manager.envoyerMessageGroupe(request);
+		request.getRequestDispatcher("redac_mess.jsp?email_destinataire="+email_destinataires).forward(request, response);
 	}
 
 }

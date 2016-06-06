@@ -21,7 +21,7 @@
 						<!-- Cadre du profil repo parcours-->
 						<div class="well well-sm" id="nom_respo2">
 							<div class="row">
-								<div class="col-xs-2">	
+								<div class="col-xs-2">
 									<img src="DisplayBlob?id=${user.id}" alt=""
 										class="img-rounded img-responsive" />
 								</div>
@@ -46,12 +46,21 @@
 												value="${user.promotion.annee}" />
 											<br />
 										</c:if>
-										<input name="useremail" placeholder="Email"
-											class="form-control" type="text" id="UserUserEmail"
-											value="${user.email}" /> <br /> <input name="userrole"
-											placeholder="Role" class="form-control" type="text"
-											id="UserUserRole" value="${user.role}" /> <br /> <label>Image
-											de Profil :</label> <input type="file" name="pic" accept="image/*">
+										<c:if
+											test="${sessionScope.session_utilisateur.role == 'prof'}">
+											<input name="userdescription" placeholder="Description" class="form-control"
+											type="text" id="UserUserDescription" value="${user.description}" />
+											<br/>
+										</c:if>
+										<input name="useralternant" placeholder="Alternant?"
+											class="form-control" type="text" id="UserUserAlternant"
+											value="${user.alternant}" /> <br /> <input name="useremail"
+											placeholder="Email" class="form-control" type="email"
+											id="UserUserEmail" value="${user.email}" /> <br /> <input
+											name="userrole" placeholder="Role" class="form-control"
+											type="text" id="UserUserRole" value="${user.role}" /> <br />
+										<label>Image de Profil :</label> <input type="file" name="pic"
+											accept="image/*">
 										<c:if
 											test="${sessionScope.session_utilisateur.role == 'eleve'}">
 											<br />

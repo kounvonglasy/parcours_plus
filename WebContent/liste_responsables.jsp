@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <jsp:include page="header.jsp">
 	<jsp:param name="pageTitle" value="Responsables des parcours" />
 </jsp:include>
@@ -28,8 +29,9 @@
 					<ul class="dropdown-menu">
 						<c:forEach items="${liste_responsables}" var="responsable">
 							<li class="dropdown-header">Responsable <c:forEach
-									items="${responsable.parcours}" var="parcours">
-									<c:out value="${parcours.libelle}" />
+									items="${responsable.parcours}" var="parcours" varStatus="loop">
+									<c:out value="${parcours.libelle}" /><c:if
+														test="${loop.index != fn:length(responsable.parcours) - 1}"> / </c:if>
 								</c:forEach></li>
 							<li><a href="#" onClick="ajax_loader('${responsable.nom}')"><c:out
 										value="${responsable.nom}" /> <c:out
@@ -40,37 +42,50 @@
 				</div>
 			</div>
 		</div>
+		
 		<div class="col-sm-6" id="nom_respo">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-6">
+					<div class="col-xm-6">
 						<!-- Cadre du profil repo parcours-->
 						<div class="well well-sm" id="nom_respo2">
 							<div class="row">
 								<div class="col-sm-4 col-md-4">
-									<img id="image" src="DisplayBlob?id=5" alt=""
-										class="img-rounded img-responsive" />
+									<c:choose>
+										<c:when test="${fn:length(responsable_default.image) != 0}">
+											<img id="image"
+												src="DisplayBlob?id=${responsable_default.id}" alt=""
+												class="img-rounded img-responsive" />
+										</c:when>
+										<c:otherwise>
+											<img id="image" src="Images/olive.PNG" alt=""
+												class="img-rounded img-responsive" />
+										</c:otherwise>
+									</c:choose>
 								</div>
 								<div class="col-sm-6 col-md-8">
 									<h4>
-										<span id="libelle">Kazi Zakia</span>
+										<span id="libelle">${responsable_default.nom}
+											${responsable_default.prenom}</span>
 									</h4>
-									<br /> <small><cite title="Système d'information"><i
+									<br /> <small><cite
+										title="${responsable_default.parcours}"><i
 											class="glyphicon glyphicon-user"> </i>&nbsp; Responsable de
-											la filière <span id="type_responsable">systeme
-												d'information</span></cite></small>
+											la filière <span id="type_responsable"><c:forEach
+													items="${responsable_default.parcours}" var="parcours"
+													varStatus="loop">${parcours.libelle}<c:if
+														test="${loop.index != fn:length(responsable_default.parcours) - 1}"> / </c:if>
+												</c:forEach></span></cite></small>
 									<p>
 										<c:if test="${!empty sessionScope.session_utilisateur}">
 											<br />
 											<i class="glyphicon glyphicon-envelope"></i>&nbsp; <span
-												id="email"> zakia.kazi@isep.fr </span>
+												id="email"> ${responsable_default.email} </span>
 											<br />
 										</c:if>
 										<br /> <i class="glyphicon glyphicon-globe"></i><a
 											href="http://www.isep.fr/parcours/">&nbsp;
 											www.isep.fr/parcours/</a> <br /> <br /> <i
-											class="glyphicon glyphicon-folder-close"></i>Valide vos choix
-										de parcours, Professeur de base de donnée, chercheur
+											class="glyphicon glyphicon-folder-close"></i>
+										${responsable_default.description}
 									</p>
 									<c:if test="${!empty sessionScope.session_utilisateur}">
 										<!-- Split button -->
@@ -83,7 +98,7 @@
 												<li><a href="#">Lettre recommandée</a></li>
 												<li class="divider"></li>
 												<li><a id="envoi_message"
-													href="redac_mess.jsp?email_destinataire=zakia.kazi@isep.fr" >Envoyer
+													href="redac_mess.jsp?email_destinataire=${responsable_default.email}">Envoyer
 														un message</a></li>
 											</ul>
 										</div>
@@ -92,15 +107,16 @@
 							</div>
 						</div>
 					</div>
-				</div>
 			</div>
-		</div>
+		
 		<c:choose>
 			<c:when test="${!empty sessionScope.session_utilisateur}">
 				<div class="col-sm-3">
 					<div class="alert alert-info fade in">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Notification!</strong> Vous avez recu un mail
+						<strong>Notification!</strong> Vous avez recu
+						<c:out value="${messages_non_lues}" />
+						nouveau mail
 					</div>
 				</div>
 				<div class="col-sm-3">

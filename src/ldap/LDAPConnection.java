@@ -62,6 +62,9 @@ public class LDAPConnection extends ErrorManager {
 			utilisateur.setMdp(password);
 			utilisateur.setEmail(email);
 			utilisateur.setRole(type);
+			if(type.equals("prof")){
+				utilisateur.setDescription("Valide vos choix de parcours");
+			}
 			em.getTransaction().begin();
 			em.persist(utilisateur);
 			em.getTransaction().commit();

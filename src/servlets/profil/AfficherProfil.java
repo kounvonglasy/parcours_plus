@@ -37,6 +37,7 @@ public class AfficherProfil extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
+		entitymanager.getEntityManagerFactory().getCache().evictAll();
 		Utilisateur etudiant = entitymanager.find(Utilisateur.class,id);	
 		request.setAttribute("profil", etudiant);
 		request.setAttribute("parcours_status", etudiant.getParcoursStatus());

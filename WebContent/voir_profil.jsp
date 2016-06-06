@@ -78,7 +78,9 @@
 													var="parcours_status">
 													<c:if test="${parcours_status.status.libelle == 'Accepté'}">
 											${parcours_status.parcours.libelle}</c:if>
-												</c:forEach></td>
+												</c:forEach> <c:if test="${empty(parcours_status)}">
+													Non
+												</c:if></td>
 										</tr>
 										<tr>
 											<td>Login:</td>
@@ -98,6 +100,10 @@
 											<tr>
 												<td>Promotion:</td>
 												<td>${profil.promotion.promotion}</td>
+											</tr>
+											<tr>
+												<td>Alternant</td>
+												<td>${profil.alternant}</td>
 											</tr>
 											<tr>
 												<td>CV:</td>
@@ -126,15 +132,15 @@
 							<div class="panel-footer">
 								<a data-original-title="Broadcast Message" data-toggle="tooltip"
 									type="button" class="btn btn-sm btn-primary"
-									href="EnvoyerMessage?email_destinataire=${profil.email}&email_expediteur=${sessionScope.session_utilisateur.email}"><i
+									href="redac_mess.jsp?email_destinataire=${profil.email}&email_expediteur=${sessionScope.session_utilisateur.email}"><i
 									class="glyphicon glyphicon-envelope"></i></a>
 							</div>
 						</c:when>
 						<c:otherwise>
-						<a href="EditerProfil" data-original-title="Edit this user"
+							<a href="EditerProfil" data-original-title="Edit this user"
 								data-toggle="tooltip" type="button"
 								class="btn btn-sm btn-warning"><i
-								class="glyphicon glyphicon-edit"></i></a> 
+								class="glyphicon glyphicon-edit"></i></a>
 						</c:otherwise>
 					</c:choose>
 				</div>
