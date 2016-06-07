@@ -105,14 +105,8 @@ public class MessageManager extends ErrorManager {
 				critere = this.getParcours(request, promotion);
 				critere.put("alternant", "Oui");
 			} else {
-				// Si on choisit A2 mais pas A3
-				if (promotion.equals("A2") && request.getParameter(promotion + "_alternant") != null
-						&& request.getParameter(promotion) != null)
-					critere = this.getParcours(request, promotion);
-				else {
-					operator = "LIKE";
-					critere.put("parcours", " \"\"");
-				}
+				operator = "LIKE";
+				critere.put("parcours", " \"\"");
 				critere.put("alternant", "%%");
 			}
 			critere.put("promotion", promotion);

@@ -5,10 +5,12 @@ function ajax_loader(x) {
 				url : "SelectionResponsableParcours?name=" + x,
 				datatype : "json",
 				success : function(data) {
+					$('#scrolly').ScrollTo();
 					var result = JSON.parse(JSON.stringify(data));
 					$("#libelle").html(result.libelle);
 					$("#type_responsable").html(result.type_responsable);
 					$("#email").html(result.email);
+					$("#description").html(result.description);
 					if (result.img_existante == true) {
 						$("#image").attr('src', 'DisplayBlob?id=' + result.img);
 					} else {

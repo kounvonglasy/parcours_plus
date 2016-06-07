@@ -43,7 +43,7 @@
 							test="${sessionScope.session_utilisateur.role == 'administration'}">
 							<li><a href="ValiderParcours">Valider les parcours</a></li>
 						</c:if>
-						<c:if test="${sessionScope.session_utilisateur.role == 'eleve' && sessionScope.session_utilisateur.promotion.promotion == 'A2'}">
+						<c:if test="${sessionScope.session_utilisateur.role == 'eleve' && sessionScope.session_utilisateur.promotion.promotion == 'A1'}">
 							<li><a href="ChoisirParcours">Choisir les parcours</a></li>
 						</c:if>
 						<c:if

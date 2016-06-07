@@ -4,7 +4,7 @@
 	<jsp:param name="pageTitle" value="Responsables des parcours" />
 </jsp:include>
 <%@ include file="navbar.jsp"%>
-<body>
+<body onload="$('#scrolly').ScrollTo();">
 
 	<div class="row">
 		<div class="col-sm-12">
@@ -48,7 +48,8 @@
 						<!-- Cadre du profil repo parcours-->
 						<div class="well well-sm" id="nom_respo2">
 							<div class="row">
-								<div class="col-sm-4 col-md-4">
+								<div class="col-sm-4 col-md-4">	
+								<div id="scrolly"></div>																			
 									<c:choose>
 										<c:when test="${fn:length(responsable_default.image) != 0}">
 											<img id="image"
@@ -85,7 +86,7 @@
 											href="http://www.isep.fr/parcours/">&nbsp;
 											www.isep.fr/parcours/</a> <br /> <br /> <i
 											class="glyphicon glyphicon-folder-close"></i>
-										${responsable_default.description}
+										<span id="description">${responsable_default.description}</span>
 									</p>
 									<c:if test="${!empty sessionScope.session_utilisateur}">
 										<!-- Split button -->
