@@ -148,7 +148,7 @@
 						<div class="form-group">
 							<div class="col-md-offset-0 col-md-8">
 								<input class="btn btn-success btn btn-success" type="submit"
-									value="Connection" />
+									value="Connexion" />
 							</div>
 						</div>
 					</form>

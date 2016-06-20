@@ -73,7 +73,7 @@
 						<form action="Deconnexion" name="login" role="form"
 							class="form-horizontal" method="post" accept-charset="utf-8">
 							<input class="btn btn-success btn btn-success" type="submit"
-								value="Deconnection" />
+								value="Deconnexion" />
 						</form>
 					</div>
 				</c:if>

@@ -170,9 +170,9 @@ CREATE TABLE IF NOT EXISTS `promotion` (
 --
 
 INSERT INTO `promotion` (`id_promotion`, `annee`, `promotion`) VALUES
-(1, '2017', 'A1'),
-(2, '2016', 'A2'),
-(3, '2015', 'A3');
+(1, '2018', 'A1'),
+(2, '2017', 'A2'),
+(3, '2016', 'A3');
 
 -- --------------------------------------------------------
 
@@ -260,6 +260,11 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `email`, `role`, `mdp
 (12, 'Trocan', 'Maria', 'maria', 'maria.trocan@isep.fr', 'prof', 'maria', '', NULL, 'Non', 'Non', 'Non'),
 (13, 'etudiant2', 'etudiant2', 'etudiant2', 'etudiant2@hotmail.fr', 'eleve', 'etudiant2', '', 2, 'Non', 'Non', 'Non'),
 (14, 'etudiant3', 'etudiant3', 'etudiant3', 'etudiant3@hotmail.fr', 'eleve', 'etudiant3', '', 3, 'Non', 'Oui', 'Non');
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `email`, `role`, `mdp`, `image`, `id_promotion`, `description`, `alternant`) VALUES
+(15, 'RADJASEGAR', 'Vigneshraj', 'vradjasegar', 'vradjasegar@isep.fr', 'eleve', 'vradjasegar', NULL, 2, 'Etudiant ', 'Oui'),
+(16, 'DUPORTAIL ', 'Jean-Claude', 'jcduportail', 'jcduportail@isep.fr', 'eleve', 'jcduportail', NULL, 1, 'Etudiant A1', 'Non'),
+(17, 'JOURBON ', 'Jeanne ', 'jjourbon', 'jjourbon', 'eleve', 'jjourbon', NULL, 3, 'Etudiant A3', 'Non');
 
 -- --------------------------------------------------------
 
