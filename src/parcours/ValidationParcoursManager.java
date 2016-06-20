@@ -51,6 +51,7 @@ public class ValidationParcoursManager extends ErrorManager {
 		Map<String, String> critere = new HashMap<String, String>();
 		critere.put("nom_etudiant", request.getParameter("etudiantFilter"));
 		critere.put("priorite", request.getParameter("prioriteFilter"));
+		critere.put("choix_validation", request.getParameter("choixValidationFilter"));
 		List<ParcoursStatus> liste_parcours = parcours_status_repository.findByCriteriaAsLike(critere);
 		return liste_parcours;
 	}

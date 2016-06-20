@@ -1,28 +1,29 @@
-<style>
 .isep {
-    width : 100%;
+	width: 100%;
 }
+
 body {
-
-background-color: #e0f2fc;
-
+	background-color: #e0f2fc;
 }
 
-.titre_parcours, .titre2{
-text-align: center;
+.titre_parcours, .titre2 {
+	text-align: center;
 }
 
-.recherche{
- position: center;
+.recherche {
+	position: center;
 }
-.navbar-inverse .navbar-nav > li > a {
-	color : black;
 
-	}
-	
-	.navbar-inverse {
-	background: linear-gradient(to right, rgba(8,138,133,1) 0%, rgba(41,184,229,1) 50%, rgba(179,220,237,1) 100%);}
+.navbar-inverse .navbar-nav>li>a {
+	color: black;
+}
 
+.navbar-inverse {
+	background: linear-gradient(to right, rgba(8, 138, 133, 1) 0%,
+		rgba(41, 184, 229, 1) 50%, rgba(179, 220, 237, 1) 100%);
+}
 
-
-</style>
+#retour_profil, #repondre, #nom_respo{
+      text-align: center;
+ }
+ 

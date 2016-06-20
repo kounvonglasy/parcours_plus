@@ -19,6 +19,7 @@
 								<th>Titre</th>
 								<th>Status</th>
 								<th>Date</th>
+								<th>Expediteur</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -26,9 +27,10 @@
 								<tr>
 									<td><a title="Supprimer le message" href="SupprimerMessage?id=${message[3]}"><i
 														class="glyphicon glyphicon-remove black"></i></a></td>
-									<td><a href="VoirMessage?id=${message[3]}">${message[0]}</a></td>
+									<td><a href="VoirMessage?id=${message[3]}&id_expediteur=${message[5]}">${message[0]}</a></td>
 									<td>${message[1]}</td>
 									<td>${message[2]}</td>
+									<td>${message[4]}</td>
 								</tr>
 							</c:forEach>
 						</tbody>

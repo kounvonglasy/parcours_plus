@@ -43,10 +43,8 @@ public class ProfilManager {
 		user.setNom(request.getParameter("username"));
 		user.setPrenom(request.getParameter("userfname"));
 		user.setEmail(request.getParameter("useremail"));
-		user.setRole(request.getParameter("userrole"));
-		user.setAlternant(request.getParameter("useralternant"));
-		user.setMdp(request.getParameter("userpwd"));
 		user.setDescription(request.getParameter("userdescription"));
+		user.setBureau(request.getParameter("userbureau"));
 
 		// on upload une image
 		Part filePart = request.getPart("pic");
@@ -55,6 +53,8 @@ public class ProfilManager {
 		user.setImage(image);
 
 		if (!user.getRole().equals("prof") && !user.getRole().equals("administration")) {
+			//Alternant ou non
+			user.setAlternant(request.getParameter("useralternant"));
 			// On met à jour la promotion
 			Promotion promotion = new Promotion();
 			try {

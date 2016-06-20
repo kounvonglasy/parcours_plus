@@ -10,9 +10,12 @@
 				<div id="message">
 					<h3>Titre:</h3>
 					${message.titre}
+					<h3>Expediteur:</h3>
+					${expediteur.nom} ${expediteur.prenom}
 					<h3>Message</h3>
 					<pre>${message.message}</pre>
 				</div>
+				<div id="repondre"><a href="redac_mess.jsp?email_destinataire=${expediteur.email}&email_expediteur=${sessionScope.session_utilisateur.email}" class="btn btn-success btn btn-success">Répondre au message</a></div>
 			</div>
 		</div>
 	</div>

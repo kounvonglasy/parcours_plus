@@ -14,7 +14,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-sm-12" id="nom_respo">
+		<div class="col-sm-12">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
@@ -28,52 +28,62 @@
 								<div class="col-sm-6 col-md-8">
 									<form action="EditerProfil?id=${user.id}" method="post"
 										enctype="multipart/form-data">
-
-										<input name="username" placeholder="Nom" class="form-control"
-											type="text" id="UserUsername" value="${user.nom}" /> <br />
-										<input name="userfname" placeholder="Prenom"
-											class="form-control" type="text" id="UserFname"
-											value="${user.prenom}" /> <br /> <input name="userlogin"
+										<label for="UserUsername">Nom: </label> <input name="username"
+											placeholder="Nom" class="form-control" type="text"
+											id="UserUsername" value="${user.nom}" /> <br /> <label
+											for="UserFname">Prenom: </label> <input name="userfname"
+											placeholder="Prenom" class="form-control" type="text"
+											id="UserFname" value="${user.prenom}" /> <br /> <label
+											for="UserLogin">Login: </label> <input name="userlogin"
 											placeholder="Login" class="form-control" type="text"
-											id="UserLogin" value="${user.login}" /> <br /> <input
-											name="userpwd" placeholder="Mot de Passe"
-											class="form-control" type="text" id="UserPwd"
-											value="${user.mdp}" /> <br />
+											id="UserLogin" value="${user.login}" /> <br />
 										<c:if
 											test="${sessionScope.session_utilisateur.role == 'eleve'}">
+											<label for="UserUserAnnee">Promotion Année: </label>
 											<input name="userannee" placeholder="Promotion Année"
 												class="form-control" type="text" id="UserUserAnnee"
 												value="${user.promotion.annee}" />
 											<br />
+											<label for="UserUserAlternant">Alternant: </label>
+											<input name="useralternant" placeholder="Alternant?"
+												class="form-control" type="text" id="UserUserAlternant"
+												value="${user.alternant}" />
+											<br />
 										</c:if>
+										<label for="UserUserEmail">Email: </label> <input
+											name="useremail" placeholder="Email" class="form-control"
+											type="email" id="UserUserEmail" value="${user.email}" /> <br />
 										<c:if
 											test="${sessionScope.session_utilisateur.role == 'prof'}">
-											<input name="userdescription" placeholder="Description" class="form-control"
-											type="text" id="UserUserDescription" value="${user.description}" />
-											<br/>
-										</c:if>
-										<input name="useralternant" placeholder="Alternant?"
-											class="form-control" type="text" id="UserUserAlternant"
-											value="${user.alternant}" /> <br /> <input name="useremail"
-											placeholder="Email" class="form-control" type="email"
-											id="UserUserEmail" value="${user.email}" /> <br /> <input
-											name="userrole" placeholder="Role" class="form-control"
-											type="text" id="UserUserRole" value="${user.role}" /> <br />
-										<label>Image de Profil :</label> <input type="file" name="pic"
-											accept="image/*">
-										<c:if
-											test="${sessionScope.session_utilisateur.role == 'eleve'}">
+											<label for="UserUserDescription">Description:</label>
+											<input name="userdescription" placeholder="Description"
+												class="form-control" type="text" id="UserUserDescription"
+												value="${user.description}" />
 											<br />
-											<label>CV :</label>
-											<input type="file" name="cv">
+											<label for="UserUserBureau">Bureau:</label>
+											<input name="userbureau" placeholder="Bureau"
+												class="form-control" type="text" id="UserUserBureau"
+												value="${user.bureau}" />
 											<br />
-											<label>Lettre de motivation :</label>
-											<input type="file" name="lm">
 										</c:if>
-										<br /> <input type="submit">
+
+										<div id="nom_respo">
+											<label>Image de Profil :</label> <input type="file"
+												name="pic" accept="image/*">
+											<c:if
+												test="${sessionScope.session_utilisateur.role == 'eleve'}">
+												<br />
+												<label>CV :</label>
+												<input type="file" name="cv">
+												<br />
+												<label>Lettre de motivation :</label>
+												<input type="file" name="lm">
+											</c:if>
+											<br /> <input type="submit">
+										</div>
 									</form>
 
-									<div id="retour_liste_etudiants">
+									<div id="retour_profil">
 										<br /> <a
 											href="AfficherProfil?id=${sessionScope.session_utilisateur.id}"
 											class="btn btn-success btn btn-success"> Retour à la page

@@ -11,6 +11,7 @@ function ajax_loader(x) {
 					$("#type_responsable").html(result.type_responsable);
 					$("#email").html(result.email);
 					$("#description").html(result.description);
+					$("#bureau").html(result.bureau);
 					if (result.img_existante == true) {
 						$("#image").attr('src', 'DisplayBlob?id=' + result.img);
 					} else {

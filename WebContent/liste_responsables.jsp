@@ -30,8 +30,9 @@
 						<c:forEach items="${liste_responsables}" var="responsable">
 							<li class="dropdown-header">Responsable <c:forEach
 									items="${responsable.parcours}" var="parcours" varStatus="loop">
-									<c:out value="${parcours.libelle}" /><c:if
-														test="${loop.index != fn:length(responsable.parcours) - 1}"> / </c:if>
+									<c:out value="${parcours.libelle}" />
+									<c:if
+										test="${loop.index != fn:length(responsable.parcours) - 1}"> / </c:if>
 								</c:forEach></li>
 							<li><a href="#" onClick="ajax_loader('${responsable.nom}')"><c:out
 										value="${responsable.nom}" /> <c:out
@@ -42,96 +43,84 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="col-sm-6" id="nom_respo">
-					<div class="col-xm-6">
-						<!-- Cadre du profil repo parcours-->
-						<div class="well well-sm" id="nom_respo2">
-							<div class="row">
-								<div class="col-sm-4 col-md-4">	
-								<div id="scrolly"></div>																			
-									<c:choose>
-										<c:when test="${fn:length(responsable_default.image) != 0}">
-											<img id="image"
-												src="DisplayBlob?id=${responsable_default.id}" alt=""
-												class="img-rounded img-responsive" />
-										</c:when>
-										<c:otherwise>
-											<img id="image" src="Images/olive.PNG" alt=""
-												class="img-rounded img-responsive" />
-										</c:otherwise>
-									</c:choose>
+			<div class="col-xm-6">
+				<!-- Cadre du profil repo parcours-->
+				<div class="well well-sm" id="nom_respo2">
+					<div class="row">
+						<div class="col-sm-4 col-md-4">
+							<div id="scrolly"></div>
+							<c:choose>
+								<c:when test="${fn:length(responsable_default.image) != 0}">
+									<img id="image" src="DisplayBlob?id=${responsable_default.id}"
+										alt="" class="img-rounded img-responsive" />
+								</c:when>
+								<c:otherwise>
+									<img id="image" src="Images/olive.PNG" alt=""
+										class="img-rounded img-responsive" />
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<div class="col-sm-6 col-md-8">
+							<h4>
+								<span id="libelle">${responsable_default.nom}
+									${responsable_default.prenom}</span>
+							</h4>
+							<br /> <small><cite
+								title="${responsable_default.parcours}"><i
+									class="glyphicon glyphicon-user"> </i>&nbsp; Responsable de la
+									filière <span id="type_responsable"><c:forEach
+											items="${responsable_default.parcours}" var="parcours"
+											varStatus="loop">${parcours.libelle}<c:if
+												test="${loop.index != fn:length(responsable_default.parcours) - 1}"> / </c:if>
+										</c:forEach></span></cite></small>
+							<p>
+								<c:if test="${!empty sessionScope.session_utilisateur}">
+									<br />
+									<i class="glyphicon glyphicon-envelope"></i>&nbsp; <span
+										id="email"> ${responsable_default.email} </span>
+									<br />
+									<br /><i class="glyphicon glyphicon-home"></i>&nbsp; Bureau:
+									<span
+										id="bureau"> ${responsable_default.bureau} </span>
+									<br />
+								</c:if>
+								<br /> <i class="glyphicon glyphicon-globe"></i><a
+									href="http://www.isep.fr/parcours/">&nbsp;
+									www.isep.fr/parcours/</a> <br /> <br /> <i
+									class="glyphicon glyphicon-folder-close"></i> <span
+									id="description">${responsable_default.description}</span>
+							</p>
+							<c:if test="${!empty sessionScope.session_utilisateur}">
+								<!-- Split button -->
+								<div class="dropdown">
+									<button class="btn btn-default dropdown-toggle" type="button"
+										data-toggle="dropdown">
+										Demande <span class="caret"></span>
+									</button>
+									<ul class="dropdown-menu">
+										<li><a id="envoi_message"
+											href="redac_mess.jsp?email_destinataire=${responsable_default.email}">Envoyer
+												un message</a></li>
+									</ul>
 								</div>
-								<div class="col-sm-6 col-md-8">
-									<h4>
-										<span id="libelle">${responsable_default.nom}
-											${responsable_default.prenom}</span>
-									</h4>
-									<br /> <small><cite
-										title="${responsable_default.parcours}"><i
-											class="glyphicon glyphicon-user"> </i>&nbsp; Responsable de
-											la filière <span id="type_responsable"><c:forEach
-													items="${responsable_default.parcours}" var="parcours"
-													varStatus="loop">${parcours.libelle}<c:if
-														test="${loop.index != fn:length(responsable_default.parcours) - 1}"> / </c:if>
-												</c:forEach></span></cite></small>
-									<p>
-										<c:if test="${!empty sessionScope.session_utilisateur}">
-											<br />
-											<i class="glyphicon glyphicon-envelope"></i>&nbsp; <span
-												id="email"> ${responsable_default.email} </span>
-											<br />
-										</c:if>
-										<br /> <i class="glyphicon glyphicon-globe"></i><a
-											href="http://www.isep.fr/parcours/">&nbsp;
-											www.isep.fr/parcours/</a> <br /> <br /> <i
-											class="glyphicon glyphicon-folder-close"></i>
-										<span id="description">${responsable_default.description}</span>
-									</p>
-									<c:if test="${!empty sessionScope.session_utilisateur}">
-										<!-- Split button -->
-										<div class="dropdown">
-											<button class="btn btn-default dropdown-toggle" type="button"
-												data-toggle="dropdown">
-												Demande <span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu">
-												<li><a href="#">Lettre recommandée</a></li>
-												<li class="divider"></li>
-												<li><a id="envoi_message"
-													href="redac_mess.jsp?email_destinataire=${responsable_default.email}">Envoyer
-														un message</a></li>
-											</ul>
-										</div>
-									</c:if>
-								</div>
-							</div>
+							</c:if>
 						</div>
 					</div>
+				</div>
 			</div>
-		
+		</div>
+
 		<c:choose>
-			<c:when test="${!empty sessionScope.session_utilisateur}">
+			<c:when
+				test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'}">
 				<div class="col-sm-3">
 					<div class="alert alert-info fade in">
 						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 						<strong>Notification!</strong> Vous avez recu
 						<c:out value="${messages_non_lues}" />
 						nouveau mail
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="alert alert-success fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Notification!</strong> Votre Lettre de recommandation est
-						prêt
-					</div>
-				</div>
-				<div class="col-sm-3">
-					<div class="alert alert-danger fade in">
-						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-						<strong>Notification!</strong> Votre demande des choix à été
-						refusée
 					</div>
 				</div>
 			</c:when>

@@ -48,7 +48,7 @@
 						</c:if>
 						<c:if
 							test="${sessionScope.session_utilisateur.role == 'prof' || sessionScope.session_utilisateur.role == 'administration'  }">
-							<li><a href="SelectionMessageGroupe">Mail groupé</a></li>
+							<li><a href="SelectionMessageGroupe">Message groupé</a></li>
 						</c:if>
 						<c:if test="${!empty sessionScope.session_utilisateur}">
 							<li><a href="AfficherMessages">Liste des messages</a></li>

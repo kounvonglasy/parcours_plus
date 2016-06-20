@@ -17,7 +17,7 @@ public class MessageRepository {
 	@SuppressWarnings("unchecked")
 	public List<Message> findUserMessagesById(int id) {
 		Query query = em.createQuery(
-				"SELECT m.titre, m.status, m.date, m.id_message FROM Message m WHERE m.id_destinataire = :id").setParameter("id", id);
+				"SELECT m.titre, m.status, m.date, m.id_message, u.nom, m.id_expediteur FROM Message m, Utilisateur u WHERE m.id_destinataire = :id AND m.id_expediteur = u.id").setParameter("id", id);
 		return (List<Message>) query.getResultList();
 	}
 

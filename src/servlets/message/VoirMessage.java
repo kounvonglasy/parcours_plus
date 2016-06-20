@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Message;
+import beans.Utilisateur;
 import message.MessageManager;
 
 
@@ -39,10 +40,13 @@ public class VoirMessage extends HttpServlet {
 		EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("parcours_plus");
 		EntityManager entitymanager = emfactory.createEntityManager();
         int id = Integer.parseInt(request.getParameter("id"));
+        int id_expediteur = Integer.parseInt(request.getParameter("id_expediteur"));
 		Message message = entitymanager.find(Message.class,id);
 		MessageManager message_manager = new MessageManager(entitymanager);
 		message_manager.changerStatusMessage(message);
+		Utilisateur expediteur = entitymanager.find(Utilisateur.class, id_expediteur);
 		request.setAttribute("message", message);
+		request.setAttribute("expediteur", expediteur);
 		request.getRequestDispatcher(VUE).forward(request, response);
 	}
 

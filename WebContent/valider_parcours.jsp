@@ -20,7 +20,8 @@
 							<thead>
 								<tr>
 									<th></th>
-									<th></th>
+									<th><input type="text" class="form-control rounded"
+										id="choixValidationFilter" name="choixValidationFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"
 										id="etudiantFilter" name="etudiantFilter" value="%"></th>
 									<th><input type="text" class="form-control rounded"

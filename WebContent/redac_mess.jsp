@@ -6,7 +6,7 @@
 
 <div class="container">
 	<h2>Rédigez votre message ci-dessous</h2>
-	<p>Votre déstinataire recevra un message de d'alerte</p>
+	<p>Votre déstinataire recevra un message d'alerte</p>
 	<form method="POST" action="EnvoyerMessage">
 		<table class="table">
 			<thead>

@@ -47,8 +47,7 @@
 				</p>
 			</div>
 			<div
-				class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
-
+				class="col-xs-9 col-sm-9 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
 				<div class="panel panel-info">
 					<div class="panel-heading">
@@ -79,7 +78,14 @@
 													<c:if test="${parcours_status.status.libelle == 'Accepté'}">
 											${parcours_status.parcours.libelle}</c:if>
 												</c:forEach> <c:if test="${empty(parcours_status)}">
-													Non
+													<c:choose>
+														<c:when test="${profil.role == 'prof'}">
+															<c:forEach items="${profil.parcours}" var="parcours">
+															${parcours.libelle}</c:forEach>
+														</c:when>
+														<c:otherwise>
+													Non</c:otherwise>
+													</c:choose>
 												</c:if></td>
 										</tr>
 										<tr>
@@ -92,6 +98,20 @@
 											<td>Email:</td>
 											<td>${profil.email}</td>
 										</tr>
+										<tr>
+											<td>Role:</td>
+											<td>${profil.role}</td>
+										</tr>
+										<c:if test="${profil.role == 'prof'}">
+											<tr>
+												<td>Description:</td>
+												<td>${profil.description}</td>
+											</tr>
+											<tr>
+												<td>Bureau:</td>
+												<td>${profil.bureau}</td>
+											</tr>
+										</c:if>
 										<c:if test="${profil.role == 'eleve'}">
 											<tr>
 												<td>Année:</td>
@@ -145,6 +165,16 @@
 					</c:choose>
 				</div>
 			</div>
+			<c:if test="${sessionScope.session_utilisateur.role == 'eleve'}">
+				<div class="col-xs-3 col-sm-3">
+					<div class="alert alert-info fade in">
+						<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+						<strong>Notification!</strong> Vous avez recu
+						<c:out value="${messages_non_lues}" />
+						nouveau mail
+					</div>
+				</div>
+			</c:if>
 		</div>
 	</div>
 </body>

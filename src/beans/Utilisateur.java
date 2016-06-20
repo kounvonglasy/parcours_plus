@@ -52,6 +52,9 @@ public class Utilisateur {
 	@Column(name = "alternant")
 	private String alternant = "Non";
 	
+	@Column(name = "bureau")
+	private String bureau = "Non";
+	
 	@Lob
 	@Column( name = "image" , nullable = true)
 	private byte[] image = null;
@@ -117,6 +120,10 @@ public class Utilisateur {
 	public void setDescription(String description){
 		this.description = description;
 	}
+	
+	public void setBureau(String bureau){
+		this.bureau = bureau;
+	}
 
 	public int getId() {
 		return this.id;
@@ -153,6 +160,9 @@ public class Utilisateur {
 	
 	public String getAlternant() {
 		return this.alternant;
+	}
+	public String getBureau() {
+		return this.bureau;
 	}
 
 	public void addParcours(Parcours parcours) {
