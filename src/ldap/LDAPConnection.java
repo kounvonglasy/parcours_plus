@@ -18,12 +18,10 @@ public class LDAPConnection extends ErrorManager {
 	private String prenom;
 	private String type;
 	private String email;
-	private String password;
 
 	public LDAPConnection(EntityManager em) {
 		this.em = em;
 		utilisateur_repository = new UtilisateurRepository(em);
-
 	}
 
 	public Utilisateur connecterUtilisateur(HttpServletRequest request) {
@@ -41,7 +39,6 @@ public class LDAPConnection extends ErrorManager {
 			type = connexion.getType();
 			nom = connexion.getNomFamille();
 			prenom = connexion.getPrenom();
-			password = connexion.getPassword();		
 			email = connexion.getMail();
 
 		} catch (Exception e) {
@@ -50,10 +47,11 @@ public class LDAPConnection extends ErrorManager {
 		}
 		// Si la connexion s'est bien passé,retourne le bean
 		Utilisateur utilisateur;
-		try{//l'user existe dans la base
-		List<Utilisateur> liste_utilisateur = utilisateur_repository.findByLogin(login);
-		utilisateur = em.find(Utilisateur.class, liste_utilisateur);
-		}catch (Exception e){//l'utilisateur existe dans l'annuaire LDAP mais n'est pas dans la base
+		try {// l'user existe dans la base
+			List<Utilisateur> liste_utilisateur = utilisateur_repository.findByLogin(login);
+			utilisateur = em.find(Utilisateur.class, liste_utilisateur);
+		} catch (Exception e) {// l'utilisateur existe dans l'annuaire LDAP mais
+								// n'est pas dans la base
 			utilisateur = new Utilisateur();
 			utilisateur.setLogin(login);
 			utilisateur.setMdp(mdp);
@@ -61,7 +59,7 @@ public class LDAPConnection extends ErrorManager {
 			utilisateur.setNom(nom);
 			utilisateur.setEmail(email);
 			utilisateur.setRole(type);
-			if(type.equals("prof")){
+			if (type.equals("prof")) {
 				utilisateur.setDescription("Valide vos choix de parcours");
 			}
 			em.getTransaction().begin();
